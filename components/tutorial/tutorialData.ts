@@ -4,7 +4,7 @@ export type TutorialPreview = "home" | "ok" | "time" | "records";
 export const introFacts = [
   {
     title: "このアプリは何？",
-    body: "毎日OKを1回記録するアプリです。OKが長くない時だけ、順番にお知らせします。",
+    body: "毎日OKを1回記録するアプリです。最後のOKから時間がたつと、順番にお知らせします。",
     tone: "info"
   },
   {

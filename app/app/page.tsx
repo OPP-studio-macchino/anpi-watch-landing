@@ -77,7 +77,7 @@ export default function HomePage() {
         <div className="content hero-grid">
           <div className="hero-copy">
             <p className="eyebrow">毎日OKを記録するアプリ</p>
-            <h1>OKが長くない時だけ、<br />順番にお知らせします。</h1>
+            <h1>最後のOKから時間がたつと、<br />順番にお知らせします。</h1>
             <p className="hero-lead">
               あんぴッチは、毎日OKを1回記録するアプリです。
               アプリを開くだけでは記録されません。
@@ -158,7 +158,7 @@ export default function HomePage() {
         <div className="content">
           <div className="section-heading narrow">
             <p className="eyebrow">通知の順番</p>
-            <h2>OKが長くない時だけ、順番に進みます。</h2>
+            <h2>最後のOKから時間がたつと、順番に進みます。</h2>
             <p>
               24時間では本人だけです。
               36時間で連絡先AへSMSを送ると、追加料金が1回かかります。

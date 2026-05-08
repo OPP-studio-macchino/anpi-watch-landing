@@ -70,7 +70,7 @@ export const faqSections: readonly FAQSection[] = [
   {
     id: "notice-flow",
     title: "通知の進み方",
-    description: "OKが長くない時だけ、決まった順番でお知らせします。",
+    description: "OKを押していない時間が続くと、決まった順番でお知らせします。",
     items: [
       {
         question: "何時間で誰に知らせますか？",
@@ -195,7 +195,7 @@ export const faqSections: readonly FAQSection[] = [
         answers: [
           "いいえ。",
           "救助や発見を保証するものではありません。",
-          "役目は、OKが長くない時に順番にお知らせすることです。"
+          "役目は、OKを押していない時間が続いた時に、順番にお知らせすることです。"
         ]
       }
     ]
