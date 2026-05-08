@@ -1,0 +1,28 @@
+{
+  "name": "あんぴッチ",
+  "short_name": "あんぴッチ",
+  "description": "毎日OKを記録し、反応がない時だけ順番にお知らせするアプリです。",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FCFCFD",
+  "theme_color": "#0099A1",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/maskable-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
