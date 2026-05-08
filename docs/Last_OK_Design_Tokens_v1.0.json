@@ -1,0 +1,771 @@
+{
+  "$schema": "./Last_OK_Design_Tokens.schema.json",
+  "meta": {
+    "name": "Last OK Design Tokens",
+    "version": "1.0.0",
+    "releasedAt": "2026-03-17",
+    "baseUnit": 8,
+    "platforms": [
+      "iOS",
+      "Web",
+      "Email"
+    ],
+    "notes": "Semantic-first tokens for a calm, explicit, auditable safety check-in product."
+  },
+  "color": {
+    "palette": {
+      "brand": {
+        "50": {
+          "value": "#EFF6FF"
+        },
+        "100": {
+          "value": "#DBEAFE"
+        },
+        "200": {
+          "value": "#BFDBFE"
+        },
+        "300": {
+          "value": "#93C5FD"
+        },
+        "400": {
+          "value": "#60A5FA"
+        },
+        "500": {
+          "value": "#3B82F6"
+        },
+        "600": {
+          "value": "#2563EB"
+        },
+        "700": {
+          "value": "#1D4ED8"
+        },
+        "800": {
+          "value": "#1E40AF"
+        },
+        "900": {
+          "value": "#1E3A8A"
+        }
+      },
+      "success": {
+        "50": {
+          "value": "#ECFDF5"
+        },
+        "100": {
+          "value": "#D1FAE5"
+        },
+        "200": {
+          "value": "#A7F3D0"
+        },
+        "300": {
+          "value": "#6EE7B7"
+        },
+        "400": {
+          "value": "#34D399"
+        },
+        "500": {
+          "value": "#10B981"
+        },
+        "600": {
+          "value": "#047857"
+        },
+        "700": {
+          "value": "#065F46"
+        }
+      },
+      "warning": {
+        "50": {
+          "value": "#FFFBEB"
+        },
+        "100": {
+          "value": "#FEF3C7"
+        },
+        "200": {
+          "value": "#FDE68A"
+        },
+        "300": {
+          "value": "#FCD34D"
+        },
+        "400": {
+          "value": "#FBBF24"
+        },
+        "500": {
+          "value": "#D97706"
+        },
+        "600": {
+          "value": "#B45309"
+        },
+        "700": {
+          "value": "#92400E"
+        }
+      },
+      "critical": {
+        "50": {
+          "value": "#FEF2F2"
+        },
+        "100": {
+          "value": "#FEE2E2"
+        },
+        "200": {
+          "value": "#FECACA"
+        },
+        "300": {
+          "value": "#FCA5A5"
+        },
+        "400": {
+          "value": "#F87171"
+        },
+        "500": {
+          "value": "#EF4444"
+        },
+        "600": {
+          "value": "#DC2626"
+        },
+        "700": {
+          "value": "#B91C1C"
+        }
+      },
+      "neutral": {
+        "0": {
+          "value": "#FFFFFF"
+        },
+        "25": {
+          "value": "#FCFCFD"
+        },
+        "50": {
+          "value": "#F8FAFC"
+        },
+        "100": {
+          "value": "#F1F5F9"
+        },
+        "200": {
+          "value": "#E2E8F0"
+        },
+        "300": {
+          "value": "#CBD5E1"
+        },
+        "400": {
+          "value": "#94A3B8"
+        },
+        "500": {
+          "value": "#64748B"
+        },
+        "600": {
+          "value": "#475569"
+        },
+        "700": {
+          "value": "#334155"
+        },
+        "800": {
+          "value": "#1F2937"
+        },
+        "900": {
+          "value": "#0F172A"
+        },
+        "950": {
+          "value": "#020617"
+        }
+      }
+    },
+    "light": {
+      "background": {
+        "app": {
+          "value": "#FCFCFD"
+        },
+        "surface1": {
+          "value": "#FFFFFF"
+        },
+        "surface2": {
+          "value": "#F8FAFC"
+        },
+        "overlay": {
+          "value": "rgba(2,6,23,0.56)"
+        }
+      },
+      "text": {
+        "primary": {
+          "value": "#0F172A"
+        },
+        "secondary": {
+          "value": "#334155"
+        },
+        "tertiary": {
+          "value": "#64748B"
+        },
+        "inverse": {
+          "value": "#FFFFFF"
+        }
+      },
+      "border": {
+        "subtle": {
+          "value": "#E2E8F0"
+        },
+        "strong": {
+          "value": "#CBD5E1"
+        },
+        "focus": {
+          "value": "#2563EB"
+        }
+      },
+      "action": {
+        "primary": {
+          "value": "#2563EB"
+        },
+        "primaryHover": {
+          "value": "#1D4ED8"
+        },
+        "secondaryText": {
+          "value": "#1D4ED8"
+        },
+        "disabledBg": {
+          "value": "#E2E8F0"
+        },
+        "disabledText": {
+          "value": "#94A3B8"
+        }
+      },
+      "status": {
+        "success": {
+          "value": "#047857"
+        },
+        "successSubtle": {
+          "value": "#ECFDF5"
+        },
+        "info": {
+          "value": "#1D4ED8"
+        },
+        "infoSubtle": {
+          "value": "#EFF6FF"
+        },
+        "warning": {
+          "value": "#B45309"
+        },
+        "warningSubtle": {
+          "value": "#FFFBEB"
+        },
+        "critical": {
+          "value": "#DC2626"
+        },
+        "criticalSubtle": {
+          "value": "#FEF2F2"
+        }
+      }
+    },
+    "dark": {
+      "background": {
+        "app": {
+          "value": "#020617"
+        },
+        "surface1": {
+          "value": "#0F172A"
+        },
+        "surface2": {
+          "value": "#1F2937"
+        },
+        "overlay": {
+          "value": "rgba(2,6,23,0.72)"
+        }
+      },
+      "text": {
+        "primary": {
+          "value": "#F8FAFC"
+        },
+        "secondary": {
+          "value": "#CBD5E1"
+        },
+        "tertiary": {
+          "value": "#94A3B8"
+        },
+        "inverse": {
+          "value": "#0F172A"
+        }
+      },
+      "border": {
+        "subtle": {
+          "value": "#334155"
+        },
+        "strong": {
+          "value": "#475569"
+        },
+        "focus": {
+          "value": "#60A5FA"
+        }
+      },
+      "action": {
+        "primary": {
+          "value": "#2563EB"
+        },
+        "primaryHover": {
+          "value": "#3B82F6"
+        },
+        "secondaryText": {
+          "value": "#93C5FD"
+        },
+        "disabledBg": {
+          "value": "#1F2937"
+        },
+        "disabledText": {
+          "value": "#64748B"
+        }
+      },
+      "status": {
+        "success": {
+          "value": "#10B981"
+        },
+        "successSubtle": {
+          "value": "#052E26"
+        },
+        "info": {
+          "value": "#60A5FA"
+        },
+        "infoSubtle": {
+          "value": "#0B2047"
+        },
+        "warning": {
+          "value": "#FBBF24"
+        },
+        "warningSubtle": {
+          "value": "#3B2405"
+        },
+        "critical": {
+          "value": "#F87171"
+        },
+        "criticalSubtle": {
+          "value": "#3B0D0D"
+        }
+      }
+    }
+  },
+  "space": {
+    "0": {
+      "value": 0
+    },
+    "0.5": {
+      "value": 4
+    },
+    "1": {
+      "value": 8
+    },
+    "1.5": {
+      "value": 12
+    },
+    "2": {
+      "value": 16
+    },
+    "3": {
+      "value": 24
+    },
+    "4": {
+      "value": 32
+    },
+    "5": {
+      "value": 40
+    },
+    "6": {
+      "value": 48
+    },
+    "8": {
+      "value": 64
+    },
+    "10": {
+      "value": 80
+    },
+    "12": {
+      "value": 96
+    }
+  },
+  "radius": {
+    "sm": {
+      "value": 8
+    },
+    "md": {
+      "value": 12
+    },
+    "lg": {
+      "value": 16
+    },
+    "xl": {
+      "value": 20
+    },
+    "2xl": {
+      "value": 24
+    },
+    "pill": {
+      "value": 999
+    }
+  },
+  "elevation": {
+    "0": {
+      "value": "none"
+    },
+    "1": {
+      "value": "0 1px 2px rgba(15,23,42,0.06)"
+    },
+    "2": {
+      "value": "0 8px 24px rgba(15,23,42,0.10)"
+    },
+    "3": {
+      "value": "0 16px 40px rgba(15,23,42,0.14)"
+    }
+  },
+  "motion": {
+    "duration": {
+      "fast": {
+        "value": "120ms"
+      },
+      "base": {
+        "value": "180ms"
+      },
+      "slow": {
+        "value": "240ms"
+      }
+    },
+    "easing": {
+      "standard": {
+        "value": "cubic-bezier(0.2, 0.0, 0, 1)"
+      },
+      "enter": {
+        "value": "cubic-bezier(0.0, 0.0, 0, 1)"
+      },
+      "exit": {
+        "value": "cubic-bezier(0.4, 0.0, 1, 1)"
+      }
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "sans": {
+        "value": "SF Pro Display, SF Pro Text, -apple-system, BlinkMacSystemFont, 'Noto Sans JP', sans-serif"
+      },
+      "mono": {
+        "value": "SF Mono, ui-monospace, Menlo, 'Noto Sans Mono CJK JP', monospace"
+      }
+    },
+    "weight": {
+      "regular": {
+        "value": 400
+      },
+      "medium": {
+        "value": 500
+      },
+      "semibold": {
+        "value": 600
+      },
+      "bold": {
+        "value": 700
+      }
+    },
+    "scale": {
+      "display": {
+        "compact": {
+          "fontSize": 36,
+          "lineHeight": 44,
+          "weight": 700
+        },
+        "regular": {
+          "fontSize": 40,
+          "lineHeight": 48,
+          "weight": 700
+        },
+        "expanded": {
+          "fontSize": 44,
+          "lineHeight": 52,
+          "weight": 700
+        }
+      },
+      "hero": {
+        "compact": {
+          "fontSize": 30,
+          "lineHeight": 38,
+          "weight": 700
+        },
+        "regular": {
+          "fontSize": 34,
+          "lineHeight": 42,
+          "weight": 700
+        },
+        "expanded": {
+          "fontSize": 38,
+          "lineHeight": 46,
+          "weight": 700
+        }
+      },
+      "h1": {
+        "compact": {
+          "fontSize": 24,
+          "lineHeight": 32,
+          "weight": 700
+        },
+        "regular": {
+          "fontSize": 28,
+          "lineHeight": 36,
+          "weight": 700
+        },
+        "expanded": {
+          "fontSize": 32,
+          "lineHeight": 40,
+          "weight": 700
+        }
+      },
+      "h2": {
+        "compact": {
+          "fontSize": 20,
+          "lineHeight": 28,
+          "weight": 700
+        },
+        "regular": {
+          "fontSize": 24,
+          "lineHeight": 32,
+          "weight": 700
+        },
+        "expanded": {
+          "fontSize": 28,
+          "lineHeight": 36,
+          "weight": 700
+        }
+      },
+      "h3": {
+        "compact": {
+          "fontSize": 18,
+          "lineHeight": 26,
+          "weight": 600
+        },
+        "regular": {
+          "fontSize": 20,
+          "lineHeight": 28,
+          "weight": 600
+        },
+        "expanded": {
+          "fontSize": 24,
+          "lineHeight": 32,
+          "weight": 600
+        }
+      },
+      "title": {
+        "compact": {
+          "fontSize": 17,
+          "lineHeight": 24,
+          "weight": 600
+        },
+        "regular": {
+          "fontSize": 18,
+          "lineHeight": 26,
+          "weight": 600
+        },
+        "expanded": {
+          "fontSize": 20,
+          "lineHeight": 28,
+          "weight": 600
+        }
+      },
+      "body": {
+        "compact": {
+          "fontSize": 16,
+          "lineHeight": 24,
+          "weight": 400
+        },
+        "regular": {
+          "fontSize": 17,
+          "lineHeight": 26,
+          "weight": 400
+        },
+        "expanded": {
+          "fontSize": 18,
+          "lineHeight": 28,
+          "weight": 400
+        }
+      },
+      "label": {
+        "compact": {
+          "fontSize": 15,
+          "lineHeight": 20,
+          "weight": 600
+        },
+        "regular": {
+          "fontSize": 16,
+          "lineHeight": 22,
+          "weight": 600
+        },
+        "expanded": {
+          "fontSize": 17,
+          "lineHeight": 24,
+          "weight": 600
+        }
+      },
+      "caption": {
+        "compact": {
+          "fontSize": 13,
+          "lineHeight": 18,
+          "weight": 500
+        },
+        "regular": {
+          "fontSize": 14,
+          "lineHeight": 20,
+          "weight": 500
+        },
+        "expanded": {
+          "fontSize": 15,
+          "lineHeight": 22,
+          "weight": 500
+        }
+      }
+    }
+  },
+  "grid": {
+    "columns": {
+      "value": 12
+    },
+    "gutter": {
+      "value": 8
+    },
+    "margin": {
+      "compact": {
+        "value": 16
+      },
+      "regular": {
+        "value": 24
+      },
+      "expanded": {
+        "value": 32
+      }
+    },
+    "maxWidth": {
+      "value": 1280
+    }
+  },
+  "component": {
+    "button": {
+      "primary": {
+        "height": {
+          "value": 52
+        },
+        "paddingX": {
+          "value": 16
+        },
+        "radius": {
+          "value": 16
+        },
+        "label": {
+          "value": "typography.scale.label"
+        }
+      },
+      "secondary": {
+        "height": {
+          "value": 52
+        },
+        "paddingX": {
+          "value": 16
+        },
+        "radius": {
+          "value": 16
+        }
+      },
+      "tertiary": {
+        "height": {
+          "value": 44
+        },
+        "paddingX": {
+          "value": 8
+        },
+        "radius": {
+          "value": 12
+        }
+      },
+      "destructive": {
+        "height": {
+          "value": 52
+        },
+        "paddingX": {
+          "value": 16
+        },
+        "radius": {
+          "value": 16
+        }
+      }
+    },
+    "checkinHero": {
+      "size": {
+        "value": 160
+      },
+      "radius": {
+        "value": 999
+      },
+      "label": {
+        "value": "typography.scale.hero"
+      },
+      "helperGap": {
+        "value": 8
+      }
+    },
+    "card": {
+      "padding": {
+        "value": 16
+      },
+      "radius": {
+        "value": 20
+      }
+    },
+    "chip": {
+      "height": {
+        "value": 28
+      },
+      "paddingX": {
+        "value": 10
+      },
+      "radius": {
+        "value": 999
+      }
+    },
+    "textField": {
+      "height": {
+        "value": 52
+      },
+      "paddingX": {
+        "value": 14
+      },
+      "radius": {
+        "value": 16
+      }
+    },
+    "otpField": {
+      "cellWidth": {
+        "value": 44
+      },
+      "cellHeight": {
+        "value": 52
+      },
+      "gap": {
+        "value": 8
+      }
+    },
+    "timeline": {
+      "marker": {
+        "value": 20
+      },
+      "rail": {
+        "value": 2
+      },
+      "stepGap": {
+        "value": 12
+      }
+    },
+    "dialog": {
+      "radius": {
+        "value": 24
+      },
+      "maxWidth": {
+        "value": 360
+      },
+      "padding": {
+        "value": 24
+      }
+    },
+    "tabBar": {
+      "height": {
+        "value": 72
+      },
+      "icon": {
+        "value": 20
+      }
+    }
+  }
+}

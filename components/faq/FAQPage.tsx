@@ -1,0 +1,93 @@
+import Link from "next/link";
+import styles from "../manual/ManualPage.module.css";
+import { faqFacts, faqSections, type FAQTone } from "./faqData";
+
+function badgeClass(tone: FAQTone) {
+  if (tone === "success") return styles.badgeSuccess;
+  if (tone === "warning") return styles.badgeWarning;
+  if (tone === "critical") return styles.badgeCritical;
+  return styles.badgeInfo;
+}
+
+function FAQBadge({ tone, label }: { tone: FAQTone; label: string }) {
+  return <span className={`${styles.badge} ${badgeClass(tone)}`}>{label}</span>;
+}
+
+export function FAQPage() {
+  return (
+    <main className={styles.page}>
+      <div className={styles.shell}>
+        <div className={styles.headerGrid}>
+          <header className={styles.hero}>
+            <p className={styles.eyebrow}>FAQ</p>
+            <h1 className={styles.title}>よくある質問</h1>
+            <p className={styles.lead}>
+              あんぴッチで迷いやすい所を、短い言葉でまとめました。
+            </p>
+            <p className={styles.lead}>
+              毎日のOK、2人の同意、通知の順番、追加料金、できないことを確認できます。
+            </p>
+            <Link className={styles.jumpLink} href="/manual/tutorial">
+              3分体験コースを見る
+            </Link>
+
+            <div className={styles.factGrid}>
+              {faqFacts.map((fact) => (
+                <article key={fact.title} className={styles.factCard}>
+                  <FAQBadge tone={fact.tone} label={fact.title} />
+                  <h2 className={styles.factTitle}>{fact.title}</h2>
+                  <p className={styles.factBody}>{fact.body}</p>
+                </article>
+              ))}
+            </div>
+          </header>
+
+          <nav className={styles.toc} aria-label="FAQの目次">
+            <div className={styles.tocCard}>
+              <p className={styles.tocTitle}>質問の種類</p>
+              <div className={styles.tocList}>
+                {faqSections.map((section) => (
+                  <a key={section.id} className={styles.tocLink} href={`#${section.id}`}>
+                    {section.title}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </nav>
+        </div>
+
+        <div className={styles.bodyGrid}>
+          <div aria-hidden="true" />
+          <div className={styles.content}>
+            {faqSections.map((section) => (
+              <section
+                key={section.id}
+                id={section.id}
+                className={styles.section}
+                aria-labelledby={`${section.id}-title`}
+              >
+                <header className={styles.sectionHeader}>
+                  <p className={styles.eyebrow}>質問</p>
+                  <h2 id={`${section.id}-title`}>{section.title}</h2>
+                  <p>{section.description}</p>
+                </header>
+                <div className={styles.faqList}>
+                  {section.items.map((item) => (
+                    <article key={item.question} className={styles.faqCard}>
+                      <h3>Q. {item.question}</h3>
+                      <ol className={styles.faqAnswers}>
+                        {item.answers.map((answer) => (
+                          <li key={answer}>{answer}</li>
+                        ))}
+                      </ol>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+}

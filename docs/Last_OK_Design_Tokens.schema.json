@@ -1,0 +1,132 @@
+{
+  "$id": "Last_OK_Design_Tokens.schema.json",
+  "title": "Last OK Design Tokens",
+  "type": "object",
+  "required": [
+    "meta"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "meta": {
+      "type": "object",
+      "required": [
+        "name",
+        "version"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "releasedAt": {
+          "type": "string",
+          "format": "date"
+        },
+        "baseUnit": {
+          "type": "number"
+        },
+        "platforms": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": {
+    "$ref": "#/definitions/tokenGroup"
+  },
+  "definitions": {
+    "tokenGroup": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/token"
+          },
+          {
+            "$ref": "#/definitions/typographyStyle"
+          },
+          {
+            "$ref": "#/definitions/tokenGroup"
+          }
+        ]
+      }
+    },
+    "token": {
+      "type": "object",
+      "required": [
+        "value"
+      ],
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "object"
+            },
+            {
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "type": {
+          "type": "string"
+        },
+        "$type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "$description": {
+          "type": "string"
+        },
+        "extensions": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": true
+    },
+    "typographyStyle": {
+      "type": "object",
+      "required": [
+        "fontSize",
+        "lineHeight",
+        "weight"
+      ],
+      "properties": {
+        "fontSize": {
+          "type": "number"
+        },
+        "lineHeight": {
+          "type": "number"
+        },
+        "weight": {
+          "type": "number"
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

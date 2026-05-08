@@ -1,0 +1,500 @@
+import styles from "./ManualPage.module.css";
+
+import {
+    billingRows,
+    billingSteps,
+    closingPoints,
+    consentStates,
+    dailySteps,
+    escalationTimeline,
+    faqs,
+    keyFacts,
+    notificationRows,
+    recordChecks,
+    recordSteps,
+    setupReminders,
+    setupSteps,
+    snoozeSteps,
+    successChecks,
+    tocItems,
+    type Tone,
+} from "./manualData";
+
+function toneClass(tone: Tone) {
+    if (tone === "success") return styles.toneSuccess;
+    if (tone === "info") return styles.toneInfo;
+    if (tone === "warning") return styles.toneWarning;
+    if (tone === "critical") return styles.toneCritical;
+    return styles.toneNeutral;
+}
+
+function badgeClass(tone: Tone) {
+    if (tone === "success") return styles.badgeSuccess;
+    if (tone === "info") return styles.badgeInfo;
+    if (tone === "warning") return styles.badgeWarning;
+    if (tone === "critical") return styles.badgeCritical;
+    return styles.badgeNeutral;
+}
+
+function timelineClass(tone: Tone) {
+    if (tone === "info") return styles.timelineToneInfo;
+    if (tone === "warning") return styles.timelineToneWarning;
+    if (tone === "critical") return styles.timelineToneCritical;
+    return "";
+}
+
+function SectionHeader({
+    id,
+    eyebrow,
+    title,
+    description,
+}: {
+    id: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+}) {
+    return (
+        <header className={styles.sectionHeader}>
+            <p className={styles.eyebrow}>{eyebrow}</p>
+            <h2 id={id}>{title}</h2>
+            <p>{description}</p>
+        </header>
+    );
+}
+
+function StepList({
+    steps,
+    title,
+}: {
+    title: string;
+    steps: readonly { title: string; outcome: string }[];
+}) {
+    return (
+        <article className={styles.card}>
+            <h3>{title}</h3>
+            <div className={styles.rowList}>
+                {steps.map((step, index) => (
+                    <div key={`${step.title}-${index}`} className={styles.row}>
+                        <strong>
+                            {index + 1}. {step.title}
+                        </strong>
+                        <p className={styles.meta}>こうなればOK: {step.outcome}</p>
+                    </div>
+                ))}
+            </div>
+        </article>
+    );
+}
+
+function StatusBadge({ tone, label }: { tone: Tone; label: string }) {
+    return <span className={`${styles.badge} ${badgeClass(tone)}`}>{label}</span>;
+}
+
+function ScreenPreview({ type }: { type: "home" | "contacts" | "settings" }) {
+    if (type === "home") {
+        return (
+            <div className={styles.screen} aria-hidden="true">
+                <div className={styles.statusBanner}>
+                    <strong>今の状態: 通知前</strong>
+                    <StatusBadge tone="success" label="通知前" />
+                </div>
+                <div className={styles.okButton}>
+                    <div>
+                        <span>今の時刻で記録</span>
+                        <strong>OK</strong>
+                    </div>
+                </div>
+                <div className={styles.rowList}>
+                    <div className={styles.row}>
+                        <strong>通知前</strong>
+                        <p className={styles.meta}>次の通知までの残り時間を見ます。</p>
+                    </div>
+                    <div className={styles.row}>
+                        <strong>最後のOK</strong>
+                        <p className={styles.meta}>今日 09:42</p>
+                    </div>
+                    <div className={styles.row}>
+                        <strong>OKから</strong>
+                        <p className={styles.meta}>12分</p>
+                    </div>
+                    <div className={styles.row}>
+                        <strong>次の予定</strong>
+                        <p className={styles.meta}>24時間で本人へスマホ通知</p>
+                    </div>
+                </div>
+                <div className={styles.chipRow}>
+                    <span className={styles.chip}>1時間</span>
+                    <span className={styles.chip}>3時間</span>
+                    <span className={styles.chip}>6時間</span>
+                </div>
+            </div>
+        );
+    }
+
+    if (type === "contacts") {
+        return (
+            <div className={styles.screen} aria-hidden="true">
+                <div className={styles.rowList}>
+                    <div className={styles.row}>
+                        <strong>連絡先A</strong>
+                        <p className={styles.meta}>名前 / 電話番号</p>
+                        <StatusBadge tone="warning" label="同意待ち" />
+                    </div>
+                    <div className={styles.row}>
+                        <strong>連絡先B</strong>
+                        <p className={styles.meta}>名前 / 電話番号</p>
+                        <StatusBadge tone="success" label="同意済み" />
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    return (
+        <div className={styles.screen} aria-hidden="true">
+            <div className={styles.recordList}>
+                <div className={styles.recordItem}>
+                    <StatusBadge tone="info" label="スマホ通知" />
+                    <strong className={styles.recordLabel}>本人への通知</strong>
+                    <div className={styles.recordMeta}>
+                        <span>本人</span>
+                        <span>24時間経過後 09:00</span>
+                        <span>送信済み</span>
+                    </div>
+                </div>
+                <div className={styles.billingRow}>
+                    <div className={styles.billingHead}>
+                        <StatusBadge tone="warning" label="料金の予告" />
+                        <span className={styles.amount}>今月 1回</span>
+                    </div>
+                    <p>36時間で連絡先AへSMSを送ると、1回分の追加料金がかかります。</p>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export function ManualPage() {
+    return (
+        <main className={styles.page}>
+            <div className={styles.shell}>
+                <div className={styles.headerGrid}>
+                    <header className={styles.hero}>
+                        <p className={styles.eyebrow}>ユーザーマニュアル</p>
+                        <h1 className={styles.title}>あんぴッチの使い方</h1>
+                        <p className={styles.lead}>
+                            このアプリは、毎日「私は無事です」を1回記録するためのアプリです。
+                        </p>
+                        <p className={styles.lead}>ふだんは、ホームで大きいOKを1回押します。</p>
+                        <p className={styles.lead}>
+                            長く反応がない時は、決まった順番であなたと連絡先へ知らせます。
+                        </p>
+                        <a className={styles.jumpLink} href="#setup">
+                            最初の準備を見る
+                        </a>
+
+                        <div className={styles.factGrid}>
+                            {keyFacts.map((fact) => (
+                                <article key={fact.title} className={styles.factCard}>
+                                    <StatusBadge tone={fact.tone} label={fact.title} />
+                                    <h2 className={styles.factTitle}>{fact.title}</h2>
+                                    <p className={styles.factBody}>{fact.body}</p>
+                                </article>
+                            ))}
+                        </div>
+                    </header>
+
+                    <nav className={styles.toc} aria-label="目次">
+                        <div className={styles.tocCard}>
+                            <p className={styles.tocTitle}>このページで分かること</p>
+                            <div className={styles.tocList}>
+                                {tocItems.map((item) => (
+                                    <a
+                                        key={item.id}
+                                        className={styles.tocLink}
+                                        href={`#${item.id}`}
+                                    >
+                                        {item.label}
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+
+                <div className={styles.bodyGrid}>
+                    <div aria-hidden="true" />
+
+                    <div className={styles.content}>
+                        <section
+                            id="overview"
+                            className={styles.section}
+                            aria-labelledby="overview-title"
+                        >
+                            <SectionHeader
+                                id="overview-title"
+                                eyebrow="まず最初に"
+                                title="このアプリは『返事がない時間』を見て、順番に知らせるアプリです"
+                                description="このアプリが見るのは、最後にOKを押した時刻です。危険や死亡を判断するアプリではありません。画面では、今の状態・次に何が起きるか・あなたが次にすることを見ます。"
+                            />
+                            <div className={styles.miniGrid}>
+                                <article className={styles.previewCard}>
+                                    <span className={styles.previewLabel}>毎日見る画面</span>
+                                    <h3>ふだんはホームでOKを押します</h3>
+                                    <p>毎日は大きいOKを1回押します。アプリを開くだけでは記録されません。</p>
+                                    <ScreenPreview type="home" />
+                                </article>
+                                <article className={styles.previewCard}>
+                                    <span className={styles.previewLabel}>最初の大事な準備</span>
+                                    <h3>連絡先は2人必要です</h3>
+                                    <p>先にA、次にBへ進みます。2人とも同意済みになるまで始まりません。</p>
+                                    <ScreenPreview type="contacts" />
+                                </article>
+                            </div>
+                        </section>
+
+                        <section
+                            id="setup"
+                            className={styles.section}
+                            aria-labelledby="setup-title"
+                        >
+                            <SectionHeader
+                                id="setup-title"
+                                eyebrow="最初の準備"
+                                title="最初にすることは、連絡先2人の登録です"
+                                description="連絡先Aと連絡先Bは、反応がない時に知らせる相手です。2人とも同意済みになるまで自動通知は始まりません。"
+                            />
+                            <div className={styles.split}>
+                                <StepList title="準備の流れ" steps={setupSteps} />
+                                <article className={styles.card}>
+                                    <h3>連絡先の状態の見方</h3>
+                                    <div className={styles.statusGrid}>
+                                        {consentStates.map((state) => (
+                                            <div
+                                                key={state.label}
+                                                className={`${styles.card} ${toneClass(state.tone)}`}
+                                            >
+                                                <StatusBadge
+                                                    tone={state.tone}
+                                                    label={state.label}
+                                                />
+                                                <h3>{state.summary}</h3>
+                                                <p>{state.detail}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <ul className={styles.list}>
+                                        {setupReminders.map((item) => (
+                                            <li key={item}>{item}</li>
+                                        ))}
+                                    </ul>
+                                </article>
+                            </div>
+                        </section>
+
+                        <section
+                            id="daily"
+                            className={styles.section}
+                            aria-labelledby="daily-title"
+                        >
+                            <SectionHeader
+                                id="daily-title"
+                                eyebrow="毎日すること"
+                                title="毎日することは、ホームでOKを1回押すだけです"
+                                description="アプリを開いただけでは記録されません。OKを押すと、今の時刻でOKを記録します。ホームでは、通知前、今の状態、最後のOK、OKから、次の予定を見ます。"
+                            />
+                            <div className={styles.split}>
+                                <article className={styles.previewCard}>
+                                    <span className={styles.previewLabel}>ホームの見本</span>
+                                    <h3>いちばん大事なのは OK です</h3>
+                                    <p>
+                                        ホームでは OK
+                                        が中心です。ほかの操作より先に、まずOKを押します。
+                                    </p>
+                                    <ScreenPreview type="home" />
+                                </article>
+                                <div className={styles.rowList}>
+                                    <StepList title="毎日の流れ" steps={dailySteps} />
+                                    <article className={styles.card}>
+                                        <h3>こう見えたら終わりです</h3>
+                                        <ul className={styles.list}>
+                                            {successChecks.map((item) => (
+                                                <li key={item}>{item}</li>
+                                            ))}
+                                        </ul>
+                                    </article>
+                                </div>
+                            </div>
+
+                            <div className={styles.split}>
+                                <StepList title="通知だけ止めたい時" steps={snoozeSteps} />
+                                <article className={`${styles.card} ${styles.toneWarning}`}>
+                                    <StatusBadge tone="warning" label="通知の一時停止" />
+                                    <h3>一時停止は『通知だけ止める』機能です</h3>
+                                    <p>
+                                        時間のカウントは止まりません。OKを押さないままなら、24時間、30時間、36時間、42時間、48時間以上の順に進みます。
+                                    </p>
+                                </article>
+                            </div>
+                        </section>
+
+                        <section
+                            id="escalation"
+                            className={styles.section}
+                            aria-labelledby="escalation-title"
+                        >
+                            <SectionHeader
+                                id="escalation-title"
+                                eyebrow="反応がない時の流れ"
+                                title="長く反応がない時は、決まった時間で順番に進みます"
+                                description="誰に、いつ、何が起きるかを隠しません。このアプリは危険、死亡、病気、今いる場所を判断しません。反応がない時間に合わせて、順番にお知らせします。"
+                            />
+                            <article className={styles.card}>
+                                <h3>24時間から48時間までの流れ</h3>
+                                <ol className={styles.timelineList}>
+                                    {escalationTimeline.map((item) => (
+                                        <li
+                                            key={item.time}
+                                            className={`${styles.timelineItem} ${timelineClass(item.tone)}`}
+                                        >
+                                            <div className={styles.timelineCard}>
+                                                <p className={styles.timelineTime}>{item.time}</p>
+                                                <p className={styles.timelineTitle}>{item.title}</p>
+                                                <p className={styles.timelineDetail}>
+                                                    {item.detail}
+                                                </p>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ol>
+                            </article>
+                        </section>
+
+                        <section
+                            id="records"
+                            className={styles.section}
+                            aria-labelledby="records-title"
+                        >
+                            <SectionHeader
+                                id="records-title"
+                                eyebrow="記録と料金"
+                                title="『だれに、いつ、何を送ったか』をあとで見返せます"
+                                description="あとで確認できると、言った言わないを減らせます。送信の結果と料金の記録は、設定から見ます。"
+                            />
+                            <div className={styles.split}>
+                                <article className={styles.previewCard}>
+                                    <span className={styles.previewLabel}>設定の見本</span>
+                                    <h3>記録は設定から見ます</h3>
+                                    <p>
+                                        『通知の記録』と『料金の記録』を、あとで何度でも見返せます。
+                                    </p>
+                                    <ScreenPreview type="settings" />
+                                </article>
+                                <div className={styles.rowList}>
+                                    <StepList title="通知の記録を見る" steps={recordSteps} />
+                                    <StepList title="料金の記録を見る" steps={billingSteps} />
+                                </div>
+                            </div>
+
+                            <div className={styles.split}>
+                                <article className={styles.card}>
+                                    <h3>ここで確認できること</h3>
+                                    <ul className={styles.list}>
+                                        {recordChecks.map((item) => (
+                                            <li key={item}>{item}</li>
+                                        ))}
+                                    </ul>
+
+                                    <div className={styles.recordList}>
+                                        {notificationRows.map((row) => (
+                                            <div
+                                                key={`${row.channel}-${row.recipient}-${row.sentAt}`}
+                                                className={styles.recordItem}
+                                            >
+                                                <StatusBadge tone={row.tone} label={row.channel} />
+                                                <strong className={styles.recordLabel}>
+                                                    {row.template}
+                                                </strong>
+                                                <div className={styles.recordMeta}>
+                                                    <span>{row.recipient}</span>
+                                                    <span>{row.sentAt}</span>
+                                                    <span>{row.result}</span>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </article>
+
+                                <article className={styles.card}>
+                                    <h3>料金の見え方</h3>
+                                    <div className={styles.recordList}>
+                                        {billingRows.map((row) => (
+                                            <div key={row.state} className={styles.billingRow}>
+                                                <div className={styles.billingHead}>
+                                                    <StatusBadge
+                                                        tone={row.tone}
+                                                        label={row.state}
+                                                    />
+                                                    <span className={styles.amount}>
+                                                        {row.amount}
+                                                    </span>
+                                                </div>
+                                                <strong className={styles.recordLabel}>
+                                                    {row.trigger}
+                                                </strong>
+                                                <p>{row.detail}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </article>
+                            </div>
+                        </section>
+
+                        <section id="faq" className={styles.section} aria-labelledby="faq-title">
+                            <SectionHeader
+                                id="faq-title"
+                                eyebrow="よくある質問"
+                                title="止まった場所を見つけて、そこから直します"
+                                description="まず、どの画面で止まったかを見ます。次に、画面に出ている言葉をそのまま確認します。"
+                            />
+                            <div className={styles.faqList}>
+                                {faqs.map((faq) => (
+                                    <article key={faq.question} className={styles.faqCard}>
+                                        <h3>Q. {faq.question}</h3>
+                                        <ol className={styles.faqAnswers}>
+                                            {faq.answers.map((answer) => (
+                                                <li key={answer}>{answer}</li>
+                                            ))}
+                                        </ol>
+                                    </article>
+                                ))}
+                            </div>
+                        </section>
+
+                        <section
+                            id="summary"
+                            className={styles.section}
+                            aria-labelledby="summary-title"
+                        >
+                            <SectionHeader
+                                id="summary-title"
+                                eyebrow="最後に確認"
+                                title="これだけ覚えれば使えます"
+                                description="毎日の中心は OK です。迷った時は、連絡先の状態と設定の記録を見ます。"
+                            />
+                            <ol className={styles.summaryList}>
+                                {closingPoints.map((item, index) => (
+                                    <li key={item} className={styles.summaryItem}>
+                                        <span className={styles.summaryNumber}>{index + 1}</span>
+                                        <span>{item}</span>
+                                    </li>
+                                ))}
+                            </ol>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </main>
+    );
+}
