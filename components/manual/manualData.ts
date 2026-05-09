@@ -18,7 +18,7 @@ export const keyFacts = [
   },
   {
     title: "2人そろうまで、動きません",
-    body: "連絡先Aと連絡先Bの同意がそろうまで、自動通知は始まりません。1人だけでは始まりません。",
+    body: "連絡先Aと連絡先Bの同意がそろうまで、OKの記録と自動通知は始まりません。1人だけでは始まりません。",
     tone: "warning"
   },
   {
@@ -29,16 +29,12 @@ export const keyFacts = [
 ] as const;
 
 export const setupSteps = [
-  { title: "下の「連絡先」を押します。", outcome: "連絡先Aと連絡先Bが見えます。" },
-  { title: "「連絡先A」を押します。", outcome: "入力する場所が開きます。" },
-  { title: "名前を入れます。", outcome: "名前が枠の中に出ます。" },
-  { title: "電話番号を入れます。", outcome: "番号が枠の中に出ます。" },
-  { title: "「保存」を押します。", outcome: "連絡先Aのカードが出ます。" },
-  { title: "「連絡先B」を押します。", outcome: "入力する場所が開きます。" },
-  { title: "名前を入れます。", outcome: "名前が枠の中に出ます。" },
-  { title: "電話番号を入れます。", outcome: "番号が枠の中に出ます。" },
-  { title: "「保存」を押します。", outcome: "連絡先Bのカードが出ます。" },
-  { title: "2人の返事を待ちます。", outcome: "2つとも「同意済み」になります。" }
+  { title: "本人確認を始めます。", outcome: "ホームに「まず本人確認をします」と表示されます。" },
+  { title: "電話番号を入力します。", outcome: "このiPhoneで使う電話番号を入力します。" },
+  { title: "電話番号を確認してSMSを送ります。", outcome: "「この番号にSMSを送る」を押します。" },
+  { title: "SMSのリンクを開いて本人確認を完了します。", outcome: "登録が完了します。" },
+  { title: "ホームで準備中の状態を確認します。", outcome: "連絡先A/Bが未登録と表示されます。" },
+  { title: "連絡先A・Bを登録します。", outcome: "連絡先Aと連絡先Bが登録されます。" }
 ] as const;
 
 export const consentStates = [
@@ -63,7 +59,7 @@ export const consentStates = [
 ] as const;
 
 export const setupReminders = [
-  "2人の同意がそろうまで、自動通知は始まりません。",
+  "2人の同意がそろうまで、OKの記録と自動通知は始まりません。",
   "同意待ちの人にはSMSをもう一度送れます。",
   "番号が違うとSMSが届きません。"
 ] as const;
@@ -217,9 +213,9 @@ export const faqs = [
 ] as const;
 
 export const closingPoints = [
-  "毎日はホームでOKを1回押す",
+  "1日1回、ホームの大きなOKボタンを押す",
   "アプリを開くだけでは記録されない",
-  "2人の同意がそろうまで自動通知は始まらない",
+  "2人の同意がそろうまでOKの記録と自動通知は始まらない",
   "36時間で連絡先AへSMSを送ると、追加料金が1回かかる",
   "このアプリは救助や発見を保証するものではない"
 ] as const;

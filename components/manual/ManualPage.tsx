@@ -236,19 +236,23 @@ export function ManualPage() {
                                 id="overview-title"
                                 eyebrow="まず最初に"
                                 title="このアプリは『返事がない時間』を見て、順番に知らせるアプリです"
-                                description="このアプリが見るのは、最後にOKを押した時刻です。危険や死亡を判断するアプリではありません。画面では、今の状態・次に何が起きるか・あなたが次にすることを見ます。"
+                                description="このアプリが見るのは、最後にOKを押した時刻です。危険や死亡を判断するアプリではありません。ホーム画面では、今の状態・次に何が起きるか・あなたが次にすることを見ます。"
                             />
                             <div className={styles.miniGrid}>
                                 <article className={styles.previewCard}>
                                     <span className={styles.previewLabel}>毎日見る画面</span>
                                     <h3>ふだんはホームでOKを押します</h3>
-                                    <p>毎日は大きいOKを1回押します。アプリを開くだけでは記録されません。</p>
+                                    <p>
+                                        1日1回、ホームの大きなOKボタンを押します。アプリを開いただけではOKは記録されません。OKボタンを押した時刻が最後のOKとして記録されます。
+                                    </p>
                                     <ScreenPreview type="home" />
                                 </article>
                                 <article className={styles.previewCard}>
                                     <span className={styles.previewLabel}>最初の大事な準備</span>
                                     <h3>連絡先は2人必要です</h3>
-                                    <p>先にA、次にBへ進みます。2人とも同意済みになるまで始まりません。</p>
+                                    <p>
+                                        本人確認のあとに連絡先A・Bを登録します。2人とも同意済みになるまでOKの記録と自動通知は始まりません。
+                                    </p>
                                     <ScreenPreview type="contacts" />
                                 </article>
                             </div>
@@ -262,8 +266,8 @@ export function ManualPage() {
                             <SectionHeader
                                 id="setup-title"
                                 eyebrow="最初の準備"
-                                title="最初にすることは、連絡先2人の登録です"
-                                description="連絡先Aと連絡先Bは、反応がない時に知らせる相手です。2人とも同意済みになるまで自動通知は始まりません。"
+                                title="最初は本人確認から始めます"
+                                description="ホームに「まず本人確認をします」と表示されたら、電話番号を確認してSMSのリンクを開きます。そのあとホームで準備中の状態を確認し、連絡先Aと連絡先Bを登録します。2人とも同意済みになるまでOKの記録と自動通知は始まりません。"
                             />
                             <div className={styles.split}>
                                 <StepList title="準備の流れ" steps={setupSteps} />
@@ -302,7 +306,7 @@ export function ManualPage() {
                                 id="daily-title"
                                 eyebrow="毎日すること"
                                 title="毎日することは、ホームでOKを1回押すだけです"
-                                description="アプリを開いただけでは記録されません。OKを押すと、今の時刻でOKを記録します。ホームでは、通知前、今の状態、最後のOK、OKから、次の予定を見ます。"
+                                description="1日1回、ホームの大きなOKボタンを押します。アプリを開いただけではOKは記録されません。OKボタンを押した時刻が最後のOKとして記録されます。ホームでは、通知前、今の状態、最後のOK、OKから、次の予定を見ます。"
                             />
                             <div className={styles.split}>
                                 <article className={styles.previewCard}>
