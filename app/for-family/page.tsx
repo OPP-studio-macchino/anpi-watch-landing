@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {
   TrustCard,
   TrustGrid,
+  TrustLinkGrid,
   TrustList,
   TrustPage,
   TrustSection,
@@ -11,6 +12,24 @@ export const metadata: Metadata = {
   title: "家族・パートナーの方へ | あんぴッチ",
   description: "本人同意を前提に、未反応時の連絡ルールを家族やパートナーと決めるための説明です。",
 };
+
+const relatedLinks = [
+  {
+    href: "/before-you-start",
+    title: "登録前チェックリスト",
+    description: "2名同意、毎日のOK、通信の限界が合うか確認します。",
+  },
+  {
+    href: "/share-message",
+    title: "説明文テンプレ",
+    description: "本人が家族や連絡先候補へ説明する文面を確認します。",
+  },
+  {
+    href: "/how-it-works",
+    title: "48時間の通知ルール",
+    description: "未反応時に誰へ何が送られるかを確認します。",
+  },
+];
 
 export default function ForFamilyPage() {
   return (
@@ -93,6 +112,10 @@ export default function ForFamilyPage() {
             />
           </TrustCard>
         </TrustGrid>
+      </TrustSection>
+
+      <TrustSection title="登録前に確認する">
+        <TrustLinkGrid links={relatedLinks} />
       </TrustSection>
     </TrustPage>
   );

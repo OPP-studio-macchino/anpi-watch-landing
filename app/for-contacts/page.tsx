@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {
   TrustCard,
   TrustGrid,
+  TrustLinkGrid,
   TrustList,
   TrustPage,
   TrustSection,
@@ -11,6 +12,24 @@ export const metadata: Metadata = {
   title: "連絡先としてSMSを受け取る方へ | あんぴッチ",
   description: "連絡先候補として登録された方に、URL同意、STOP、HELP、通知時の行動を説明します。",
 };
+
+const relatedLinks = [
+  {
+    href: "/help/stop",
+    title: "STOP / HELP",
+    description: "受信停止、HELP、再同意の扱いを確認します。",
+  },
+  {
+    href: "/notification-samples",
+    title: "通知サンプル",
+    description: "届く可能性があるSMS文面を確認します。",
+  },
+  {
+    href: "/trust",
+    title: "できること・できないこと",
+    description: "通知、記録、同意、通信の限界を確認します。",
+  },
+];
 
 export default function ForContactsPage() {
   return (
@@ -90,6 +109,10 @@ export default function ForContactsPage() {
         <p>
           SMS内のリンクだけで判断せず、本人に直接確認してください。本人に連絡できない場合は、事前に共有された家族や管理会社など別手段で確認してください。
         </p>
+      </TrustSection>
+
+      <TrustSection title="さらに詳しく確認する">
+        <TrustLinkGrid links={relatedLinks} />
       </TrustSection>
     </TrustPage>
   );

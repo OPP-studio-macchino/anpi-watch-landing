@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {
   TrustCard,
   TrustGrid,
+  TrustLinkGrid,
   TrustList,
   TrustPage,
   TrustSection,
@@ -25,6 +26,24 @@ const notificationRows = [
     "なし",
     "救助・発見は保証しない",
   ],
+];
+
+const relatedLinks = [
+  {
+    href: "/notification-samples",
+    title: "通知サンプル",
+    description: "本人向けSMS、連絡先SMS、同意依頼SMSの例を確認します。",
+  },
+  {
+    href: "/delivery-status",
+    title: "配信結果・通知ログ",
+    description: "送信済みや配信成功が何を意味するか確認します。",
+  },
+  {
+    href: "/trust",
+    title: "できること・できないこと",
+    description: "通信の限界や保証しないことを確認します。",
+  },
 ];
 
 export default function HowItWorksPage() {
@@ -72,6 +91,10 @@ export default function HowItWorksPage() {
             "救命・発見・所在確認は保証しません。",
           ]}
         />
+      </TrustSection>
+
+      <TrustSection title="関連ページ">
+        <TrustLinkGrid links={relatedLinks} />
       </TrustSection>
     </TrustPage>
   );

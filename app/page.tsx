@@ -69,26 +69,65 @@ export default function HomePage() {
             <section id="trust-foundation" className="contact">
                 <h2>信頼のために先に確認すること</h2>
                 <p>
-                    料金、同意、通知の順番、できること・できないことを同じ言葉で確認できます。
+                    初めて見る方は、通知の順番、料金、できること・できないことから確認します。
                 </p>
                 <div className="actions">
+                    <Link href="/how-it-works" className="secondary">
+                        48時間の通知ルール
+                    </Link>
                     <Link href="/pricing" className="secondary">
                         料金・課金方針
+                    </Link>
+                    <Link href="/trust" className="secondary">
+                        できること・できないこと
+                    </Link>
+                </div>
+            </section>
+
+            <section id="trust-audience" className="contact">
+                <h2>関係者別に確認する</h2>
+                <p>
+                    本人、家族、連絡先候補が同じ前提を確認できます。
+                </p>
+                <div className="actions">
+                    <Link href="/for-family" className="secondary">
+                        家族・パートナーの方へ
                     </Link>
                     <Link href="/for-contacts" className="secondary">
                         連絡先の方へ
                     </Link>
-                    <Link href="/for-family" className="secondary">
-                        家族・パートナーの方へ
+                    <Link href="/share-message" className="secondary">
+                        説明文テンプレ
                     </Link>
-                    <Link href="/how-it-works" className="secondary">
-                        48時間の通知ルール
-                    </Link>
+                </div>
+            </section>
+
+            <section id="trust-operation" className="contact">
+                <h2>運用時に確認する</h2>
+                <p>
+                    通知文面、受信停止、配信結果の読み方を確認できます。
+                </p>
+                <div className="actions">
                     <Link href="/notification-samples" className="secondary">
                         通知サンプル
                     </Link>
-                    <Link href="/trust" className="secondary">
-                        できること・できないこと
+                    <Link href="/help/stop" className="secondary">
+                        STOP / HELP
+                    </Link>
+                    <Link href="/delivery-status" className="secondary">
+                        配信結果・通知ログ
+                    </Link>
+                </div>
+            </section>
+
+            <section id="trust-before" className="contact">
+                <h2>登録前に確認する</h2>
+                <p>
+                    2名同意、毎日のOK、通信の限界が自分に合うか確認できます。
+                </p>
+                <div className="actions">
+                    <Link href="/before-you-start" className="secondary">
+                        登録前チェックリスト
                     </Link>
                 </div>
             </section>

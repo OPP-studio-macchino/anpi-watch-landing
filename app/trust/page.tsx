@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {
   TrustCard,
   TrustGrid,
+  TrustLinkGrid,
   TrustList,
   TrustPage,
   TrustSection,
@@ -11,6 +12,24 @@ export const metadata: Metadata = {
   title: "できること・できないこと | あんぴッチ",
   description: "あんぴッチが行うこと、行わないこと、通信の限界、緊急時の考え方を説明します。",
 };
+
+const relatedLinks = [
+  {
+    href: "/delivery-status",
+    title: "配信結果・通知ログ",
+    description: "配信成功が読まれたことを意味しない点を確認します。",
+  },
+  {
+    href: "/before-you-start",
+    title: "登録前チェックリスト",
+    description: "サービスが自分に合うか確認します。",
+  },
+  {
+    href: "/pricing",
+    title: "料金・課金方針",
+    description: "月額料金と追加料金なしの考え方を確認します。",
+  },
+];
 
 export default function TrustPageRoute() {
   return (
@@ -91,6 +110,10 @@ export default function TrustPageRoute() {
         <p>
           このサービスの価値は安心演出ではなく、反応が途切れた時の連絡ルールと透明性を、本人・家族・連絡先が同じ言葉で確認できることにあります。
         </p>
+      </TrustSection>
+
+      <TrustSection title="さらに詳しく確認する">
+        <TrustLinkGrid links={relatedLinks} />
       </TrustSection>
     </TrustPage>
   );

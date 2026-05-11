@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {
   TrustCard,
   TrustGrid,
+  TrustLinkGrid,
   TrustList,
   TrustPage,
   TrustSection,
@@ -11,6 +12,24 @@ export const metadata: Metadata = {
   title: "料金・課金方針 | あんぴッチ",
   description: "あんぴッチの月額料金、連絡先通知、通知エピソード履歴の考え方を説明します。",
 };
+
+const relatedLinks = [
+  {
+    href: "/delivery-status",
+    title: "配信結果・通知ログ",
+    description: "通知エピソード履歴と配信結果の読み方を確認します。",
+  },
+  {
+    href: "/how-it-works",
+    title: "48時間の通知ルール",
+    description: "段階通知の流れと追加料金なしの扱いを確認します。",
+  },
+  {
+    href: "/trust",
+    title: "できること・できないこと",
+    description: "通信の限界や保証しないことを確認します。",
+  },
+];
 
 export default function PricingPage() {
   return (
@@ -78,6 +97,10 @@ export default function PricingPage() {
         <p>
           解約や返金は、正式リリース時のApp Store表示・規約に従います。現時点では詳細未確定です。
         </p>
+      </TrustSection>
+
+      <TrustSection title="関連ページ">
+        <TrustLinkGrid links={relatedLinks} />
       </TrustSection>
     </TrustPage>
   );

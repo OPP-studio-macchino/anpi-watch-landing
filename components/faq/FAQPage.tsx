@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "../manual/ManualPage.module.css";
-import { trustFoundationLinks } from "../trust-foundation/TrustFoundationPage";
+import { trustFoundationLinkGroups } from "../trust-foundation/TrustFoundationPage";
 import { faqFacts, faqSections, type FAQTone } from "./faqData";
 
 function badgeClass(tone: FAQTone) {
@@ -113,19 +113,27 @@ export function FAQPage() {
                 <p className={styles.eyebrow}>信頼のために</p>
                 <h2 id="trust-foundation-title">先に確認できるページ</h2>
                 <p>
-                  料金、同意、通知サンプル、通信の限界を、FAQとは別に確認できます。
+                  まず確認する、関係者別、運用時、登録前に分けて確認できます。
                 </p>
               </header>
 
-              <div className={styles.factGrid}>
-                {trustFoundationLinks.map((link) => (
-                  <article key={link.href} className={styles.factCard}>
-                    <h3 className={styles.factTitle}>{link.title}</h3>
-                    <p className={styles.factBody}>{link.description}</p>
-                    <Link className={styles.tocLink} href={link.href}>
-                      確認する
-                    </Link>
-                  </article>
+              <div className={styles.rowList}>
+                {trustFoundationLinkGroups.map((group) => (
+                  <div key={group.title} className={styles.row}>
+                    <strong>{group.title}</strong>
+                    <p className={styles.meta}>{group.description}</p>
+                    <div className={styles.factGrid}>
+                      {group.links.map((link) => (
+                        <article key={link.href} className={styles.factCard}>
+                          <h3 className={styles.factTitle}>{link.title}</h3>
+                          <p className={styles.factBody}>{link.description}</p>
+                          <Link className={styles.tocLink} href={link.href}>
+                            確認する
+                          </Link>
+                        </article>
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
             </section>

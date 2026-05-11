@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {
   NotificationSample,
   NotificationSampleGrid,
+  TrustLinkGrid,
   TrustPage,
   TrustSection,
 } from "../../components/trust-foundation/TrustFoundationPage";
@@ -10,6 +11,24 @@ export const metadata: Metadata = {
   title: "通知サンプル | あんぴッチ",
   description: "本人向けPush、本人SMS、連絡先SMS、同意依頼SMS、HELP、STOPのサンプルです。",
 };
+
+const relatedLinks = [
+  {
+    href: "/help/stop",
+    title: "STOP / HELP",
+    description: "STOP返信、HELP返信、再同意の扱いを確認します。",
+  },
+  {
+    href: "/delivery-status",
+    title: "配信結果・通知ログ",
+    description: "送信済み、配信成功、配信失敗の読み方を確認します。",
+  },
+  {
+    href: "/for-contacts",
+    title: "連絡先向け説明",
+    description: "連絡先候補が同意前に読む内容を確認します。",
+  },
+];
 
 export default function NotificationSamplesPage() {
   return (
@@ -89,6 +108,10 @@ export default function NotificationSamplesPage() {
             notes={["STOPは即時有効です。", "再開には再同意が必要です。"]}
           />
         </NotificationSampleGrid>
+      </TrustSection>
+
+      <TrustSection title="関連ページ">
+        <TrustLinkGrid links={relatedLinks} />
       </TrustSection>
     </TrustPage>
   );

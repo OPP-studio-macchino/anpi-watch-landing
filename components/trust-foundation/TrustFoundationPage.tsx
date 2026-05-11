@@ -21,10 +21,16 @@ type TrustCardProps = {
   children: ReactNode;
 };
 
-type TrustLink = {
+export type TrustLink = {
   href: string;
   title: string;
   description: string;
+};
+
+export type TrustLinkGroup = {
+  title: string;
+  description: string;
+  links: TrustLink[];
 };
 
 type TrustTableProps = {
@@ -49,11 +55,29 @@ type MessageTemplateProps = {
   note: string;
 };
 
-export const trustFoundationLinks: TrustLink[] = [
+export const trustFoundationCoreLinks: TrustLink[] = [
+  {
+    href: "/how-it-works",
+    title: "48時間の通知ルール",
+    description: "24h / 30h / 36h / 42h / 48h の流れを確認します。",
+  },
   {
     href: "/pricing",
     title: "料金・課金方針",
     description: "月額料金、追加料金なし、通知エピソード履歴の考え方を確認します。",
+  },
+  {
+    href: "/trust",
+    title: "できること・できないこと",
+    description: "通知、記録、同意、通信の限界を確認します。",
+  },
+];
+
+export const trustFoundationAudienceLinks: TrustLink[] = [
+  {
+    href: "/for-family",
+    title: "家族・パートナーの方へ",
+    description: "本人同意と、事前に決める連絡ルールを確認します。",
   },
   {
     href: "/for-contacts",
@@ -61,25 +85,66 @@ export const trustFoundationLinks: TrustLink[] = [
     description: "URL同意、STOP、HELP、通知を受けた時の行動を確認します。",
   },
   {
-    href: "/for-family",
-    title: "家族・パートナーの方へ",
-    description: "本人同意と、事前に決める連絡ルールを確認します。",
+    href: "/share-message",
+    title: "説明文テンプレ",
+    description: "家族や連絡先候補へ事実ベースで説明する文面を確認します。",
   },
-  {
-    href: "/how-it-works",
-    title: "48時間の通知ルール",
-    description: "24h / 30h / 36h / 42h / 48h の流れを確認します。",
-  },
+];
+
+export const trustFoundationOperationLinks: TrustLink[] = [
   {
     href: "/notification-samples",
     title: "通知サンプル",
     description: "本人向けSMS、連絡先SMS、同意依頼SMSの例を確認します。",
   },
   {
-    href: "/trust",
-    title: "できること・できないこと",
-    description: "通知、記録、同意、通信の限界を確認します。",
+    href: "/help/stop",
+    title: "STOP / HELP",
+    description: "受信停止、HELP、再同意、連絡先の負担範囲を確認します。",
   },
+  {
+    href: "/delivery-status",
+    title: "配信結果・通知ログ",
+    description: "送信要求、送信済み、配信成功、停止中、同意待ちの読み方を確認します。",
+  },
+];
+
+export const trustFoundationBeforeLinks: TrustLink[] = [
+  {
+    href: "/before-you-start",
+    title: "登録前チェックリスト",
+    description: "2名同意、毎日のOK、通信の限界が自分に合うか確認します。",
+  },
+];
+
+export const trustFoundationLinkGroups: TrustLinkGroup[] = [
+  {
+    title: "まず確認する",
+    description: "初回ユーザーが最初に見る3ページです。",
+    links: trustFoundationCoreLinks,
+  },
+  {
+    title: "関係者別に確認する",
+    description: "本人、家族、連絡先候補が同じ前提を確認します。",
+    links: trustFoundationAudienceLinks,
+  },
+  {
+    title: "運用時に確認する",
+    description: "通知文面、受信停止、配信結果の読み方を確認します。",
+    links: trustFoundationOperationLinks,
+  },
+  {
+    title: "登録前に確認する",
+    description: "2名同意と毎日のOKが自分に合うか確認します。",
+    links: trustFoundationBeforeLinks,
+  },
+];
+
+export const trustFoundationLinks: TrustLink[] = [
+  ...trustFoundationCoreLinks,
+  ...trustFoundationAudienceLinks,
+  ...trustFoundationOperationLinks,
+  ...trustFoundationBeforeLinks,
 ];
 
 export function TrustPage({ eyebrow, title, lead, actions, children }: TrustPageProps) {

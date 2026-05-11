@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "./ManualPage.module.css";
-import { trustFoundationLinks } from "../trust-foundation/TrustFoundationPage";
+import { trustFoundationLinkGroups } from "../trust-foundation/TrustFoundationPage";
 
 import {
     billingRows,
@@ -282,17 +282,25 @@ export function ManualPage() {
                                 id="trust-foundation-title"
                                 eyebrow="信頼のために"
                                 title="料金・同意・通知の限界を先に確認できます"
-                                description="月額料金、連絡先のURL同意、48時間の通知ルール、通知サンプル、できること・できないことを別ページで確認できます。"
+                                description="まず確認する、関係者別、運用時、登録前に分けて確認できます。"
                             />
-                            <div className={styles.factGrid}>
-                                {trustFoundationLinks.map((link) => (
-                                    <article key={link.href} className={styles.factCard}>
-                                        <h3 className={styles.factTitle}>{link.title}</h3>
-                                        <p className={styles.factBody}>{link.description}</p>
-                                        <Link className={styles.tocLink} href={link.href}>
-                                            確認する
-                                        </Link>
-                                    </article>
+                            <div className={styles.rowList}>
+                                {trustFoundationLinkGroups.map((group) => (
+                                    <div key={group.title} className={styles.row}>
+                                        <strong>{group.title}</strong>
+                                        <p className={styles.meta}>{group.description}</p>
+                                        <div className={styles.factGrid}>
+                                            {group.links.map((link) => (
+                                                <article key={link.href} className={styles.factCard}>
+                                                    <h3 className={styles.factTitle}>{link.title}</h3>
+                                                    <p className={styles.factBody}>{link.description}</p>
+                                                    <Link className={styles.tocLink} href={link.href}>
+                                                        確認する
+                                                    </Link>
+                                                </article>
+                                            ))}
+                                        </div>
+                                    </div>
                                 ))}
                             </div>
                         </section>
