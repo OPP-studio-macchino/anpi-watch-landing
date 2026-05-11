@@ -319,7 +319,7 @@ export function ManualPage() {
                                 id="contacts-title"
                                 eyebrow="連絡先の登録"
                                 title="連絡先A・Bを登録する"
-                                description="本人確認が終わったら、連絡先A（1人目）と連絡先B（2人目）を登録します。連絡先A・Bは、長い時間OKを押せなかった時に、SMS（ショートメッセージ）で知らせる相手です。同意とは「この人にSMSを送ってよい」という確認です。登録しただけでは始まりません。2人とも同意済みになってから始まります。"
+                                description="本人確認が終わったら、連絡先A（1人目）と連絡先B（2人目）を登録します。連絡先A/Bには名前と電話番号が必要で、メールは任意です。登録は同意依頼の準備で、登録しただけでは同意済みになりません。連絡先本人がSMSのリンクを開いて同意します。本人確認が完了していれば、連絡先2人の同意前でもOKは記録できます。ただし、2人とも同意済みになるまで自動通知は始まりません。"
                             />
 
                             <div className={styles.rowList}>
@@ -437,15 +437,15 @@ export function ManualPage() {
 
                             <div className={styles.split}>
                                 <article className={`${styles.card} ${styles.toneSuccess}`}>
-                                    <StatusBadge tone="success" label="登録完了の目安" />
-                                    <h3>4つそろったら確認できます</h3>
+                                    <StatusBadge tone="success" label="登録と同意の目安" />
+                                    <h3>4つそろったら自動通知の準備を確認できます</h3>
                                     <ul className={styles.list}>
                                         {contactCompletionChecks.map((item) => (
                                             <li key={item}>{item}</li>
                                         ))}
                                     </ul>
                                     <p>
-                                        まだ「同意待ち」が残っている場合は、相手にSMSを確認してもらいます。
+                                        まだ「同意待ち」が残っている場合は、相手にSMSのリンクを確認してもらいます。
                                     </p>
                                     <p>
                                         「停止中」がある場合は、その連絡先にはSMSを送れません。必要に応じて、別の連絡先を登録してください。
@@ -456,7 +456,7 @@ export function ManualPage() {
                                     <StatusBadge tone="warning" label="最後に確認" />
                                     <h3>登録しただけでは準備完了ではありません</h3>
                                     <p>
-                                        連絡先登録で大事なのは、2人を登録することだけではありません。2人とも、SMSを受け取ることに同意している必要があります。「連絡先A」と「連絡先B」の両方が「同意済み」になっているか、最後に確認してください。
+                                        連絡先登録では、2人を登録することと、2人が同意済みになることを分けて確認します。電話番号を入力しただけでは同意済みではありません。本人確認が完了していれば同意前でもOKは記録できますが、自動通知は連絡先Aと連絡先Bの両方が同意済みになるまで始まりません。
                                     </p>
                                 </article>
                             </div>
