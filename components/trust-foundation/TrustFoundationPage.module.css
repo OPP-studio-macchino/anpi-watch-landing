@@ -331,6 +331,13 @@
   margin-top: 14px;
 }
 
+.templateNote {
+  margin: 12px 0 0;
+  color: var(--tf-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
 @media (max-width: 760px) {
   .shell {
     width: min(100% - 24px, 1080px);

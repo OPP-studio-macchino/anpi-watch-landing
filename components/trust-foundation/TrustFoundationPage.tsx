@@ -42,6 +42,13 @@ type NotificationSampleProps = {
   notes: string[];
 };
 
+type MessageTemplateProps = {
+  title: string;
+  recipient: string;
+  body: string;
+  note: string;
+};
+
 export const trustFoundationLinks: TrustLink[] = [
   {
     href: "/pricing",
@@ -206,4 +213,19 @@ export function NotificationSample({
 
 export function NotificationSampleGrid({ children }: { children: ReactNode }) {
   return <div className={styles.sampleGrid}>{children}</div>;
+}
+
+export function MessageTemplate({ title, recipient, body, note }: MessageTemplateProps) {
+  return (
+    <article className={styles.sampleCard}>
+      <header className={styles.sampleHeader}>
+        <h3 className={styles.sampleTitle}>{title}</h3>
+      </header>
+      <div className={styles.sampleMeta}>
+        <span className={styles.metaBadge}>相手: {recipient}</span>
+      </div>
+      <p className={styles.sampleText}>{body}</p>
+      <p className={styles.templateNote}>{note}</p>
+    </article>
+  );
 }
