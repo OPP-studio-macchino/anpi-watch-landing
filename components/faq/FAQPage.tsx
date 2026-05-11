@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "../manual/ManualPage.module.css";
+import { trustFoundationLinks } from "../trust-foundation/TrustFoundationPage";
 import { faqFacts, faqSections, type FAQTone } from "./faqData";
 
 function badgeClass(tone: FAQTone) {
@@ -25,7 +26,7 @@ export function FAQPage() {
               あんぴッチで迷いやすい所を、答えから先に読めるようにまとめました。
             </p>
             <p className={styles.lead}>
-              毎日のOK、2人の同意、通知の順番、料金、記録、できないことを確認できます。
+              毎日のOK、2人の同意、通知の順番、月額料金、記録、できないことを確認できます。
             </p>
             <Link className={styles.jumpLink} href="/manual/tutorial">
               3分体験コースを見る
@@ -102,6 +103,32 @@ export function FAQPage() {
                 </div>
               </section>
             ))}
+
+            <section
+              id="trust-foundation"
+              className={styles.section}
+              aria-labelledby="trust-foundation-title"
+            >
+              <header className={styles.sectionHeader}>
+                <p className={styles.eyebrow}>信頼のために</p>
+                <h2 id="trust-foundation-title">先に確認できるページ</h2>
+                <p>
+                  料金、同意、通知サンプル、通信の限界を、FAQとは別に確認できます。
+                </p>
+              </header>
+
+              <div className={styles.factGrid}>
+                {trustFoundationLinks.map((link) => (
+                  <article key={link.href} className={styles.factCard}>
+                    <h3 className={styles.factTitle}>{link.title}</h3>
+                    <p className={styles.factBody}>{link.description}</p>
+                    <Link className={styles.tocLink} href={link.href}>
+                      確認する
+                    </Link>
+                  </article>
+                ))}
+              </div>
+            </section>
           </div>
         </div>
       </div>

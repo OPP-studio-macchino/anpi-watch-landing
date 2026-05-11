@@ -114,10 +114,10 @@ function PreviewCard({ type }: { type: TutorialPreview }) {
             <strong>OKを押すお知らせ</strong>
             </div>
             <p>本人 / 今日 09:00 / 送信済み</p>
-          </div>
+        </div>
         <div className={styles.settingRow}>
-          <strong>料金の記録</strong>
-          <span>今月 0件</span>
+          <strong>通知エピソード履歴</strong>
+          <span>今月 0回</span>
         </div>
       </div>
       <div className={styles.tabRow}>

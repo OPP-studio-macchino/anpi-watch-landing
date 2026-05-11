@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function HomePage() {
     return (
         <main className="wrapper">
@@ -39,9 +41,9 @@ export default function HomePage() {
                     <p>24時間でスマホ通知、30時間で本人SMS、36時間で連絡先AへSMSを送ります。</p>
                 </article>
                 <article>
-                    <h2>追加料金</h2>
+                    <h2>月額料金</h2>
                     <p>
-                        36時間で連絡先AへSMSを送ると、1回分の追加料金がかかります。同じ回では最大1回です。
+                        月額料金で利用できます。36h / 42h / 48h の連絡先通知は月額料金に含まれます。
                     </p>
                 </article>
                 <article>
@@ -59,9 +61,36 @@ export default function HomePage() {
                 <article>
                     <h2>記録を見返す</h2>
                     <p>
-                        設定から、誰に、いつ送ったかを見られます。送信の結果と追加料金の記録も残ります。
+                        設定から、誰に、いつ送ったかを見られます。送信の結果と通知エピソード履歴も残ります。
                     </p>
                 </article>
+            </section>
+
+            <section id="trust-foundation" className="contact">
+                <h2>信頼のために先に確認すること</h2>
+                <p>
+                    料金、同意、通知の順番、できること・できないことを同じ言葉で確認できます。
+                </p>
+                <div className="actions">
+                    <Link href="/pricing" className="secondary">
+                        料金・課金方針
+                    </Link>
+                    <Link href="/for-contacts" className="secondary">
+                        連絡先の方へ
+                    </Link>
+                    <Link href="/for-family" className="secondary">
+                        家族・パートナーの方へ
+                    </Link>
+                    <Link href="/how-it-works" className="secondary">
+                        48時間の通知ルール
+                    </Link>
+                    <Link href="/notification-samples" className="secondary">
+                        通知サンプル
+                    </Link>
+                    <Link href="/trust" className="secondary">
+                        できること・できないこと
+                    </Link>
+                </div>
             </section>
 
             <section id="contact" className="contact">

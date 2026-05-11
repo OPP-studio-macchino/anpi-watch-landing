@@ -1,4 +1,6 @@
+import Link from "next/link";
 import styles from "./ManualPage.module.css";
+import { trustFoundationLinks } from "../trust-foundation/TrustFoundationPage";
 
 import {
     billingRows,
@@ -178,10 +180,10 @@ function ScreenPreview({ type }: { type: "home" | "contacts" | "settings" }) {
                 </div>
                 <div className={styles.billingRow}>
                     <div className={styles.billingHead}>
-                        <StatusBadge tone="warning" label="料金の予告" />
-                        <span className={styles.amount}>今月 1回</span>
+                        <StatusBadge tone="warning" label="通知予告" />
+                        <span className={styles.amount}>追加料金なし</span>
                     </div>
-                    <p>36時間で連絡先AへSMSを送ると、1回分の追加料金がかかります。</p>
+                    <p>36時間で連絡先AへSMS送信を試行します。追加料金は発生しません。</p>
                 </div>
             </div>
         </div>
@@ -268,6 +270,30 @@ export function ManualPage() {
                                     </p>
                                     <ScreenPreview type="contacts" />
                                 </article>
+                            </div>
+                        </section>
+
+                        <section
+                            id="trust-foundation"
+                            className={styles.section}
+                            aria-labelledby="trust-foundation-title"
+                        >
+                            <SectionHeader
+                                id="trust-foundation-title"
+                                eyebrow="信頼のために"
+                                title="料金・同意・通知の限界を先に確認できます"
+                                description="月額料金、連絡先のURL同意、48時間の通知ルール、通知サンプル、できること・できないことを別ページで確認できます。"
+                            />
+                            <div className={styles.factGrid}>
+                                {trustFoundationLinks.map((link) => (
+                                    <article key={link.href} className={styles.factCard}>
+                                        <h3 className={styles.factTitle}>{link.title}</h3>
+                                        <p className={styles.factBody}>{link.description}</p>
+                                        <Link className={styles.tocLink} href={link.href}>
+                                            確認する
+                                        </Link>
+                                    </article>
+                                ))}
                             </div>
                         </section>
 
@@ -548,22 +574,22 @@ export function ManualPage() {
                         >
                             <SectionHeader
                                 id="records-title"
-                                eyebrow="記録と料金"
+                                eyebrow="記録と通知エピソード"
                                 title="『だれに、いつ、何を送ったか』をあとで見返せます"
-                                description="あとで確認できると、言った言わないを減らせます。送信の結果と料金の記録は、設定から見ます。"
+                                description="あとで確認できると、言った言わないを減らせます。送信の結果と通知エピソード履歴は、設定から見ます。"
                             />
                             <div className={styles.split}>
                                 <article className={styles.previewCard}>
                                     <span className={styles.previewLabel}>設定の見本</span>
                                     <h3>記録は設定から見ます</h3>
                                     <p>
-                                        『通知の記録』と『料金の記録』を、あとで何度でも見返せます。
+                                        『通知の記録』と『通知エピソード履歴』を、あとで何度でも見返せます。
                                     </p>
                                     <ScreenPreview type="settings" />
                                 </article>
                                 <div className={styles.rowList}>
                                     <StepList title="通知の記録を見る" steps={recordSteps} />
-                                    <StepList title="料金の記録を見る" steps={billingSteps} />
+                                    <StepList title="通知エピソード履歴を見る" steps={billingSteps} />
                                 </div>
                             </div>
 
@@ -597,7 +623,7 @@ export function ManualPage() {
                                 </article>
 
                                 <article className={styles.card}>
-                                    <h3>料金の見え方</h3>
+                                    <h3>通知エピソード履歴の見え方</h3>
                                     <div className={styles.recordList}>
                                         {billingRows.map((row) => (
                                             <div key={row.state} className={styles.billingRow}>

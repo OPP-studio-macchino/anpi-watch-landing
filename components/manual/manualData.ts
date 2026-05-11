@@ -6,7 +6,7 @@ export const tocItems = [
   { id: "contacts", label: "連絡先A・Bを登録" },
   { id: "daily", label: "毎日OKする" },
   { id: "escalation", label: "通知の進み方" },
-  { id: "records", label: "記録と料金を見る" },
+  { id: "records", label: "記録と履歴を見る" },
   { id: "faq", label: "困った時のQ&A" },
   { id: "summary", label: "これだけ覚えればOK" }
 ] as const;
@@ -24,7 +24,7 @@ export const keyFacts = [
   },
   {
     title: "あとで見返せます",
-    body: "誰に、いつ送ったかを見られます。結果も残ります。いつ追加料金がかかったかも見られます。",
+    body: "誰に、いつ送ったかを見られます。結果も残ります。通知エピソード履歴も見られます。",
     tone: "success"
   }
 ] as const;
@@ -209,25 +209,25 @@ export const escalationTimeline = [
   {
     time: "30時間",
     title: "本人 SMS",
-    detail: "本人へSMSを送ります。36時間で追加料金がかかることも先に知らせます。",
+    detail: "本人へSMSを送ります。連絡先へ通知したくない場合は今OKします。",
     tone: "warning"
   },
   {
     time: "36時間",
     title: "連絡先AへSMS",
-    detail: "連絡先AへSMSを送ります。この時点で1回分の追加料金がかかります。",
+    detail: "連絡先AへSMS送信を試行します。追加料金は発生しません。",
     tone: "critical"
   },
   {
     time: "42時間",
     title: "連絡先BへSMS",
-    detail: "連絡先BへSMSを送ります。42時間で追加料金は増えません。",
+    detail: "連絡先BへSMS送信を試行します。追加料金は発生しません。",
     tone: "critical"
   },
   {
     time: "48時間以降",
     title: "A+B 最終通知",
-    detail: "連絡先AとBへ最後のSMSを送ります。48時間で追加料金は増えません。救助や発見を保証するものではありません。",
+    detail: "連絡先AとBへ最後のSMS送信を試行します。追加料金は発生しません。救助や発見を保証するものではありません。",
     tone: "critical"
   }
 ] as const;
@@ -240,15 +240,15 @@ export const recordSteps = [
 
 export const billingSteps = [
   { title: "「設定」を押します。", outcome: "設定の一覧が出ます。" },
-  { title: "「料金の記録」を押します。", outcome: "今月の回数が見えます。" },
-  { title: "1行を見ます。", outcome: "日付と金額が見えます。" }
+  { title: "「通知エピソード履歴」を押します。", outcome: "今月の連絡先通知回数が見えます。" },
+  { title: "1行を見ます。", outcome: "誰に・いつ・どの通知を送ったかが見えます。" }
 ] as const;
 
 export const recordChecks = [
   "誰に送ったか",
   "いつ送ったか",
   "結果がどうだったか",
-  "いつ追加料金がかかったか"
+  "どの通知を送ったか"
 ] as const;
 
 export const notificationRows = [
@@ -280,24 +280,24 @@ export const notificationRows = [
 
 export const billingRows = [
   {
-    state: "予告",
+    state: "通知予告",
     trigger: "30時間の本人SMS",
-    amount: "まだ発生しません",
-    detail: "36時間で連絡先AへSMSを送ると、この回の追加料金が1回かかります。",
+    amount: "追加料金なし",
+    detail: "36時間で連絡先AへSMS送信を試行します。追加料金は発生しません。連絡先へ通知したくない場合は今OKします。",
     tone: "warning"
   },
   {
-    state: "発生",
-    trigger: "36時間の連絡先AへのSMS",
-    amount: "1回分",
-    detail: "この時点で記録されます。同じ回では最大1回です。42時間や48時間では増えません。",
+    state: "通知",
+    trigger: "36時間通知",
+    amount: "月額料金に含まれます",
+    detail: "連絡先AへSMS送信を試行した記録です。課金履歴ではありません。",
     tone: "critical"
   },
   {
     state: "確認",
-    trigger: "設定 > 料金の記録",
-    amount: "今月の回数",
-    detail: "いつ追加料金がかかったかをあとから見返せます。",
+    trigger: "設定 > 通知エピソード履歴",
+    amount: "今月の連絡先通知回数",
+    detail: "通知エピソード履歴は、誰に・いつ・どの通知を送ったかを確認するための記録です。課金履歴ではありません。",
     tone: "info"
   }
 ] as const;
@@ -321,7 +321,7 @@ export const faqs = [
   },
   {
     question: "料金が気になります",
-    answers: ["「料金の記録」を開きます。", "今月の回数を見ます。", "36時間で連絡先AへSMSを送った時に1回分の追加料金がかかります。", "同じ回では最大1回です。"]
+    answers: ["「通知エピソード履歴」を開きます。", "今月の連絡先通知回数を見ます。", "36時間で連絡先AへSMS送信を試行しても、追加料金は発生しません。", "36h / 42h / 48h の連絡先通知は月額料金に含まれます。"]
   },
   {
     question: "このアプリは何を判断しますか",
@@ -333,6 +333,6 @@ export const closingPoints = [
   "1日1回、ホームの大きなOKボタンを押す",
   "アプリを開くだけでは記録されない",
   "本人確認後は連絡先A/Bの同意前でもOKを記録でき、自動通知は2人の同意がそろってから始まる",
-  "36時間で連絡先AへSMSを送ると、追加料金が1回かかる",
+  "36hで連絡先AへSMS送信を試行しても、追加料金は発生しない",
   "このアプリは救助や発見を保証するものではない"
 ] as const;
