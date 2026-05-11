@@ -22,10 +22,10 @@ export function FAQPage() {
             <p className={styles.eyebrow}>FAQ</p>
             <h1 className={styles.title}>よくある質問</h1>
             <p className={styles.lead}>
-              あんぴッチで迷いやすい所を、短い言葉でまとめました。
+              あんぴッチで迷いやすい所を、答えから先に読めるようにまとめました。
             </p>
             <p className={styles.lead}>
-              毎日のOK、2人の同意、通知の順番、追加料金、できないことを確認できます。
+              毎日のOK、2人の同意、通知の順番、料金、記録、できないことを確認できます。
             </p>
             <Link className={styles.jumpLink} href="/manual/tutorial">
               3分体験コースを見る
@@ -71,15 +71,32 @@ export function FAQPage() {
                   <h2 id={`${section.id}-title`}>{section.title}</h2>
                   <p>{section.description}</p>
                 </header>
+
                 <div className={styles.faqList}>
                   {section.items.map((item) => (
-                    <article key={item.question} className={styles.faqCard}>
+                    <article
+                      key={item.faqId}
+                      className={styles.faqCard}
+                      data-faq-id={item.faqId}
+                      data-search-keywords={item.searchKeywords.join(" ")}
+                    >
                       <h3>Q. {item.question}</h3>
+                      <p>
+                        <strong>A. {item.answerSummary}</strong>
+                      </p>
+
                       <ol className={styles.faqAnswers}>
-                        {item.answers.map((answer) => (
-                          <li key={answer}>{answer}</li>
+                        {item.answerDetail.map((answer, index) => (
+                          <li key={`${item.faqId}-answer-${index}`}>{answer}</li>
                         ))}
                       </ol>
+
+                      <div>
+                        <FAQBadge tone="info" label="次にやること" />
+                        <p className={styles.factBody}>{item.nextAction}</p>
+                      </div>
+
+                      <p hidden>{item.searchKeywords.join(" / ")}</p>
                     </article>
                   ))}
                 </div>
