@@ -90,7 +90,9 @@ function StepList({
                         <strong>
                             {index + 1}. {step.title}
                         </strong>
-                        <p className={styles.meta}>こうなればOK: {step.outcome}</p>
+                        <p className={styles.meta}>
+                            <span style={{ color: "var(--manual-status-info)" }}>こうなればOK:</span> {step.outcome}
+                        </p>
                     </div>
                 ))}
             </div>
@@ -262,7 +264,7 @@ export function ManualPage() {
                                     <span className={styles.previewLabel}>最初の大事な準備</span>
                                     <h3>連絡先は2人必要です</h3>
                                     <p>
-                                        本人確認のあとに連絡先A・Bを登録します。2人とも同意済みになるまでOKの記録と自動通知は始まりません。
+                                        本人確認のあとに連絡先A・Bを登録します。本人確認が完了すると、連絡先2人の同意前でもOKは記録できます。ただし、連絡先A・Bの2人が同意済みになるまで自動通知は始まりません。
                                     </p>
                                     <ScreenPreview type="contacts" />
                                 </article>
@@ -278,7 +280,7 @@ export function ManualPage() {
                                 id="setup-title"
                                 eyebrow="最初の準備"
                                 title="最初は本人確認から始めます"
-                                description="ホームに「まず本人確認をします」と表示されたら、電話番号を確認してSMSのリンクを開きます。そのあとホームで準備中の状態を確認し、連絡先Aと連絡先Bを登録します。2人とも同意済みになるまでOKの記録と自動通知は始まりません。"
+                                description="ホームに「まず本人確認をします」と表示されたら、電話番号を確認してSMSのリンクを開きます。そのあとホームで準備中の状態を確認し、連絡先Aと連絡先Bを登録します。本人確認が完了すると、連絡先2人の同意前でもOKは記録できます。ただし、連絡先A・Bの2人が同意済みになるまで自動通知は始まりません。"
                             />
                             <div className={styles.split}>
                                 <StepList title="準備の流れ" steps={setupSteps} />
