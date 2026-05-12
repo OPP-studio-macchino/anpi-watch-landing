@@ -10,19 +10,19 @@ import {
 
 export const metadata: Metadata = {
   title: "料金・課金方針 | あんぴッチ",
-  description: "あんぴッチの月額料金、連絡先通知、通知エピソード履歴の考え方を説明します。",
+  description: "あんぴッチの月額300円、通知ごとの追加請求なし、解約・返金の考え方を説明します。",
 };
 
 const relatedLinks = [
   {
     href: "/delivery-status",
     title: "配信結果・通知ログ",
-    description: "通知エピソード履歴と配信結果の読み方を確認します。",
+    description: "通知履歴と配信結果の読み方を確認します。",
   },
   {
     href: "/how-it-works",
     title: "48時間の通知ルール",
-    description: "段階通知の流れと追加料金なしの扱いを確認します。",
+    description: "未反応時に誰へ何が送られるかを確認します。",
   },
   {
     href: "/trust",
@@ -31,75 +31,81 @@ const relatedLinks = [
   },
 ];
 
+const includedItems = [
+  "毎日のOK記録",
+  "連絡先2名の登録と同意状態の確認",
+  "未反応時の連絡先への段階通知",
+  "通知履歴と配信結果の確認",
+  "STOP / HELP の説明導線",
+  "できること・できないことの確認",
+];
+
+const confirmationItems = [
+  "あんぴッチは、危険・事故・死亡の有無や病状を判断するサービスではありません。",
+  "救命・発見・所在確認は保証しません。",
+  "SMS / Push / Email の到達、閲覧、連絡先の対応は保証しません。",
+  "緊急時は電話や公的緊急連絡手段など別手段も必要です。",
+];
+
 export default function PricingPage() {
   return (
     <TrustPage
       eyebrow="Pricing"
       title="料金・課金方針"
-      lead="月額料金で利用できます。36h / 42h / 48h の連絡先通知は月額料金に含まれます。正式価格は準備中です。"
+      lead="月額300円。通知ごとの追加請求はありません。"
       actions={[
-        { href: "/how-it-works", label: "通知ルールを見る" },
+        { href: "/before-you-start", label: "登録前チェックリストを見る" },
         { href: "/trust", label: "できること・できないことを見る" },
       ]}
     >
-      <TrustSection
-        title="月額料金に含まれるもの"
-        description="連絡先通知は、通知のたびに料金が増える仕組みではありません。"
-      >
+      <TrustSection title="料金">
         <TrustGrid>
-          <TrustCard title="月額料金で利用">
+          <TrustCard title="月額300円">
             <p>
-              MVPの正式課金は月額サブスクリプションのみです。正式価格は準備中です。
+              1ユーザーごとの月額料金です。App Storeサブスクリプションとして提供します。
             </p>
           </TrustCard>
-          <TrustCard title="段階通知は月額に含む">
+          <TrustCard title="通知ごとの追加請求なし">
             <p>
-              36h / 42h / 48h の連絡先通知は月額料金に含まれます。36hで連絡先AへSMS送信を試行しても、追加料金は発生しません。
-            </p>
-          </TrustCard>
-          <TrustCard title="通知ごとの料金増はなし">
-            <p>
-              36時間段階だけの消費型アプリ内購入はMVPでは作成しません。通知ごとに月額料金とは別の支払いを求める設計ではありません。
-            </p>
-          </TrustCard>
-          <TrustCard title="実決済の扱い">
-            <p>
-              App Storeサブスクリプションを予定しています。実決済は月額サブスクリプションとして扱います。
+              未反応時に連絡先へ段階通知を試行しても、月額料金とは別の料金はかかりません。
             </p>
           </TrustCard>
         </TrustGrid>
       </TrustSection>
 
-      <TrustSection
-        title="通知エピソード履歴"
-        description="通知エピソード履歴は、料金ではなく透明性のための記録です。"
-      >
-        <TrustGrid>
-          <TrustCard title="確認できること">
-            <TrustList
-              items={[
-                "誰に通知を送ったか",
-                "いつ通知を送ったか",
-                "どの段階の通知だったか",
-                "今月の連絡先通知回数",
-              ]}
-            />
-          </TrustCard>
-          <TrustCard title="課金履歴ではありません">
-            <p>
-              通知エピソード履歴は、誰に・いつ・どの通知を送ったかを確認するための記録です。課金履歴ではありません。
-            </p>
-          </TrustCard>
-        </TrustGrid>
+      <TrustSection title="月額300円に含まれるもの">
+        <TrustList items={includedItems} />
+      </TrustSection>
+
+      <TrustSection title="通知履歴について">
+        <p>
+          通知が発生した場合は、誰に・いつ・どの通知を送ったかを確認できます。これは透明性のための履歴で、通知ごとに料金が増えるという意味ではありません。
+        </p>
+        <TrustLinkGrid
+          links={[
+            {
+              href: "/delivery-status",
+              title: "配信結果・通知ログの読み方",
+              description: "送信済みや配信成功が何を意味するかを確認します。",
+            },
+          ]}
+        />
       </TrustSection>
 
       <TrustSection title="解約・返金について">
         <p>
-          解約や返金は、正式リリース時のApp Store表示・規約に従います。現時点では詳細未確定です。
+          解約は、App Storeのサブスクリプション管理から行います。返金を希望する場合は、Appleの返金申請手続きに従って申請します。返金の可否はAppleの判断に従います。
+        </p>
+        <p>
+          あんぴッチ側で返金可否を保証するものではありません。
         </p>
       </TrustSection>
 
-      <TrustSection title="関連ページ">
+      <TrustSection title="確認しておくこと">
+        <TrustList items={confirmationItems} />
+        <p>
+          未反応時の通知タイミングや、連絡先へ送る内容は別ページで確認できます。
+        </p>
         <TrustLinkGrid links={relatedLinks} />
       </TrustSection>
     </TrustPage>

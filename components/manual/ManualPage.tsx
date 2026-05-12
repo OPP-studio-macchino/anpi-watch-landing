@@ -181,9 +181,9 @@ function ScreenPreview({ type }: { type: "home" | "contacts" | "settings" }) {
                 <div className={styles.billingRow}>
                     <div className={styles.billingHead}>
                         <StatusBadge tone="warning" label="通知予告" />
-                        <span className={styles.amount}>追加料金なし</span>
+                        <span className={styles.amount}>通知ごとの追加請求なし</span>
                     </div>
-                    <p>36時間で連絡先AへSMS送信を試行します。追加料金は発生しません。</p>
+                    <p>36時間で連絡先AへSMS送信を試行します。通知ごとの追加請求はありません。</p>
                 </div>
             </div>
         </div>
@@ -582,22 +582,22 @@ export function ManualPage() {
                         >
                             <SectionHeader
                                 id="records-title"
-                                eyebrow="記録と通知エピソード"
+                                eyebrow="記録と通知履歴"
                                 title="『だれに、いつ、何を送ったか』をあとで見返せます"
-                                description="あとで確認できると、言った言わないを減らせます。送信の結果と通知エピソード履歴は、設定から見ます。"
+                                description="あとで確認できると、言った言わないを減らせます。送信の結果と通知履歴は、設定から見ます。"
                             />
                             <div className={styles.split}>
                                 <article className={styles.previewCard}>
                                     <span className={styles.previewLabel}>設定の見本</span>
                                     <h3>記録は設定から見ます</h3>
                                     <p>
-                                        『通知の記録』と『通知エピソード履歴』を、あとで何度でも見返せます。
+                                        『通知の記録』と『通知履歴』を、あとで何度でも見返せます。
                                     </p>
                                     <ScreenPreview type="settings" />
                                 </article>
                                 <div className={styles.rowList}>
                                     <StepList title="通知の記録を見る" steps={recordSteps} />
-                                    <StepList title="通知エピソード履歴を見る" steps={billingSteps} />
+                                    <StepList title="通知履歴を見る" steps={billingSteps} />
                                 </div>
                             </div>
 
@@ -631,7 +631,7 @@ export function ManualPage() {
                                 </article>
 
                                 <article className={styles.card}>
-                                    <h3>通知エピソード履歴の見え方</h3>
+                                    <h3>通知履歴の見え方</h3>
                                     <div className={styles.recordList}>
                                         {billingRows.map((row) => (
                                             <div key={row.state} className={styles.billingRow}>

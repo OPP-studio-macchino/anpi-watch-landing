@@ -64,7 +64,7 @@ export const trustFoundationCoreLinks: TrustLink[] = [
   {
     href: "/pricing",
     title: "料金・課金方針",
-    description: "月額料金、追加料金なし、通知エピソード履歴の考え方を確認します。",
+    description: "月額300円、通知ごとの追加請求なし、通知履歴の考え方を確認します。",
   },
   {
     href: "/trust",

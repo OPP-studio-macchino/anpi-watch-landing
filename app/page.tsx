@@ -41,9 +41,9 @@ export default function HomePage() {
                     <p>24時間でスマホ通知、30時間で本人SMS、36時間で連絡先AへSMSを送ります。</p>
                 </article>
                 <article>
-                    <h2>月額料金</h2>
+                    <h2>月額300円</h2>
                     <p>
-                        月額料金で利用できます。36h / 42h / 48h の連絡先通知は月額料金に含まれます。
+                        料金は月額300円。通知ごとの追加請求はありません。
                     </p>
                 </article>
                 <article>
@@ -61,7 +61,7 @@ export default function HomePage() {
                 <article>
                     <h2>記録を見返す</h2>
                     <p>
-                        設定から、誰に、いつ送ったかを見られます。送信の結果と通知エピソード履歴も残ります。
+                        設定から、誰に、いつ送ったかを見られます。送信の結果と通知履歴も残ります。
                     </p>
                 </article>
             </section>

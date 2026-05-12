@@ -116,7 +116,7 @@ function PreviewCard({ type }: { type: TutorialPreview }) {
             <p>本人 / 今日 09:00 / 送信済み</p>
         </div>
         <div className={styles.settingRow}>
-          <strong>通知エピソード履歴</strong>
+          <strong>通知履歴</strong>
           <span>今月 0回</span>
         </div>
       </div>

@@ -11,7 +11,7 @@ import {
 
 export const metadata: Metadata = {
   title: "配信結果・通知ログの読み方 | あんぴッチ",
-  description: "通知エピソード履歴、送信要求、送信済み、配信成功、配信失敗、停止中、同意待ちの意味を説明します。",
+  description: "通知履歴、送信要求、送信済み、配信成功、配信失敗、停止中、同意待ちの意味を説明します。",
 };
 
 const deliveryRows = [
@@ -50,7 +50,7 @@ export default function DeliveryStatusPage() {
     <TrustPage
       eyebrow="Delivery Status"
       title="配信結果・通知ログの読み方"
-      lead="通知エピソード履歴は、料金ではなく透明性のための記録です。配信成功は、読まれたことや対応されたことを意味しません。"
+      lead="通知履歴は、誰に・いつ・どの通知を送ったかを確認するための履歴です。配信成功は、読まれたことや対応されたことを意味しません。"
       actions={[
         { href: "/how-it-works", label: "48時間の通知ルールを見る" },
         { href: "/notification-samples", label: "通知サンプルを見る" },
@@ -58,18 +58,18 @@ export default function DeliveryStatusPage() {
       ]}
     >
       <TrustSection
-        title="通知エピソード履歴とは"
-        description="誰に、いつ、どの通知を送ったかを確認するための透明性の記録です。"
+        title="通知履歴とは"
+        description="誰に・いつ・どの通知を送ったかを確認するための履歴です。通知ごとの追加請求はありません。"
       >
         <TrustGrid>
-          <TrustCard title="課金履歴ではありません">
+          <TrustCard title="通知の内容を確認できます">
             <p>
-              通知エピソード履歴は課金履歴ではありません。通知ごとに料金が増えることを意味しません。
+              通知履歴は、誰に・いつ・どの通知を送ったかを確認するための履歴です。
             </p>
           </TrustCard>
-          <TrustCard title="月額料金内の履歴です">
+          <TrustCard title="通知ごとの追加請求なし">
             <p>
-              36h / 42h / 48h の段階通知は月額料金に含まれます。履歴は追加料金なしの通知を確認するためのものです。
+              未反応時の段階通知は月額料金に含まれます。通知ごとの追加請求はありません。
             </p>
           </TrustCard>
         </TrustGrid>
