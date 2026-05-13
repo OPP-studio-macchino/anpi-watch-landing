@@ -181,9 +181,9 @@ function ScreenPreview({ type }: { type: "home" | "contacts" | "settings" }) {
                 <div className={styles.billingRow}>
                     <div className={styles.billingHead}>
                         <StatusBadge tone="warning" label="通知予告" />
-                        <span className={styles.amount}>通知ごとの追加請求なし</span>
+                        <span className={styles.amount}>月額300円に含まれます</span>
                     </div>
-                    <p>36時間で連絡先AへSMS送信を試行します。通知ごとの追加請求はありません。</p>
+                    <p>36時間で連絡先AへSMSを送ります。</p>
                 </div>
             </div>
         </div>
@@ -266,7 +266,7 @@ export function ManualPage() {
                                     <span className={styles.previewLabel}>最初の大事な準備</span>
                                     <h3>連絡先は2人必要です</h3>
                                     <p>
-                                        本人確認のあとに連絡先A・Bを登録します。本人確認が完了すると、連絡先2人の同意前でもOKは記録できます。ただし、連絡先A・Bの2人が同意済みになるまで自動通知は始まりません。
+                                        本人確認のあとに連絡先A・Bを登録します。本人確認が完了すると、連絡先2人の同意前でもOKは記録できます。ただし、連絡先A・Bの2人が同意済みになるまで連絡先への通知は始まりません。
                                     </p>
                                     <ScreenPreview type="contacts" />
                                 </article>
@@ -314,7 +314,7 @@ export function ManualPage() {
                                 id="setup-title"
                                 eyebrow="最初の準備"
                                 title="最初は本人確認から始めます"
-                                description="ホームに「まず本人確認をします」と表示されたら、電話番号を確認してSMSのリンクを開きます。そのあとホームで準備中の状態を確認し、連絡先Aと連絡先Bを登録します。本人確認が完了すると、連絡先2人の同意前でもOKは記録できます。ただし、連絡先A・Bの2人が同意済みになるまで自動通知は始まりません。"
+                                description="ホームに「まず本人確認をします」と表示されたら、電話番号を確認してSMSのリンクを開きます。そのあとホームで準備中の状態を確認し、連絡先Aと連絡先Bを登録します。本人確認が完了すると、連絡先2人の同意前でもOKは記録できます。ただし、連絡先A・Bの2人が同意済みになるまで連絡先への通知は始まりません。"
                             />
                             <div className={styles.split}>
                                 <StepList title="準備の流れ" steps={setupSteps} />
@@ -353,7 +353,7 @@ export function ManualPage() {
                                 id="contacts-title"
                                 eyebrow="連絡先の登録"
                                 title="連絡先A・Bを登録する"
-                                description="本人確認が終わったら、連絡先A（1人目）と連絡先B（2人目）を登録します。連絡先A/Bには名前と電話番号が必要で、メールは任意です。登録は同意依頼の準備で、登録しただけでは同意済みになりません。連絡先本人がSMSのリンクを開いて同意します。本人確認が完了していれば、連絡先2人の同意前でもOKは記録できます。ただし、2人とも同意済みになるまで自動通知は始まりません。"
+                                description="本人確認が終わったら、連絡先A（1人目）と連絡先B（2人目）を登録します。連絡先A/Bには名前と電話番号が必要で、メールは任意です。登録は同意依頼の準備で、登録しただけでは同意済みになりません。連絡先本人がSMSのリンクを開いて同意します。本人確認が完了していれば、連絡先2人の同意前でもOKは記録できます。ただし、2人とも同意済みになるまで連絡先への通知は始まりません。"
                             />
 
                             <div className={styles.rowList}>
@@ -472,7 +472,7 @@ export function ManualPage() {
                             <div className={styles.split}>
                                 <article className={`${styles.card} ${styles.toneSuccess}`}>
                                     <StatusBadge tone="success" label="登録と同意の目安" />
-                                    <h3>4つそろったら自動通知の準備を確認できます</h3>
+                                    <h3>4つそろったら通知の準備を確認できます</h3>
                                     <ul className={styles.list}>
                                         {contactCompletionChecks.map((item) => (
                                             <li key={item}>{item}</li>
@@ -490,7 +490,7 @@ export function ManualPage() {
                                     <StatusBadge tone="warning" label="最後に確認" />
                                     <h3>登録しただけでは準備完了ではありません</h3>
                                     <p>
-                                        連絡先登録では、2人を登録することと、2人が同意済みになることを分けて確認します。電話番号を入力しただけでは同意済みではありません。本人確認が完了していれば同意前でもOKは記録できますが、自動通知は連絡先Aと連絡先Bの両方が同意済みになるまで始まりません。
+                                        連絡先登録では、2人を登録することと、2人が同意済みになることを分けて確認します。電話番号を入力しただけでは同意済みではありません。本人確認が完了していれば同意前でもOKは記録できますが、連絡先への通知は連絡先Aと連絡先Bの両方が同意済みになるまで始まりません。
                                     </p>
                                 </article>
                             </div>

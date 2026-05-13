@@ -18,8 +18,8 @@ export const keyFacts = [
     tone: "info"
   },
   {
-    title: "自動通知は2人そろってから始まります",
-    body: "本人確認が完了すると、連絡先Aと連絡先Bの同意前でもOKは記録できます。ただし、2人とも同意済みになるまで自動通知は始まりません。",
+    title: "連絡先への通知は2人そろってから始まります",
+    body: "本人確認が完了すると、連絡先Aと連絡先Bの同意前でもOKは記録できます。ただし、2人とも同意済みになるまで連絡先への通知は始まりません。",
     tone: "warning"
   },
   {
@@ -42,25 +42,25 @@ export const consentStates = [
   {
     label: "同意待ち",
     summary: "返事待ちです。",
-    detail: "この状態では自動通知は始まりません。SMSをもう一度送れます。",
+    detail: "この状態では連絡先への通知は始まりません。SMSをもう一度送れます。",
     tone: "warning"
   },
   {
     label: "同意済み",
     summary: "同意済みです。",
-    detail: "AとBの両方が同意済みになると、自動通知を始められます。",
+    detail: "AとBの両方が同意済みになると、通知を始められます。",
     tone: "success"
   },
   {
     label: "停止中",
     summary: "受け取りを止めています。",
-    detail: "停止中の連絡先には送りません。2人そろわない時は自動通知は始まりません。",
+    detail: "停止中の連絡先には送りません。2人そろわない時は連絡先への通知は始まりません。",
     tone: "critical"
   }
 ] as const;
 
 export const setupReminders = [
-  "本人確認が完了すると、連絡先A/Bの同意前でもOKは記録できます。ただし、2人の同意がそろうまで自動通知は始まりません。",
+  "本人確認が完了すると、連絡先A/Bの同意前でもOKは記録できます。ただし、2人の同意がそろうまで連絡先への通知は始まりません。",
   "同意待ちの人にはSMSをもう一度送れます。",
   "番号が違うとSMSが届きません。"
 ] as const;
@@ -120,21 +120,21 @@ export const contactConsentNotes = [
   "連絡先本人が自分の端末でSMSのリンクを開き、内容を確認して同意します。",
   "ここでいう同意とは、「この人にSMSを送ってよい」という確認のことです。",
   "ユーザーが電話番号を入力しただけでは、連絡先本人の同意にはなりません。",
-  "登録しただけでは同意済みにならず、自動通知も始まりません。",
-  "本人確認が完了していれば、連絡先A/Bの同意前でもOKは記録できます。ただし、2人とも同意済みになるまで自動通知は始まりません。"
+  "登録しただけでは同意済みにならず、連絡先への通知も始まりません。",
+  "本人確認が完了していれば、連絡先A/Bの同意前でもOKは記録できます。ただし、2人とも同意済みになるまで連絡先への通知は始まりません。"
 ] as const;
 
 export const contactStatusStates = [
   {
     label: "同意待ち",
     summary: "まだ返事がありません。",
-    detail: "連絡先を登録し、同意依頼SMSを送ったあと、本人の同意を待っている状態です。この状態では、自動通知は始まりません。",
+    detail: "連絡先を登録し、同意依頼SMSを送ったあと、本人の同意を待っている状態です。この状態では、連絡先への通知は始まりません。",
     tone: "warning"
   },
   {
     label: "同意済み",
     summary: "相手が同意しています。",
-    detail: "連絡先本人がSMSのリンクを開き、内容を確認して同意した状態です。AとBの両方が同意済みになると、自動通知の準備が完了します。",
+    detail: "連絡先本人がSMSのリンクを開き、内容を確認して同意した状態です。AとBの両方が同意済みになると、通知の準備が完了します。",
     tone: "success"
   },
   {
@@ -147,8 +147,8 @@ export const contactStatusStates = [
 
 export const contactStopNotes = [
   "停止中は、同意済みの連絡先として扱いません。",
-  "停止中の連絡先には、自動通知のSMSを送りません。",
-  "連絡先A/Bのどちらかが停止中の場合は、2人とも同意済みになるまで自動通知は始まりません。"
+  "停止中の連絡先には、SMSを送りません。",
+  "連絡先A/Bのどちらかが停止中の場合は、2人とも同意済みになるまで連絡先への通知は始まりません。"
 ] as const;
 
 export const contactTroubles = [
@@ -166,7 +166,7 @@ export const contactTroubles = [
   },
   {
     question: "連絡先の人が同意してくれない",
-    answers: ["同意してくれない人には、無理に登録しません。", "自動通知は、相手の同意があって初めて送ります。", "別の家族、友人、近所の人など、協力してくれる人を選びます。"]
+    answers: ["同意してくれない人には、無理に登録しません。", "相手の同意があって初めてSMSを送ります。", "別の家族、友人、近所の人など、協力してくれる人を選びます。"]
   },
   {
     question: "電話帳から選べない",
@@ -215,19 +215,19 @@ export const escalationTimeline = [
   {
     time: "36時間",
     title: "連絡先AへSMS",
-    detail: "連絡先AへSMS送信を試行します。",
+    detail: "連絡先AへSMSを送ります。",
     tone: "critical"
   },
   {
     time: "42時間",
     title: "連絡先BへSMS",
-    detail: "連絡先BへSMS送信を試行します。",
+    detail: "連絡先BへSMSを送ります。",
     tone: "critical"
   },
   {
     time: "48時間以降",
     title: "A+B 最終通知",
-    detail: "連絡先AとBへ最後のSMS送信を試行します。救助や発見を保証するものではありません。",
+    detail: "連絡先AとBへ最後のSMSを送ります。このアプリだけで、本人の状況や場所が分かることを約束するものではありません。",
     tone: "critical"
   }
 ] as const;
@@ -265,7 +265,7 @@ export const notificationRows = [
     recipient: "連絡先A",
     sentAt: "36時間経過後 21:00",
     template: "連絡先AへのSMS",
-    result: "配信成功",
+    result: "届いた可能性",
     tone: "success"
   },
   {
@@ -273,7 +273,7 @@ export const notificationRows = [
     recipient: "連絡先B",
     sentAt: "42時間経過後 03:00",
     template: "連絡先BへのSMS",
-    result: "配信失敗",
+    result: "届かなかった可能性",
     tone: "critical"
   }
 ] as const;
@@ -283,14 +283,14 @@ export const billingRows = [
     state: "通知予告",
     trigger: "30時間の本人SMS",
     amount: "月額300円に含まれます",
-    detail: "36時間で連絡先AへSMS送信を試行します。連絡先へ通知したくない場合は今OKします。",
+    detail: "36時間で連絡先AへSMSを送ります。連絡先へ通知したくない場合は今OKします。",
     tone: "warning"
   },
   {
     state: "通知",
     trigger: "36時間通知",
     amount: "月額300円に含まれます",
-    detail: "連絡先AへSMS送信を試行した記録です。",
+    detail: "連絡先AへSMSを送った記録です。",
     tone: "critical"
   },
   {
@@ -332,7 +332,7 @@ export const faqs = [
 export const closingPoints = [
   "1日1回、ホームの大きなOKボタンを押す",
   "アプリを開くだけでは記録されない",
-  "本人確認後は連絡先A/Bの同意前でもOKを記録でき、自動通知は2人の同意がそろってから始まる",
+  "本人確認後は連絡先A/Bの同意前でもOKを記録でき、連絡先への通知は2人の同意がそろってから始まる",
   "長い時間OKがない時の通知も、月額料金の中で利用できる",
   "このアプリは救助や発見を保証するものではない"
 ] as const;

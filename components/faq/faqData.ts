@@ -30,7 +30,7 @@ export const faqFacts: readonly FAQFact[] = [
   },
   {
     title: "2人の同意",
-    body: "連絡先Aと連絡先Bの2人が同意するまで、自動通知は始まりません。",
+    body: "連絡先Aと連絡先Bの2人が同意するまで、連絡先への通知は始まりません。",
     tone: "warning"
   },
   {
@@ -59,7 +59,7 @@ export const faqSections: readonly FAQSection[] = [
         answerDetail: [
           "ホーム画面を開きます。",
           "画面まんなかの青い「OK」を1回押します。",
-          "押した時こくが新しくなっていれば、その日の操作は終わりです。",
+          "押した時刻が新しくなっていれば、その日の操作は終わりです。",
           "アプリを開いただけではOKの記録にはなりません。"
         ],
         nextAction: "ホーム画面を開いて、青い「OK」ボタンを1回押す"
@@ -71,8 +71,8 @@ export const faqSections: readonly FAQSection[] = [
         answerSummary: "いいえ。アプリを開くだけでは記録されません。",
         answerDetail: [
           "OKの記録は、ホーム画面の青い「OK」を押した時だけ残ります。",
-          "開いただけでは、最後のOK時こくは新しくなりません。",
-          "押したあとに、最後のOK時こくが変わったか見てください。"
+          "開いただけでは、最後のOK時刻は新しくなりません。",
+          "押したあとに、最後のOK時刻が変わったか見てください。"
         ],
         nextAction: "ホーム画面で青い「OK」ボタンを押す"
       },
@@ -96,7 +96,7 @@ export const faqSections: readonly FAQSection[] = [
         searchKeywords: ["あとから押していい", "今から OK 押す", "押し忘れ 気づいた", "遅れて押す"],
         answerSummary: "はい。気づいた時点で押せば、その先の連絡は止まります。",
         answerDetail: [
-          "青い「OK」を押すと、押した時こくが新しく記録されます。",
+          "青い「OK」を押すと、押した時刻が新しく記録されます。",
           "そのあとに進むはずだった連絡は止まります。",
           "ただし、もう送られた連絡をあとから消すことはできません。"
         ],
@@ -153,7 +153,7 @@ export const faqSections: readonly FAQSection[] = [
   {
     id: "contacts",
     title: "連絡先と同意",
-    description: "連絡先A/Bの2人が必要です。2人の同意がそろうまで自動通知は始まりません。",
+    description: "連絡先A/Bの2人が必要です。2人の同意がそろうまで連絡先への通知は始まりません。",
     items: [
       {
         faqId: "faq_why_two_contacts",
@@ -177,7 +177,7 @@ export const faqSections: readonly FAQSection[] = [
           "もう一度、ていねいにお願いできます。",
           "別の人に変えることもできます。",
           "2人そろうまでは、まだ始めないでください。",
-          "2人そろわない間は、自動通知は動きません。"
+          "2人そろわない間は、通知は始まりません。"
         ],
         nextAction: "今の相手に無理をせず、必要なら別の人に入れ替える"
       },
@@ -190,7 +190,7 @@ export const faqSections: readonly FAQSection[] = [
           "連絡を受ける人を新しい人に変えます。",
           "新しい人へ同意のお願いを送ります。",
           "新しい人が同意済みになるのを待ちます。",
-          "2人そろうまでは、自動通知は止まったままです。"
+          "2人そろうまでは、通知は止まったままです。"
         ],
         nextAction: "連絡先を変更したあと、2人とも同意済みになっているか確認する"
       },
@@ -200,8 +200,8 @@ export const faqSections: readonly FAQSection[] = [
         searchKeywords: ["受け取りたくない", "STOP された", "連絡先 外したい", "相手がやめたい"],
         answerSummary: "その番号への連絡は止まり、この仕組みも2人不足のため止まります。",
         answerDetail: [
-          "その番号には、もう運用のSMSを送りません。",
-          "2人そろわなくなるため、自動通知はいったん止まります。",
+          "その番号には、もうSMSを送りません。",
+          "2人そろわなくなるため、通知はいったん止まります。",
           "使い直すには、別の人を入れて、もう一度同意が必要です。",
           "いやがる人へ送り続ける作りではありません。"
         ],
@@ -263,7 +263,7 @@ export const faqSections: readonly FAQSection[] = [
         searchKeywords: ["位置情報 ずっと見られる", "居場所 監視", "どこにいるかバレる", "ずっと見守り"],
         answerSummary: "いいえ。ずっと居場所を見つづける仕組みではありません。",
         answerDetail: [
-          "主に見ているのは、最後に「OK」を押した時こくです。",
+          "主に見ているのは、最後に「OK」を押した時刻です。",
           "今いる場所をずっと追いかけるものではありません。",
           "家族や大切な人が、常に居場所を見るための道具ではありません。"
         ],
@@ -272,7 +272,7 @@ export const faqSections: readonly FAQSection[] = [
       {
         faqId: "faq_what_is_logged",
         question: "何が記録に残るの？",
-        searchKeywords: ["何が残る", "記録 何を見る", "履歴 どこまで", "ログ 何がある"],
+        searchKeywords: ["何が残る", "記録 何を見る", "履歴 どこまで", "記録 何がある"],
         answerSummary: "「いつOKを押したか」「だれにいつ連絡したか」「届いたか」などが残ります。",
         answerDetail: [
           "いつ「OK」を押したかが残ります。",
@@ -286,15 +286,15 @@ export const faqSections: readonly FAQSection[] = [
       {
         faqId: "faq_delivery_failed",
         question: "送れていない時はどうしますか？",
-        searchKeywords: ["送れていない", "SMS 届かない", "配信失敗", "通知失敗"],
-        answerSummary: "通知の記録を見て、電話番号や停止中の状態を確認してください。",
+        searchKeywords: ["送れていない", "SMS 届かない", "届かない", "通知失敗"],
+        answerSummary: "通知履歴を見て、電話番号や受け取りを止めていないか確認してください。",
         answerDetail: [
-          "通知の記録で、結果を見ます。",
+          "通知履歴で、結果を見ます。",
           "電話番号が正しいか見直します。",
-          "連絡先が停止中になっていないか確認します。",
+          "連絡先が受け取りを止めていないか確認します。",
           "同じ内容を何度も送らないよう、必要な時だけ再送します。"
         ],
-        nextAction: "通知履歴を開き、結果・電話番号・停止中かどうかを確認する"
+        nextAction: "通知履歴を開き、結果・電話番号・受け取りを止めていないかを確認する"
       }
     ]
   },
