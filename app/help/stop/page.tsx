@@ -9,25 +9,25 @@ import {
 } from "../../../components/trust-foundation/TrustFoundationPage";
 
 export const metadata: Metadata = {
-  title: "STOP / HELP・受信停止について | あんぴッチ",
-  description: "あんぴッチからSMSを受け取った連絡先向けに、STOP、HELP、再同意、受信停止後の扱いを説明します。",
+  title: "SMSを止めたい時・内容を確認したい時 | あんぴッチ",
+  description: "あんぴッチから届くSMSを止めたい時、内容を確認したい時の方法を説明します。",
 };
 
 const relatedLinks = [
   {
     href: "/for-contacts",
-    title: "連絡先向け説明",
-    description: "URL同意、通知を受けた時の行動、責任範囲を確認します。",
+    title: "連絡先としてSMSを受け取る方へ",
+    description: "連絡先として通知を受け取る前に知っておきたいことを確認します。",
   },
   {
     href: "/notification-samples",
-    title: "通知サンプル",
-    description: "同意依頼SMS、HELP返信、STOP説明などの文面例を確認します。",
+    title: "通知サンプルを見る",
+    description: "実際に届く可能性があるSMSや通知の例を確認します。",
   },
   {
     href: "/trust",
-    title: "できること・できないこと",
-    description: "通知、記録、同意、通信の限界を確認します。",
+    title: "できること・できないことを見る",
+    description: "あんぴッチでできること、できないことを確認します。",
   },
 ];
 
@@ -35,75 +35,89 @@ export default function StopHelpPage() {
   return (
     <TrustPage
       eyebrow="STOP / HELP"
-      title="STOP / HELP・受信停止について"
-      lead="このページは、あんぴッチからSMSを受け取った連絡先向けの説明ページです。STOPは受信停止、HELPは用途と停止方法の確認です。"
+      title="SMSを止めたい時・内容を確認したい時"
+      lead="このページは、あんぴッチから届くショートメッセージを止めたい時や、内容を確認したい時の説明です。SMSは、携帯電話に届く短いメッセージです。SMSに STOP または HELP と返信することで、受け取りを止めたり、説明を確認したりできます。"
       actions={[
-        { href: "/for-contacts", label: "連絡先向け説明を見る" },
+        { href: "/for-contacts", label: "連絡先としてSMSを受け取る方へ" },
         { href: "/notification-samples", label: "通知サンプルを見る" },
         { href: "/trust", label: "できること・できないことを見る" },
       ]}
     >
-      <TrustSection title="STOPとは">
+      <TrustSection title="SMSを止めたい時">
         <TrustGrid>
-          <TrustCard title="受信停止です">
+          <TrustCard title="STOPと返信してください">
             <p>
-              STOPはSMSの受信停止です。STOP後は再同意が成立するまで、運用通知は送られません。
+              あんぴッチからのSMSを受け取りたくない時は、届いたSMSに STOP と返信してください。STOP と返信すると、その電話番号には、あんぴッチからのSMSを送らないようにします。
             </p>
           </TrustCard>
-          <TrustCard title="いつでもできます">
-            <p>
-              STOPはいつでもできます。STOPしても、本人や連絡先にペナルティがあるわけではありません。
-            </p>
+          <TrustCard title="STOPについて">
+            <TrustList
+              items={[
+                "STOPはいつでも使えます。",
+                "STOPしても、本人や連絡先に罰や追加料金はありません。",
+                "また受け取りたい時は、本人からの案内にそって、もう一度同意してください。",
+              ]}
+            />
           </TrustCard>
         </TrustGrid>
       </TrustSection>
 
-      <TrustSection title="HELPとは">
+      <TrustSection title="このSMSが何か知りたい時">
         <TrustGrid>
-          <TrustCard title="用途と停止方法の確認">
+          <TrustCard title="HELPと返信してください">
             <p>
-              HELPは、このSMSの用途と停止方法を確認するためのキーワードです。
+              このSMSが何のために届いたのか知りたい時は、SMSに HELP と返信してください。あんぴッチの説明と、SMSを止める方法が届きます。
             </p>
           </TrustCard>
-          <TrustCard title="同意状態は変わりません">
-            <p>
-              HELPは同意状態を変更しません。HELPでは、サービス名、用途、STOP方法、必要な確認導線を説明します。
-            </p>
+          <TrustCard title="HELPについて">
+            <TrustList
+              items={[
+                "HELPと返信しても、SMSは止まりません。",
+                "SMSを止めたい時は、STOP と返信してください。",
+                "HELPは、本人の状況を確認するものではありません。",
+              ]}
+            />
           </TrustCard>
         </TrustGrid>
       </TrustSection>
 
-      <TrustSection
-        title="STOP後に起きること"
-        description="該当連絡先は停止状態として扱われます。"
-      >
+      <TrustSection title="STOPした後">
+        <p>
+          STOPした後は、その電話番号にはあんぴッチからのSMSを送りません。そのため、本人の連絡先として使えなくなる場合があります。
+        </p>
         <TrustList
           items={[
-            "2名同意の条件を満たせなくなる場合、サービスは通知稼働条件を満たさなくなる可能性があります。",
-            "再開には再同意が必要です。",
-            "実際の再同意方法は正式運用時の案内に従います。",
-            "再同意も、連絡先本人が明示的に行う必要があります。",
+            "本人には、連絡先が足りないことを確認してもらう必要があります。",
+            "もう一度受け取りたい時は、本人からの案内にそって同意してください。",
+            "STOPした人が、救助や訪問をしなければならないわけではありません。",
           ]}
         />
       </TrustSection>
 
-      <TrustSection title="受信したSMSが分からない時">
+      <TrustSection title="また受け取りたい時">
+        <p>
+          もう一度あんぴッチのSMSを受け取りたい時は、本人から届く案内にそって、もう一度同意してください。同意は、あなた自身が確認して選びます。
+        </p>
+      </TrustSection>
+
+      <TrustSection title="SMSが怪しいと感じた時">
+        <p>
+          SMS内のリンクだけで判断せず、まず本人に直接確認してください。本人に確認できない場合は、無理にリンクを開く必要はありません。
+        </p>
         <TrustList
           items={[
-            "まずSMS本文のサービス名と対象ユーザー名を確認してください。",
-            "怪しいと感じる場合は、URLを開く前に本人へ直接確認してください。",
-            "緊急の危険が明らかな場合は、公的緊急連絡手段や電話など別手段を使ってください。",
+            "あんぴッチは、警察・消防・救急などへ自動で連絡するサービスではありません。",
+            "緊急の危険が明らかな時は、電話や公的な緊急連絡手段など、別の方法で確認してください。",
           ]}
         />
       </TrustSection>
 
-      <TrustSection title="あんぴッチが保証しないこと">
+      <TrustSection title="知っておいてほしいこと">
         <TrustList
           items={[
-            "SMSの到達、閲覧、対応は保証しません。",
-            "連絡先の行動は保証しません。",
-            "救命、発見、所在確認は保証しません。",
             "通知を受け取っても、救助・訪問・対応を強制されるものではありません。",
+            "SMSは、通信状況やスマホの設定によって、遅れたり届かなかったりすることがあります。",
+            "あんぴッチだけで、本人の状況や場所が分かることを約束するものではありません。",
           ]}
         />
       </TrustSection>
@@ -112,27 +126,32 @@ export default function StopHelpPage() {
         <TrustGrid>
           <TrustCard title="STOPすると本人に通知されますか？">
             <p>
-              停止状態として扱われます。本人側の表示や案内の詳細は正式運用時の仕様に従います。
+              本人には、連絡先として使えない可能性があることを確認してもらう必要があります。
             </p>
           </TrustCard>
-          <TrustCard title="HELPを送ると通知は止まりますか？">
+          <TrustCard title="STOPと返信すると、どうなりますか？">
             <p>
-              いいえ。HELPは用途と停止方法の確認です。受信停止したい場合はSTOPを使います。
+              その電話番号には、あんぴッチからのSMSを送らないようにします。
             </p>
           </TrustCard>
-          <TrustCard title="STOP後にまた受け取るには？">
+          <TrustCard title="HELPと返信すると、SMSは止まりますか？">
             <p>
-              再同意が必要です。再同意は連絡先本人が明示的に行います。
+              止まりません。HELPは、このSMSの説明を受け取るための言葉です。止めたい時はSTOPと返信してください。
             </p>
           </TrustCard>
-          <TrustCard title="同意していないのに通知が届きますか？">
+          <TrustCard title="STOPした後、また受け取れますか？">
             <p>
-              運用通知はURL同意が成立した連絡先へ送る前提です。同意依頼など確認用のSMSが届く場合があります。
+              はい。もう一度受け取りたい時は、本人からの案内にそって、もう一度同意してください。
             </p>
           </TrustCard>
-          <TrustCard title="連絡先をやめたい場合は？">
+          <TrustCard title="同意していないのにSMSが届くことはありますか？">
             <p>
-              STOPで受信停止できます。本人にも、別の連絡先候補を探す必要があることを伝えてください。
+              本人があなたを連絡先候補として登録した時に、同意をお願いするSMSが届くことがあります。このSMSが届いただけでは、まだ同意したことにはなりません。
+            </p>
+          </TrustCard>
+          <TrustCard title="通知が届いたら、必ず対応しないといけませんか？">
+            <p>
+              いいえ。通知を受け取っても、救助や訪問を強制されるものではありません。できる範囲で、本人に電話やメッセージで確認してください。
             </p>
           </TrustCard>
         </TrustGrid>

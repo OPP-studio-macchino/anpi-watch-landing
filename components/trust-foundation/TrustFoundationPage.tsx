@@ -58,84 +58,84 @@ type MessageTemplateProps = {
 export const trustFoundationCoreLinks: TrustLink[] = [
   {
     href: "/how-it-works",
-    title: "48時間の通知ルール",
+    title: "通知の流れを見る",
     description: "24h / 30h / 36h / 42h / 48h の流れを確認します。",
   },
   {
     href: "/pricing",
-    title: "料金・課金方針",
-    description: "月額300円、通知ごとの追加請求なし、通知履歴の考え方を確認します。",
+    title: "月額300円の料金",
+    description: "料金と解約・返金の説明を確認します。",
   },
   {
     href: "/trust",
-    title: "できること・できないこと",
-    description: "通知、記録、同意、通信の限界を確認します。",
+    title: "できること・できないことを見る",
+    description: "通知で分かること、分からないこと、知っておくことを確認します。",
   },
 ];
 
 export const trustFoundationAudienceLinks: TrustLink[] = [
   {
     href: "/for-family",
-    title: "家族・パートナーの方へ",
-    description: "本人同意と、事前に決める連絡ルールを確認します。",
+    title: "本人に提案したい方へ",
+    description: "家族・パートナーとして本人に説明する時の前提を確認します。",
   },
   {
     href: "/for-contacts",
-    title: "連絡先の方へ",
-    description: "URL同意、STOP、HELP、通知を受けた時の行動を確認します。",
+    title: "連絡先としてSMSを受け取る方へ",
+    description: "URLを開いて同意すること、STOP、HELP、通知を受けた時の行動を確認します。",
   },
   {
     href: "/share-message",
-    title: "説明文テンプレ",
-    description: "家族や連絡先候補へ事実ベースで説明する文面を確認します。",
+    title: "提案・依頼の文面テンプレ",
+    description: "家族・パートナーから本人へ提案する文面を確認します。",
   },
 ];
 
 export const trustFoundationOperationLinks: TrustLink[] = [
   {
     href: "/notification-samples",
-    title: "通知サンプル",
+    title: "通知サンプルを見る",
     description: "本人向けSMS、連絡先SMS、同意依頼SMSの例を確認します。",
   },
   {
     href: "/help/stop",
-    title: "STOP / HELP",
-    description: "受信停止、HELP、再同意、連絡先の負担範囲を確認します。",
+    title: "SMSを止めたい時・内容を確認したい時",
+    description: "SMSを止めたい時や、HELPで説明を確認したい時の方法を確認します。",
   },
   {
     href: "/delivery-status",
-    title: "配信結果・通知ログ",
-    description: "送信要求、送信済み、配信成功、停止中、同意待ちの読み方を確認します。",
+    title: "通知履歴の見方",
+    description: "通知が送れたか、送れなかったか、どう読めばよいかを確認します。",
   },
 ];
 
 export const trustFoundationBeforeLinks: TrustLink[] = [
   {
     href: "/before-you-start",
-    title: "登録前チェックリスト",
-    description: "2名同意、毎日のOK、通信の限界が自分に合うか確認します。",
+    title: "始める前のチェックリスト",
+    description: "連絡先2人の同意、毎日のOK、通知が届かない場合があることを確認します。",
   },
 ];
 
 export const trustFoundationLinkGroups: TrustLinkGroup[] = [
   {
-    title: "まず確認する",
-    description: "初回ユーザーが最初に見る3ページです。",
+    title: "はじめに読むページ",
+    description: "料金、連絡先の同意、通知の流れを、はじめに確認できます。",
     links: trustFoundationCoreLinks,
   },
   {
-    title: "関係者別に確認する",
-    description: "本人、家族、連絡先候補が同じ前提を確認します。",
+    title: "読む人に合わせて選ぶ",
+    description: "本人に提案したい方、連絡先としてSMSを受け取る方、説明文を用意したい方はこちら。",
     links: trustFoundationAudienceLinks,
   },
   {
-    title: "運用時に確認する",
-    description: "通知文面、受信停止、配信結果の読み方を確認します。",
+    title: "通知が届いた時に見る",
+    description: "実際に届く通知、SMSを止める方法、通知履歴の見方を確認できます。",
     links: trustFoundationOperationLinks,
   },
   {
-    title: "登録前に確認する",
-    description: "2名同意と毎日のOKが自分に合うか確認します。",
+    title: "始める前に確認する",
+    description: "連絡先2人の同意、毎日のOK、通知が届かない場合があることを確認してから始められます。",
     links: trustFoundationBeforeLinks,
   },
 ];
@@ -264,9 +264,9 @@ export function NotificationSample({
         <h3 className={styles.sampleTitle}>{title}</h3>
       </header>
       <div className={styles.sampleMeta}>
-        <span className={styles.metaBadge}>対象: {target}</span>
-        <span className={styles.metaBadge}>タイミング: {timing}</span>
-        <span className={styles.metaBadge}>目的: {purpose}</span>
+        <span className={styles.metaBadge}>誰に届くか: {target}</span>
+        <span className={styles.metaBadge}>いつ届くか: {timing}</span>
+        <span className={styles.metaBadge}>何のためか: {purpose}</span>
       </div>
       <p className={styles.sampleText}>{sample}</p>
       <div className={styles.note}>
