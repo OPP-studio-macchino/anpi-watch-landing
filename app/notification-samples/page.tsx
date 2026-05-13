@@ -59,7 +59,7 @@ export default function NotificationSamplesPage() {
             target="本人"
             timing="最後のOKから30時間後"
             purpose="このままだと連絡先Aへ通知することを知らせるため"
-            sample="【あんぴッチ】最後のOKから30時間たちました。36時間で連絡先AへSMSを送ります。通知ごとの追加請求はありません。連絡先へ通知したくない場合は、今OKを押してください。"
+            sample="【あんぴッチ】最後のOKから30時間たちました。36時間で連絡先AへSMSを送ります。追加料金なし。連絡先へ通知したくない場合は、今OKを押してください。"
             notes={["36h通知の前に本人へ知らせます。"]}
           />
           <NotificationSample

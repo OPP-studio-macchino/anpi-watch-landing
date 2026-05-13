@@ -54,7 +54,7 @@ export default function StopHelpPage() {
             <TrustList
               items={[
                 "STOPはいつでも使えます。",
-                "STOPしても、本人や連絡先に罰や追加料金はありません。",
+                "STOPしても、本人や連絡先に罰はありません。",
                 "また受け取りたい時は、本人からの案内にそって、もう一度同意してください。",
               ]}
             />

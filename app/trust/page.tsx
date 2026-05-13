@@ -27,7 +27,7 @@ const relatedLinks = [
   {
     href: "/pricing",
     title: "月額300円の料金",
-    description: "月額300円と、通知ごとの追加請求がないことを確認します。",
+    description: "月額300円の料金と、解約・返金の説明を確認します。",
   },
 ];
 
@@ -58,7 +58,7 @@ export default function TrustPageRoute() {
               items={[
                 "誰に、いつ、どの通知を送ったかを確認できます。",
                 "通知が送れたか、送れなかったかを確認できます。",
-                "通知ごとの追加請求はありません。",
+                "料金は月額300円です。",
               ]}
             />
           </TrustCard>
