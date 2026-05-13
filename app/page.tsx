@@ -42,9 +42,7 @@ export default function HomePage() {
                 </article>
                 <article>
                     <h2>月額300円</h2>
-                    <p>
-                        料金は月額300円。通知ごとの追加請求はありません。
-                    </p>
+                    <p>料金は月額300円です。</p>
                 </article>
                 <article>
                     <h2>このアプリがしないこと</h2>

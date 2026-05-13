@@ -34,7 +34,7 @@ export const faqFacts: readonly FAQFact[] = [
     tone: "warning"
   },
   {
-    title: "追加請求なし",
+    title: "月額300円",
     body: "料金は月額300円です。",
     tone: "info"
   },
@@ -227,16 +227,15 @@ export const faqSections: readonly FAQSection[] = [
       },
       {
         faqId: "faq_no_extra_charge_after_36h",
-        question: "36時間や42時間や48時間で、通知ごとの追加請求はありますか？",
-        searchKeywords: ["追加料金 ある", "36時間 追加料金", "42時間 48時間 料金", "二重料金"],
-        answerSummary: "いいえ。未反応時の段階通知は月額料金に含まれます。",
+        question: "料金はいくらですか？",
+        searchKeywords: ["料金 いくら", "月額 いくら", "300円", "支払い"],
+        answerSummary: "料金は月額300円です。",
         answerDetail: [
-          "36時間で連絡先AへSMS送信を試行しても、通知ごとの追加請求はありません。",
-          "42時間で連絡先BへSMS送信を試行しても、通知ごとの追加請求はありません。",
-          "48時間以上で最後のSMS送信を試行しても、通知ごとの追加請求はありません。",
+          "App Storeサブスクリプションとして月額300円で使うしくみです。",
+          "長い時間OKがない時の連絡先への通知も、アプリの機能として使えます。",
           "通知が起きた記録は、通知履歴として残ります。"
         ],
-        nextAction: "通知履歴として確認する"
+        nextAction: "料金が気になるときは、料金ページを見る"
       },
       {
         faqId: "faq_notification_history_view",

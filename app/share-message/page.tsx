@@ -77,7 +77,7 @@ export default function ShareMessagePage() {
           <MessageTemplate
             title="料金を短く説明する"
             recipient="家族・パートナーから本人へ"
-            body="料金は月額300円です。未反応時の段階通知は月額料金に含まれていて、通知ごとに料金が増える仕組みではありません。"
+            body="料金は月額300円です。長い時間OKがない時の連絡先への通知も、月額料金の中で利用できます。"
             note="料金不安を先に減らすための文面です。"
           />
         </NotificationSampleGrid>

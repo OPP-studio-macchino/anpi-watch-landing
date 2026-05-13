@@ -10,7 +10,7 @@ import {
 
 export const metadata: Metadata = {
   title: "料金・課金方針 | あんぴッチ",
-  description: "あんぴッチの月額300円、通知ごとの追加請求なし、解約・返金の考え方を説明します。",
+  description: "あんぴッチの月額300円、解約・返金の考え方を説明します。",
 };
 
 const relatedLinks = [
@@ -52,7 +52,7 @@ export default function PricingPage() {
     <TrustPage
       eyebrow="Pricing"
       title="料金・課金方針"
-      lead="月額300円。通知ごとの追加請求はありません。"
+      lead="あんぴッチの利用料金は月額300円です。"
       actions={[
         { href: "/before-you-start", label: "登録前チェックリストを見る" },
         { href: "/trust", label: "できること・できないことを見る" },
@@ -65,9 +65,9 @@ export default function PricingPage() {
               1ユーザーごとの月額料金です。App Storeサブスクリプションとして提供します。
             </p>
           </TrustCard>
-          <TrustCard title="通知ごとの追加請求なし">
+          <TrustCard title="月額料金に含まれるもの">
             <p>
-              未反応時に連絡先へ段階通知を試行しても、月額料金とは別の料金はかかりません。
+              長い時間OKがない時の連絡先への通知も、月額料金の中で利用できます。
             </p>
           </TrustCard>
         </TrustGrid>
@@ -79,7 +79,7 @@ export default function PricingPage() {
 
       <TrustSection title="通知履歴について">
         <p>
-          通知が発生した場合は、誰に・いつ・どの通知を送ったかを確認できます。これは透明性のための履歴で、通知ごとに料金が増えるという意味ではありません。
+          通知が発生した場合は、誰に・いつ・どの通知を送ったかを確認できます。
         </p>
         <TrustLinkGrid
           links={[
