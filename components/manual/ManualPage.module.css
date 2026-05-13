@@ -1,14 +1,14 @@
 .page {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at top left, color-mix(in srgb, var(--manual-status-info-subtle) 68%, transparent), transparent 30%),
-    linear-gradient(180deg, var(--manual-bg-surface-2) 0%, var(--manual-bg-app) 24%, var(--manual-bg-app) 100%);
+  background: var(--manual-bg-app);
   color: var(--manual-text-primary);
   font-family: var(--manual-font-sans);
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 .shell {
-  width: min(100% - 32px, 1180px);
+  width: min(100% - 32px, 1280px);
   margin: 0 auto;
   padding: var(--manual-space-6) 0 var(--manual-space-8);
 }
@@ -22,7 +22,7 @@
 .hero {
   background: var(--manual-bg-surface-1);
   border: 1px solid var(--manual-border-subtle);
-  border-radius: var(--manual-radius-2xl);
+  border-radius: var(--manual-radius-xl);
   box-shadow: var(--manual-shadow-2);
   padding: var(--manual-space-5);
 }
@@ -30,8 +30,8 @@
 .eyebrow {
   margin: 0 0 var(--manual-space-1);
   color: var(--manual-text-tertiary);
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 24px;
   font-weight: 600;
   letter-spacing: 0.03em;
 }
@@ -39,7 +39,7 @@
 .title {
   margin: 0;
   font-size: clamp(30px, 4vw, 40px);
-  line-height: 1.2;
+  line-height: 1.3;
   font-weight: 700;
 }
 
@@ -85,7 +85,8 @@
 .factCard,
 .previewCard,
 .faqCard,
-.miniCard {
+.miniCard,
+.tocCard {
   background: var(--manual-bg-surface-1);
   border: 1px solid var(--manual-border-subtle);
   border-radius: var(--manual-radius-xl);
@@ -144,14 +145,35 @@
 }
 
 .tocLink {
-  color: var(--manual-text-secondary);
-  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--manual-space-2);
+  border: 1px solid var(--manual-border-subtle);
+  border-radius: var(--manual-radius-lg);
+  background: var(--manual-bg-surface-1);
+  color: var(--manual-action-primary);
+  font-size: 16px;
   line-height: 1.45;
+  font-weight: 600;
   text-decoration: none;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
 }
 
 .tocLink:hover {
+  border-color: var(--manual-action-primary);
+  background: var(--manual-status-info-subtle);
   color: var(--manual-action-primary);
+}
+
+.jumpLink:focus-visible,
+.tocLink:focus-visible {
+  outline: 3px solid var(--manual-action-primary);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px var(--manual-status-info-subtle);
 }
 
 .content {
@@ -199,8 +221,8 @@
   border-radius: var(--manual-radius-pill);
   background: var(--manual-bg-surface-2);
   color: var(--manual-text-secondary);
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 24px;
   font-weight: 600;
 }
 
@@ -303,8 +325,8 @@
 
 .meta {
   color: var(--manual-text-tertiary);
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .chipRow {
@@ -313,7 +335,7 @@
 }
 
 .chip {
-  min-height: 40px;
+  min-height: 44px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -322,8 +344,8 @@
   background: var(--manual-bg-surface-1);
   border: 1px solid var(--manual-border-subtle);
   color: var(--manual-text-primary);
-  font-size: 15px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 24px;
   font-weight: 600;
 }
 
@@ -362,8 +384,8 @@
   gap: var(--manual-space-1);
   padding: 0 10px;
   border-radius: var(--manual-radius-pill);
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 24px;
   font-weight: 600;
 }
 
@@ -462,8 +484,8 @@
 .timelineTime {
   margin: 0 0 var(--manual-space-1);
   color: var(--manual-text-tertiary);
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 24px;
   font-weight: 600;
 }
 
@@ -493,8 +515,8 @@
   flex-wrap: wrap;
   gap: var(--manual-space-1);
   color: var(--manual-text-tertiary);
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .billingRow {
@@ -568,8 +590,8 @@
   border-radius: 999px;
   background: var(--manual-status-info-subtle);
   color: var(--manual-status-info);
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 24px;
   font-weight: 700;
 }
 
@@ -616,7 +638,7 @@
 
   .title {
     font-size: 30px;
-    line-height: 1.25;
+    line-height: 1.3;
   }
 
   .lead,
