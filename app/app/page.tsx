@@ -16,9 +16,9 @@ const promises = [
 const timeline = [
   { time: "24時間", label: "本人へスマホ通知", detail: "まず本人のスマホに通知します。" },
   { time: "30時間", label: "本人SMS", detail: "本人へSMSを送ります。" },
-  { time: "36時間", label: "連絡先A", detail: "連絡先AへSMS送信を試行します。通知ごとの追加請求はありません。" },
-  { time: "42時間", label: "連絡先B", detail: "連絡先BへSMS送信を試行します。通知ごとの追加請求はありません。" },
-  { time: "48時間以上", label: "A/Bへ最後のSMS", detail: "連絡先A/Bへ最後のSMS送信を試行します。通知ごとの追加請求はありません。" }
+  { time: "36時間", label: "連絡先A", detail: "連絡先AへSMS送信を試行します。" },
+  { time: "42時間", label: "連絡先B", detail: "連絡先BへSMS送信を試行します。" },
+  { time: "48時間以上", label: "A/Bへ最後のSMS", detail: "連絡先A/Bへ最後のSMS送信を試行します。" }
 ];
 
 const interfaceCards = [
@@ -51,7 +51,7 @@ const faqs = [
   },
   {
     q: "連絡先通知で通知ごとの追加請求はありますか？",
-    a: "いいえ。料金は月額300円です。未反応時の段階通知は月額料金に含まれていて、通知ごとの追加請求はありません。"
+    a: "いいえ。料金は月額300円です。通知ごとの追加請求はありません。"
   }
 ];
 
@@ -162,7 +162,6 @@ export default function HomePage() {
             <p>
               24時間では本人だけです。
               36時間で連絡先AへSMS送信を試行します。
-              通知ごとの追加請求はありません。
             </p>
           </div>
 
@@ -251,7 +250,7 @@ export default function HomePage() {
               <p>
                 毎日OKを1回押します。
                 2人の同意がそろうまで自動通知は始まりません。
-                料金は月額300円です。未反応時の段階通知は月額料金に含まれていて、通知ごとの追加請求はありません。
+                料金は月額300円です。通知ごとの追加請求はありません。
               </p>
             </div>
             <div className="cta-actions">

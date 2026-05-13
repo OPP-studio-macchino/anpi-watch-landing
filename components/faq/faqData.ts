@@ -34,8 +34,8 @@ export const faqFacts: readonly FAQFact[] = [
     tone: "warning"
   },
   {
-    title: "通知ごとの追加請求なし",
-    body: "料金は月額300円です。未反応時の段階通知は月額料金に含まれます。",
+    title: "追加請求なし",
+    body: "料金は月額300円です。",
     tone: "info"
   },
   {
@@ -145,7 +145,6 @@ export const faqSections: readonly FAQSection[] = [
           "ホーム画面を開きます。",
           "画面まんなかの青い「OK」を押します。",
           "36時間になる前に押せば、連絡先AへのSMSは止まります。",
-          "この通知で、通知ごとの追加請求はありません。"
         ],
         nextAction: "連絡先へ通知したくないなら、今すぐ青い「OK」ボタンを押す"
       }
@@ -219,11 +218,9 @@ export const faqSections: readonly FAQSection[] = [
         faqId: "faq_when_charged",
         question: "お金がかかるのはいつ？",
         searchKeywords: ["いつ料金", "お金 いつかかる", "料金 発生 条件", "36時間 通知"],
-        answerSummary: "料金は月額300円です。未反応時の段階通知で、通知ごとの追加請求はありません。",
+        answerSummary: "料金は月額300円です。",
         answerDetail: [
           "App Storeサブスクリプションとして月額300円で使うしくみです。",
-          "未反応時の段階通知は月額料金に含まれます。",
-          "通知ごとの追加請求はありません。",
           "今月、連絡先へ何回通知したかは通知履歴で見られます。"
         ],
         nextAction: "料金が気になるときは、設定から通知履歴を開く"

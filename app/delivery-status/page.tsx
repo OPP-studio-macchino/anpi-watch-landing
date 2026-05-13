@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import {
-  TrustCard,
-  TrustGrid,
   TrustLinkGrid,
   TrustList,
   TrustPage,
@@ -59,20 +57,11 @@ export default function DeliveryStatusPage() {
     >
       <TrustSection
         title="通知履歴とは"
-        description="誰に・いつ・どの通知を送ったかを確認するための履歴です。通知ごとの追加請求はありません。"
+        description="誰に・いつ・どの通知を送ったかを確認するための履歴です。"
       >
-        <TrustGrid>
-          <TrustCard title="通知の内容を確認できます">
-            <p>
-              通知履歴は、誰に・いつ・どの通知を送ったかを確認するための履歴です。
-            </p>
-          </TrustCard>
-          <TrustCard title="通知ごとの追加請求なし">
-            <p>
-              未反応時の段階通知は月額料金に含まれます。通知ごとの追加請求はありません。
-            </p>
-          </TrustCard>
-        </TrustGrid>
+        <p>
+          通知履歴は、誰に・いつ・どの通知を送ったかを確認するための履歴です。
+        </p>
       </TrustSection>
 
       <TrustSection title="配信結果の意味">
