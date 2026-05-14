@@ -44,7 +44,7 @@ const relatedLinks = [
   },
 ];
 
-export default function DeliveryStatusPage() {
+export default function NotificationHistoryPage() {
   return (
     <TrustPage
       eyebrow="通知履歴"
@@ -95,7 +95,10 @@ export default function DeliveryStatusPage() {
 
       <TrustSection title="通知について知っておくこと">
         <p>
-          ショートメッセージ、スマホ通知、メールは、電波の状態やスマホの設定によって、遅れたり届かなかったりすることがあります。また、通知が届いたように見えても、相手が読んだことや対応したことまでは分かりません。
+          通知は、通信状況や携帯電話会社の状況などにより、遅れたり届かなかったりすることがあります。
+        </p>
+        <p>
+          通知が届いたように見えても、相手が読んだか、対応したかまでは分かりません。
         </p>
         <p>
           大切な確認が必要な時は、あんぴッチだけに頼らず、電話など別の方法も使ってください。
