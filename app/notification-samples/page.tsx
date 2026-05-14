@@ -84,7 +84,7 @@ export default function NotificationSamplesPage() {
             target="連絡先A"
             timing="最後のOKから36時間後"
             purpose="本人と連絡が取れるか確認してもらうため"
-            sample="【あんぴッチ】田中さんのOKが36時間ありません。田中さんと連絡が取れるか、電話やメッセージで確認してください。停止:STOP"
+            sample="【あんぴッチ】田中さんのOKが36時間ありません。田中さんと連絡が取れるか、電話やメッセージで確認してください。"
             notes={[
               "このSMSは、同意後にあんぴッチから届く通知です。",
               "通信状況などにより、届くのが遅れたり、届かなかったりすることがあります。",
@@ -96,7 +96,7 @@ export default function NotificationSamplesPage() {
             target="連絡先B"
             timing="最後のOKから42時間後"
             purpose="別の連絡先にも確認をお願いするため"
-            sample="【あんぴッチ】田中さんのOKが42時間ありません。田中さんと連絡が取れるか、電話やメッセージで確認してください。停止:STOP"
+            sample="【あんぴッチ】田中さんのOKが42時間ありません。田中さんと連絡が取れるか、電話やメッセージで確認してください。"
             notes={[
               "この通知を受け取るには、連絡先Bの方が自分で同意している必要があります。",
               "STOP / HELP / START は、あんぴッチから届いたSMSに返信する時だけ使います。",
@@ -108,7 +108,7 @@ export default function NotificationSamplesPage() {
             target="連絡先A/B"
             timing="最後のOKから48時間後"
             purpose="最後の段階として、本人への確認をお願いするため"
-            sample="【あんぴッチ】田中さんのOKが48時間ありません。できる範囲で、田中さんへ電話やメッセージで確認してください。停止:STOP"
+            sample="【あんぴッチ】田中さんのOKが48時間ありません。できる範囲で、田中さんへ電話やメッセージで確認してください。"
             notes={[
               "メールにも送る場合があります。",
               "この通知だけで、本人の状況が分かるとは限りません。",
@@ -132,9 +132,10 @@ export default function NotificationSamplesPage() {
             purpose="受信停止の扱いを伝える"
             sample="STOPを受け付けました。もう一度同意するまで、あんぴッチからのSMSは届きません。"
             notes={[
-              "STOPと返信すると、あんぴッチからのSMSを止められます。",
+              "あんぴッチから届いたSMSに STOP と返信すると、その電話番号へのあんぴッチSMSを止められる。",
+              "STOPすると、その連絡先としての通知も止まる。",
               "本人から届いた説明SMSや同意のお願いSMSには効きません。",
-              "もう一度受け取るには、再度同意が必要です。",
+              "もう一度受け取るには START または UNSTOP と再同意が必要。",
             ]}
           />
         </NotificationSampleGrid>
