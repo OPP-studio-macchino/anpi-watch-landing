@@ -181,7 +181,7 @@ function ScreenPreview({ type }: { type: "home" | "contacts" | "settings" }) {
                 <div className={styles.billingRow}>
                     <div className={styles.billingHead}>
                         <StatusBadge tone="warning" label="通知予告" />
-                        <span className={styles.amount}>月額300円に含まれます</span>
+                        <span className={styles.amount}>本人SMS</span>
                     </div>
                     <p>36時間で連絡先AへSMSを送ります。</p>
                 </div>

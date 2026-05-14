@@ -110,10 +110,10 @@ export function FAQPage() {
               aria-labelledby="trust-foundation-title"
             >
               <header className={styles.sectionHeader}>
-                <p className={styles.eyebrow}>信頼のために</p>
-                <h2 id="trust-foundation-title">先に確認できるページ</h2>
+                <p className={styles.eyebrow}>迷った時に見るページ</p>
+                <h2 id="trust-foundation-title">困った時に見るページ</h2>
                 <p>
-                  まず確認する、関係者別、運用時、登録前に分けて確認できます。
+                  料金、連絡先、通知、登録前の確認を、ページごとに見られます。
                 </p>
               </header>
 

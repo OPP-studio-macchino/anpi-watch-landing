@@ -211,31 +211,19 @@ export const faqSections: readonly FAQSection[] = [
   },
   {
     id: "billing",
-    title: "月額300円と通知履歴",
-    description: "月額300円の考え方と、連絡先へ通知した回数の見方をまとめています。",
+    title: "料金と通知履歴",
+    description: "料金と、通知履歴の見方をまとめています。",
     items: [
-      {
-        faqId: "faq_when_charged",
-        question: "お金がかかるのはいつ？",
-        searchKeywords: ["いつ料金", "お金 いつかかる", "料金 発生 条件", "36時間 通知"],
-        answerSummary: "料金は月額300円です。",
-        answerDetail: [
-          "App Storeサブスクリプションとして月額300円で使うしくみです。",
-          "今月、連絡先へ何回通知したかは通知履歴で見られます。"
-        ],
-        nextAction: "料金が気になるときは、設定から通知履歴を開く"
-      },
       {
         faqId: "faq_no_extra_charge_after_36h",
         question: "料金はいくらですか？",
         searchKeywords: ["料金 いくら", "月額 いくら", "300円", "支払い"],
         answerSummary: "料金は月額300円です。",
         answerDetail: [
-          "App Storeサブスクリプションとして月額300円で使うしくみです。",
-          "長い時間OKがない時の連絡先への通知も、アプリの機能として使えます。",
-          "通知が起きた記録は、通知履歴として残ります。"
+          "料金は月額300円です。",
+          "くわしくは料金ページを見てください。"
         ],
-        nextAction: "料金が気になるときは、料金ページを見る"
+        nextAction: "料金ページを見る"
       },
       {
         faqId: "faq_notification_history_view",
@@ -261,13 +249,13 @@ export const faqSections: readonly FAQSection[] = [
         faqId: "faq_location_tracking",
         question: "私が今どこにいるか、ずっと見られているの？",
         searchKeywords: ["位置情報 ずっと見られる", "居場所 監視", "どこにいるかバレる", "ずっと見守り"],
-        answerSummary: "いいえ。ずっと居場所を見つづける仕組みではありません。",
+        answerSummary: "いいえ。位置情報を取得する仕組みはありません。",
         answerDetail: [
-          "主に見ているのは、最後に「OK」を押した時刻です。",
-          "今いる場所をずっと追いかけるものではありません。",
-          "家族や大切な人が、常に居場所を見るための道具ではありません。"
+          "あんぴッチには、位置情報を取得する仕組みはありません。",
+          "現在地や移動履歴は分かりません。",
+          "記録するのは、OKを押した時刻、連絡先の同意状態、通知を送った記録などです。"
         ],
-        nextAction: "気になるときは、設定や案内画面で記録される内容を確認する"
+        nextAction: "記録される内容を確認する"
       },
       {
         faqId: "faq_what_is_logged",
@@ -331,12 +319,12 @@ export const faqSections: readonly FAQSection[] = [
         faqId: "faq_auto_phone_call",
         question: "電話をかけて起こしてくれるの？",
         searchKeywords: ["自動で電話", "起こしてくれる", "電話連絡 ある", "架電してくれる"],
-        answerSummary: "いいえ。今は自動で電話をかける仕組みではありません。",
+        answerSummary: "いいえ。あんぴッチには、自動で電話をかける機能はありません。",
         answerDetail: [
           "使うのは、スマホのお知らせです。",
           "必要な段階ではSMSを使います。",
           "48時間以上では、必要に応じてメールも使います。",
-          "自動の電話は、今の対象ではありません。"
+          "自動で電話をかけることはありません。"
         ],
         nextAction: "通知の流れを知りたいときは、24時間→30時間→36時間→42時間→48時間の順番を確認する"
       }
