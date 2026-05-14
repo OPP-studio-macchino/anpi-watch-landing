@@ -10,7 +10,7 @@ import {
 
 export const metadata: Metadata = {
   title: "SMSを止めたい時・内容を確認したい時 | あんぴッチ",
-  description: "あんぴッチから届くSMSを止めたい時、内容を確認したい時の方法を説明します。",
+  description: "あんぴッチから届くSMSを止めたい時、内容を確認したい時、また受け取りたい時の方法を説明します。",
 };
 
 const relatedLinks = [
@@ -36,7 +36,7 @@ export default function StopHelpPage() {
     <TrustPage
       eyebrow="STOP / HELP"
       title="SMSを止めたい時・内容を確認したい時"
-      lead="このページは、あんぴッチから届くショートメッセージを止めたい時や、内容を確認したい時の説明です。SMSは、携帯電話に届く短いメッセージです。SMSに STOP または HELP と返信することで、受け取りを止めたり、説明を確認したりできます。"
+      lead="このページは、あんぴッチから届くショートメッセージを止めたい時や、内容を確認したい時の説明です。SMSは、携帯電話に届く短いメッセージです。STOP / HELP / START は、あんぴッチから届いたSMSに返信する言葉です。本人から届いた説明SMSや同意のお願いSMSには効きません。"
       actions={[
         { href: "/for-contacts", label: "連絡先としてSMSを受け取る方へ" },
         { href: "/notification-samples", label: "通知サンプルを見る" },
@@ -47,7 +47,7 @@ export default function StopHelpPage() {
         <TrustGrid>
           <TrustCard title="STOPと返信してください">
             <p>
-              あんぴッチからのSMSを受け取りたくない時は、届いたSMSに STOP と返信してください。STOP と返信すると、その電話番号には、あんぴッチからのSMSを送らないようにします。
+              あんぴッチからのSMSを受け取りたくない時は、あんぴッチから届いたSMSに STOP と返信してください。STOP と返信すると、その電話番号には、あんぴッチからのSMSを送らないようにします。
             </p>
           </TrustCard>
           <TrustCard title="STOPについて">
@@ -55,6 +55,7 @@ export default function StopHelpPage() {
               items={[
                 "STOPはいつでも使えます。",
                 "STOPしても、本人や連絡先に罰はありません。",
+                "本人から届いた説明SMSや同意のお願いSMSに返信しても、あんぴッチのSMS設定は変わりません。",
                 "また受け取りたい時は、本人からの案内にそって、もう一度同意してください。",
               ]}
             />
@@ -66,7 +67,7 @@ export default function StopHelpPage() {
         <TrustGrid>
           <TrustCard title="HELPと返信してください">
             <p>
-              このSMSが何のために届いたのか知りたい時は、SMSに HELP と返信してください。あんぴッチの説明と、SMSを止める方法が届きます。
+              あんぴッチから届いたSMSが何のために届いたのか知りたい時は、そのSMSに HELP と返信してください。あんぴッチの説明と、SMSを止める方法が届きます。
             </p>
           </TrustCard>
           <TrustCard title="HELPについて">
@@ -96,7 +97,7 @@ export default function StopHelpPage() {
 
       <TrustSection title="また受け取りたい時">
         <p>
-          もう一度あんぴッチのSMSを受け取りたい時は、本人から届く案内にそって、もう一度同意してください。同意は、あなた自身が確認して選びます。
+          もう一度あんぴッチのSMSを受け取りたい時は、本人から届く案内にそって、もう一度同意してください。START を使う場合も、あんぴッチから届いたSMSに返信します。本人から届いたSMSでは、あんぴッチの受け取り設定は変わりません。
         </p>
       </TrustSection>
 
@@ -131,12 +132,12 @@ export default function StopHelpPage() {
           </TrustCard>
           <TrustCard title="STOPと返信すると、どうなりますか？">
             <p>
-              その電話番号には、あんぴッチからのSMSを送らないようにします。
+              あんぴッチから届いたSMSに返信した場合、その電話番号には、あんぴッチからのSMSを送らないようにします。本人から届いた同意のお願いSMSには効きません。
             </p>
           </TrustCard>
           <TrustCard title="HELPと返信すると、SMSは止まりますか？">
             <p>
-              止まりません。HELPは、このSMSの説明を受け取るための言葉です。止めたい時はSTOPと返信してください。
+              止まりません。HELPは、あんぴッチから届いたSMSの説明を受け取るための言葉です。止めたい時は、あんぴッチから届いたSMSにSTOPと返信してください。
             </p>
           </TrustCard>
           <TrustCard title="STOPした後、また受け取れますか？">
@@ -146,7 +147,7 @@ export default function StopHelpPage() {
           </TrustCard>
           <TrustCard title="同意していないのにSMSが届くことはありますか？">
             <p>
-              本人があなたを連絡先候補として登録した時に、同意をお願いするSMSが届くことがあります。このSMSが届いただけでは、まだ同意したことにはなりません。
+              本人があなたを連絡先候補として登録した時に、本人のスマホから同意をお願いするSMSが届くことがあります。このSMSが届いただけでは、まだ同意したことにはなりません。
             </p>
           </TrustCard>
           <TrustCard title="通知が届いたら、必ず対応しないといけませんか？">

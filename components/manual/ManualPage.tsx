@@ -353,7 +353,7 @@ export function ManualPage() {
                                 id="contacts-title"
                                 eyebrow="連絡先の登録"
                                 title="連絡先A・Bを登録する"
-                                description="本人確認が終わったら、連絡先A（1人目）と連絡先B（2人目）を登録します。連絡先A/Bには名前と電話番号が必要で、メールは任意です。登録は同意依頼の準備で、登録しただけでは同意済みになりません。連絡先本人がSMSのリンクを開いて同意します。本人確認が完了していれば、連絡先2人の同意前でもOKは記録できます。ただし、2人とも同意済みになるまで連絡先への通知は始まりません。"
+                                description="本人確認が終わったら、連絡先A（1人目）と連絡先B（2人目）を登録します。連絡先A/Bには名前と電話番号が必要で、メールは任意です。登録は同意のお願いの準備で、登録しただけでは同意済みになりません。連絡先本人がSMSのリンクを開いて同意します。本人確認が完了していれば、連絡先2人の同意前でもOKは記録できます。ただし、2人とも同意済みになるまで連絡先への通知は始まりません。"
                             />
 
                             <div className={styles.rowList}>
@@ -412,7 +412,7 @@ export function ManualPage() {
                                 </article>
 
                                 <article className={styles.card}>
-                                    <StatusBadge tone="warning" label="同意依頼SMS" />
+                                    <StatusBadge tone="warning" label="同意のお願いSMS" />
                                     <h3>登録後に相手の同意が必要です</h3>
                                     <ul className={styles.list}>
                                         {contactConsentNotes.map((item) => (

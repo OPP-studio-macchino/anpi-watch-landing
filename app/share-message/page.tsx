@@ -95,9 +95,9 @@ export default function ShareMessagePage() {
             note="連絡先本人のURL同意が必要で、断れる余地があることを先に伝えます。"
           />
           <MessageTemplate
-            title="同意依頼SMSが届く前の補足文"
+            title="同意のお願いSMSが届く前の補足文"
             recipient="本人から連絡先候補へ"
-            body="このあと、あんぴッチから同意確認のSMSが届くかもしれません。SMS内のURLで、通知を受け取るかどうかを自分で選べます。STOPで受信停止もできます。"
+            body="このあと、私のスマホから同意確認のSMSが届くかもしれません。SMS内のURLで、通知を受け取るかどうかを自分で選べます。このSMSにSTOPやHELPを返信しても、あんぴッチの受け取り設定は変わりません。"
             note="SMSが届く前に、相手が怪しいと感じにくいよう補足します。"
           />
           <MessageTemplate
@@ -115,8 +115,8 @@ export default function ShareMessagePage() {
           <MessageTemplate
             title="STOP / HELPについて説明する文面"
             recipient="本人から連絡先候補へ"
-            body="通知を受け取りたくない場合は、SMSに STOP と返信すると停止できます。HELP と返信すると、このSMSの用途や停止方法を確認できます。"
-            note="STOPは受信停止、HELPは用途確認であることを伝えます。"
+            body="同意した後に、あんぴッチから通知SMSが届くことがあります。そのSMSにSTOPと返信すると、あんぴッチからのSMSを止められます。HELPと返信すると、そのSMSの説明が届きます。"
+            note="STOP/HELPは、本人から届く同意確認SMSではなく、あんぴッチから届いたSMSで使うことを伝えます。"
           />
           <MessageTemplate
             title="できること・できないことを短く説明する文面"

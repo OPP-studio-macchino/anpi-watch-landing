@@ -9,14 +9,14 @@ import {
 
 export const metadata: Metadata = {
   title: "通知サンプル | あんぴッチ",
-  description: "本人へのスマホ通知、ショートメッセージ（SMS）、同意確認、HELP、STOPのサンプルです。",
+  description: "本人から届く同意のお願いSMSと、あんぴッチから届く通知SMSのサンプルです。",
 };
 
 const relatedLinks = [
   {
     href: "/help/stop",
-    title: "STOP / HELP",
-    description: "STOP返信、HELP返信、再同意の扱いを確認します。",
+    title: "STOP / HELP / START",
+    description: "あんぴッチから届いたSMSで使う返信を確認します。",
   },
   {
     href: "/delivery-status",
@@ -35,13 +35,30 @@ export default function NotificationSamplesPage() {
     <TrustPage
       eyebrow="Notification Samples"
       title="通知サンプル"
-      lead="実際に届く通知の例です。ここにある文面はサンプルです。実際の文面は、読みやすさや送信の都合で少し変わることがあります。"
+      lead="実際に届く通知の例です。本人から届く同意のお願いSMSと、あんぴッチから届く通知SMSは別のものです。ここにある文面はサンプルです。"
       actions={[
         { href: "/how-it-works", label: "48時間の流れを見る" },
         { href: "/for-contacts", label: "連絡先向け説明を見る" },
       ]}
     >
-      <TrustSection title="通知例">
+      <TrustSection title="本人から届く説明・同意のお願い">
+        <NotificationSampleGrid>
+          <NotificationSample
+            title="本人から届く同意のお願いSMS"
+            target="連絡先候補"
+            timing="本人が連絡先候補として登録した時"
+            purpose="同意ページを開いて、受け取るかどうかを選んでもらうため"
+            sample="田中です。あんぴッチで、あなたを連絡先候補に登録しました。受け取るかどうかは、このURLから選べます。同意ページのURL"
+            notes={[
+              "本人のスマホから届く場合があります。",
+              "このSMSに STOP / HELP / START と返信しても、あんぴッチの受け取り設定は変わりません。",
+              "同意しない場合は、同意ボタンを押す必要はありません。",
+            ]}
+          />
+        </NotificationSampleGrid>
+      </TrustSection>
+
+      <TrustSection title="あんぴッチから届く通知SMS">
         <NotificationSampleGrid>
           <NotificationSample
             title="24時間後：本人へのスマホ通知"
@@ -69,6 +86,7 @@ export default function NotificationSamplesPage() {
             purpose="本人と連絡が取れるか確認してもらうため"
             sample="【あんぴッチ】田中さんのOKが36時間ありません。田中さんと連絡が取れるか、電話やメッセージで確認してください。停止:STOP"
             notes={[
+              "このSMSは、同意後にあんぴッチから届く通知です。",
               "通信状況などにより、届くのが遅れたり、届かなかったりすることがあります。",
               "受け取った人が無理に動く必要はありません。できる範囲で確認してください。",
             ]}
@@ -81,6 +99,7 @@ export default function NotificationSamplesPage() {
             sample="【あんぴッチ】田中さんのOKが42時間ありません。田中さんと連絡が取れるか、電話やメッセージで確認してください。停止:STOP"
             notes={[
               "この通知を受け取るには、連絡先Bの方が自分で同意している必要があります。",
+              "STOP / HELP / START は、あんぴッチから届いたSMSに返信する時だけ使います。",
               "送った記録があっても、相手が読んだとは限りません。",
             ]}
           />
@@ -96,24 +115,13 @@ export default function NotificationSamplesPage() {
             ]}
           />
           <NotificationSample
-            title="連絡先への同意確認メッセージ"
-            target="連絡先候補"
-            timing="本人が連絡先候補として登録した時"
-            purpose="通知を受け取るかどうかを選んでもらうため"
-            sample="【あんぴッチ】田中さんがあなたを連絡先候補に登録しました。受け取るかどうかはURLから選べます。停止:STOP"
-            notes={[
-              "このSMSが届いただけでは、まだ同意したことにはなりません。",
-              "受け取るかどうかは、あなた自身が選べます。",
-            ]}
-          />
-          <NotificationSample
             title="HELPへの返信"
             target="HELPを送った人"
             timing="HELP受信時"
             purpose="通知の目的と停止方法を説明する"
             sample="【あんぴッチ】これは、田中さんのOKが長くない時のお知らせです。止めるにはSTOPと返信してください。"
             notes={[
-              "HELPと返信すると、このSMSの説明が届きます。",
+              "HELPと返信すると、あんぴッチから届いたSMSの説明が届きます。",
               "HELPは、本人の状況を確認するものではありません。",
             ]}
           />
@@ -122,9 +130,10 @@ export default function NotificationSamplesPage() {
             target="STOPを送った人"
             timing="STOP受信時"
             purpose="受信停止の扱いを伝える"
-            sample="STOPを受け付けました。再同意が成立するまで、運用通知は送られません。"
+            sample="STOPを受け付けました。もう一度同意するまで、あんぴッチからのSMSは届きません。"
             notes={[
               "STOPと返信すると、あんぴッチからのSMSを止められます。",
+              "本人から届いた説明SMSや同意のお願いSMSには効きません。",
               "もう一度受け取るには、再度同意が必要です。",
             ]}
           />
