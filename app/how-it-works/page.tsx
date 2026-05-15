@@ -23,7 +23,7 @@ const notificationRows = [
     "48h",
     "連絡先A/B",
     "最終SMS + Email補助を試行",
-    "救助・発見は保証しない",
+    "安否が確認できていないため、できる範囲で連絡を試してほしいと伝える",
   ],
 ];
 
@@ -58,7 +58,7 @@ export default function HowItWorksPage() {
     >
       <TrustSection
         title="通知タイムライン"
-        description="連絡先A/Bの2名同意が揃っていない場合、連絡先通知は開始されません。"
+        description="連絡先A/Bの2名がURLから同意していない場合、連絡先通知は開始されません。"
       >
         <TrustTable
           caption="最終OKからの時間経過に基づく通知タイムライン"

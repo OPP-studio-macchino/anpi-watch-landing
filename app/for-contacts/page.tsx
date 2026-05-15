@@ -36,7 +36,7 @@ export default function ForContactsPage() {
     <TrustPage
       eyebrow="For Contacts"
       title="連絡先としてSMSを受け取る方へ"
-      lead="あなたは、本人の反応が一定時間確認できない場合に通知を受ける連絡先候補です。登録された時点では、まだ通知稼働状態ではありません。"
+      lead="あなたは、本人の未反応時に通知を受ける連絡先候補です。同意すると、本人のOKが一定時間途切れた場合にSMS通知を受け取ることがあります。登録された時点では、まだ通知稼働状態ではありません。"
       actions={[
         { href: "/how-it-works", label: "同意の流れを確認する" },
         { href: "/notification-samples", label: "通知サンプルを見る" },
@@ -60,7 +60,7 @@ export default function ForContactsPage() {
           </TrustCard>
           <TrustCard title="2名の同意が揃うまで開始しません">
             <p>
-              連絡先A/Bの2名の同意が揃うまで、連絡先への通知は開始されません。
+              連絡先A/Bの2名のURL同意が揃うまで、連絡先への通知は開始されません。
             </p>
           </TrustCard>
         </TrustGrid>
@@ -104,7 +104,7 @@ export default function ForContactsPage() {
 
       <TrustSection title="通知を受け取った時の確認方法">
         <p>
-          通知を受け取った場合は、まず本人へ電話やメッセージで確認してください。
+          通知を受け取った場合は、ご無理のない範囲で、まず本人へ電話やメッセージで連絡をお試しください。
         </p>
         <p>
           緊急の危険が明らかな場合は、電話や公的緊急連絡手段など、別の手段で確認してください。

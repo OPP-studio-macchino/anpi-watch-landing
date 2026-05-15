@@ -5,40 +5,38 @@ export default function HomePage() {
         <main className="wrapper">
             <section className="hero">
                 <p className="badge">あんぴッチ</p>
-                <h1>
-                    毎日OKを1回押す。
-                    <br />
-                    反応がない時だけ、順番にお知らせします。
-                </h1>
+                <h1>反応が途切れた時の連絡ルールを、先に決めておく。</h1>
                 <p className="lead">
-                    あんぴッチは、毎日OKを記録するアプリです。 アプリを開くだけでは記録されません。
-                    ホームでOKを押すと、今の時刻でOKを記録します。
+                    あんぴッチは、毎日のOKが一定時間途切れた場合に、登録・同意済みの連絡先へ段階通知を試行するアプリです。
                 </p>
                 <p className="lead">
-                    最後にOKを押してから時間がたつと、24時間、30時間、36時間、42時間、48時間以上の順に進みます。
-                    連絡先A/Bの2人の同意がそろうまで、自動通知は始まりません。
+                    本人が24時間以上OKを押していない場合は本人へ、36時間以上続くと登録・同意済みの連絡先へ通知します。
                 </p>
                 <div className="actions">
-                    <a href="/manual/tutorial" className="primary">
-                        3分体験コースを見る
-                    </a>
-                    <a href="/manual" className="secondary">
-                        マニュアルを見る
-                    </a>
-                    <a href="/manual/faq" className="secondary">
-                        FAQを見る
-                    </a>
+                    <Link href="/how-it-works" className="primary">
+                        48時間の通知ルールを見る
+                    </Link>
+                    <Link href="/notification-samples" className="secondary">
+                        連絡先に届く文面を見る
+                    </Link>
+                    <Link href="/before-you-start" className="secondary">
+                        登録前チェックリストを見る
+                    </Link>
                 </div>
             </section>
 
             <section id="features" className="features">
                 <article>
                     <h2>毎日すること</h2>
-                    <p>アプリのホームでOKを1回押します。押した時だけ、今の時刻でOKを記録します。</p>
+                    <p>
+                        アプリのホームでOKを1回押します。押した時だけ、今の時刻で安否OKを記録します。
+                    </p>
                 </article>
                 <article>
                     <h2>連絡の順番</h2>
-                    <p>24時間でスマホ通知、30時間で本人SMS、36時間で連絡先AへSMSを送ります。</p>
+                    <p>
+                        24時間で本人へ通知、30時間で本人SMS、36時間で連絡先A、42時間で連絡先B、48時間でA/BへSMS送信を試行します。
+                    </p>
                 </article>
                 <article>
                     <h2>月額300円</h2>
@@ -47,13 +45,13 @@ export default function HomePage() {
                 <article>
                     <h2>このアプリがしないこと</h2>
                     <p>
-                        危険、死亡、病気、今いる場所を判断しません。救助や発見を保証するものではありません。
+                        危険、死亡、病気、今いる場所を判断しません。救命・発見・所在確認は保証しません。
                     </p>
                 </article>
                 <article>
-                    <h2>2人の同意</h2>
+                    <h2>2名の同意</h2>
                     <p>
-                        連絡先Aと連絡先Bの2人が必要です。2人の同意がそろうまで自動通知は始まりません。
+                        連絡先Aと連絡先Bの2名が必要です。2名同意が揃うまで通知は開始されません。
                     </p>
                 </article>
                 <article>
@@ -65,63 +63,61 @@ export default function HomePage() {
             </section>
 
             <section id="trust-foundation" className="contact">
-                <h2>信頼のために先に確認すること</h2>
+                <h2>はじめに知っておきたいこと</h2>
                 <p>
-                    初めて見る方は、通知の順番、料金、できること・できないことから確認します。
+                    通知の流れ、月額300円の料金、このアプリでできること・できないことを確認できます。
                 </p>
                 <div className="actions">
                     <Link href="/how-it-works" className="secondary">
-                        48時間の通知ルール
+                        48時間の通知ルールを見る
                     </Link>
-                    <Link href="/pricing" className="secondary">
-                        料金・課金方針
+                    <Link href="/notification-samples" className="secondary">
+                        連絡先に届く文面を見る
                     </Link>
-                    <Link href="/trust" className="secondary">
-                        できること・できないこと
+                    <Link href="/before-you-start" className="secondary">
+                        登録前チェックリストを見る
                     </Link>
                 </div>
             </section>
 
             <section id="trust-audience" className="contact">
-                <h2>関係者別に確認する</h2>
+                <h2>立場に合わせて読む</h2>
                 <p>
-                    本人、家族、連絡先候補が同じ前提を確認できます。
+                    本人に提案したい方、連絡先としてSMSを受け取る方、説明文を準備したい方はこちら。
                 </p>
                 <div className="actions">
                     <Link href="/for-family" className="secondary">
-                        家族・パートナーの方へ
+                        本人に提案したい方へ
                     </Link>
                     <Link href="/for-contacts" className="secondary">
-                        連絡先の方へ
+                        連絡先としてSMSを受け取る方へ
                     </Link>
                     <Link href="/share-message" className="secondary">
-                        説明文テンプレ
+                        提案・依頼の文面テンプレ
                     </Link>
                 </div>
             </section>
 
             <section id="trust-operation" className="contact">
-                <h2>運用時に確認する</h2>
-                <p>
-                    通知文面、受信停止、配信結果の読み方を確認できます。
-                </p>
+                <h2>通知を受け取った時・送った後</h2>
+                <p>実際の通知文、受信停止、配信結果の見方を確認できます。</p>
                 <div className="actions">
                     <Link href="/notification-samples" className="secondary">
                         通知サンプル
                     </Link>
                     <Link href="/help/stop" className="secondary">
-                        STOP / HELP
+                        受信停止・HELP
                     </Link>
                     <Link href="/delivery-status" className="secondary">
-                        配信結果・通知ログ
+                        通知履歴・配信結果の見方
                     </Link>
                 </div>
             </section>
 
             <section id="trust-before" className="contact">
-                <h2>登録前に確認する</h2>
+                <h2>登録前にチェックする</h2>
                 <p>
-                    2名同意、毎日のOK、通信の限界が自分に合うか確認できます。
+                    連絡先2名のURL同意、毎日のOK、通知が届かない場合があることを確認してから始められます。
                 </p>
                 <div className="actions">
                     <Link href="/before-you-start" className="secondary">
@@ -144,7 +140,7 @@ export default function HomePage() {
                         FAQ
                     </a>
                 </div>
-                <a href="mailto:info@anpi-watch.jp">info@anpi-watch.jp</a>
+                <a href="mailto:support@anpi-watch.app">support@anpi-watch.app</a>
             </section>
         </main>
     );

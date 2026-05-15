@@ -17,7 +17,7 @@ const relatedLinks = [
   {
     href: "/before-you-start",
     title: "登録前チェックリスト",
-    description: "連絡先2人の同意、毎日のOK、通知が届かない場合があることを確認します。",
+    description: "連絡先2名のURL同意、毎日のOK、通知が届かない場合があることを確認します。",
   },
   {
     href: "/share-message",
@@ -41,7 +41,7 @@ export default function ForFamilyPage() {
     <TrustPage
       eyebrow="For Family"
       title="離れて暮らす本人に、あんぴッチを提案したい方へ"
-      lead="このページは、家族・パートナーにあんぴッチを紹介したい方のための説明ページです。あんぴッチは、本人を勝手に監視したり、本人の代わりに通知を始めたりするサービスではありません。本人が内容を理解し、連絡先2名の同意が揃って初めて、通知ルールが有効になります。"
+      lead="毎日監視するのではなく、未反応時の連絡ルールを本人と決めるための説明ページです。あんぴッチは、本人を勝手に監視したり、本人の代わりに通知を始めたりするサービスではありません。本人の同意と、連絡先2名のURL同意が揃って初めて、通知ルールが有効になります。"
       actions={[
         { href: "/share-message", label: "本人に送る説明文テンプレを見る" },
         { href: "/for-contacts", label: "連絡先向け説明を見る" },
@@ -53,7 +53,7 @@ export default function ForFamilyPage() {
             "家族ができること",
             "家族ができないこと",
             "本人にどう説明すればよいか",
-            "連絡先2名の同意がなぜ必要か",
+            "連絡先2名のURL同意がなぜ必要か",
             "あんぴッチが向いているケース・向いていないケース",
           ]}
         />
@@ -64,7 +64,7 @@ export default function ForFamilyPage() {
 
       <TrustSection title="家族ができること">
         <p>
-          家族ができることは、本人にサービスの内容を説明し、未反応時の連絡ルールを一緒に決めることです。
+          家族ができることは、本人にサービスの内容を説明し、本人の同意を前提に、未反応時の連絡ルールを一緒に決めることです。
         </p>
         <TrustList
           items={[
@@ -81,7 +81,7 @@ export default function ForFamilyPage() {
 
       <TrustSection title="家族ができないこと">
         <p>
-          本人の同意なしに、家族だけで通知を始めることはできません。
+          本人の同意なしに、家族だけで通知を始めることはできません。連絡先本人のURL同意も代理できません。
         </p>
         <TrustList
           items={[
@@ -91,6 +91,16 @@ export default function ForFamilyPage() {
             "位置情報やバイタルを確認する。",
           ]}
         />
+      </TrustSection>
+
+      <TrustSection title="料金">
+        <TrustGrid>
+          <TrustCard title="月額300円">
+            <p>
+              料金は1ユーザーごとの月額300円です。
+            </p>
+          </TrustCard>
+        </TrustGrid>
       </TrustSection>
 
       <TrustSection title="本人に伝える時の説明">
