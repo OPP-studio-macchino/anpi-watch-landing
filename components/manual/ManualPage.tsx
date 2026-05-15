@@ -93,7 +93,10 @@ function StepList({
                             {index + 1}. {step.title}
                         </strong>
                         <p className={styles.meta}>
-                            <span style={{ color: "var(--manual-status-info)" }}>こうなればOK:</span> {step.outcome}
+                            <span style={{ color: "var(--manual-status-info)" }}>
+                                こうなればOK:
+                            </span>{" "}
+                            {step.outcome}
                         </p>
                     </div>
                 ))}
@@ -197,13 +200,12 @@ export function ManualPage() {
                 <div className={styles.headerGrid}>
                     <header className={styles.hero}>
                         <p className={styles.eyebrow}>ユーザーマニュアル</p>
-                        <h1 className={styles.title}>あんぴッチの使い方</h1>
+                        <h1 className={styles.title}>使い方ガイド</h1>
                         <p className={styles.lead}>
-                            このアプリは、毎日「私は無事です」を1回記録するためのアプリです。
+                            あんぴッチの使い方を、順番に確認できます。
                         </p>
-                        <p className={styles.lead}>ふだんは、ホームで大きいOKを1回押します。</p>
                         <p className={styles.lead}>
-                            長く反応がない時は、決まった順番であなたと連絡先へ知らせます。
+                            はじめて使う方は、まず「毎日のOK」「連絡先の同意」「通知の流れ」から読んでください。
                         </p>
                         <a className={styles.jumpLink} href="#setup">
                             最初の準備を見る
@@ -266,7 +268,7 @@ export function ManualPage() {
                                     <span className={styles.previewLabel}>最初の大事な準備</span>
                                     <h3>連絡先は2人必要です</h3>
                                     <p>
-                                        本人確認のあとに連絡先A・Bを登録します。本人確認が完了すると、連絡先2人の同意前でもOKは記録できます。ただし、連絡先A・Bの2人が同意済みになるまで連絡先への通知は始まりません。
+                                        本人確認のあとに連絡先A・Bを登録します。本人確認が完了すると、連絡先2人のURL同意前でもOKは記録できます。ただし、連絡先A・Bの2人がURLから同意済みになるまで連絡先への通知は始まりません。
                                     </p>
                                     <ScreenPreview type="contacts" />
                                 </article>
@@ -280,9 +282,9 @@ export function ManualPage() {
                         >
                             <SectionHeader
                                 id="trust-foundation-title"
-                                eyebrow="信頼のために"
-                                title="料金・同意・通知の限界を先に確認できます"
-                                description="まず確認する、関係者別、運用時、登録前に分けて確認できます。"
+                                eyebrow="はじめに読むページ"
+                                title="料金、連絡先の同意、通知の流れを確認できます"
+                                description="何を知りたいか、どんな時に読むかに合わせて選べます。"
                             />
                             <div className={styles.rowList}>
                                 {trustFoundationLinkGroups.map((group) => (
@@ -291,10 +293,20 @@ export function ManualPage() {
                                         <p className={styles.meta}>{group.description}</p>
                                         <div className={styles.factGrid}>
                                             {group.links.map((link) => (
-                                                <article key={link.href} className={styles.factCard}>
-                                                    <h3 className={styles.factTitle}>{link.title}</h3>
-                                                    <p className={styles.factBody}>{link.description}</p>
-                                                    <Link className={styles.tocLink} href={link.href}>
+                                                <article
+                                                    key={link.href}
+                                                    className={styles.factCard}
+                                                >
+                                                    <h3 className={styles.factTitle}>
+                                                        {link.title}
+                                                    </h3>
+                                                    <p className={styles.factBody}>
+                                                        {link.description}
+                                                    </p>
+                                                    <Link
+                                                        className={styles.tocLink}
+                                                        href={link.href}
+                                                    >
                                                         確認する
                                                     </Link>
                                                 </article>
@@ -314,7 +326,7 @@ export function ManualPage() {
                                 id="setup-title"
                                 eyebrow="最初の準備"
                                 title="最初は本人確認から始めます"
-                                description="ホームに「まず本人確認をします」と表示されたら、電話番号を確認してSMSのリンクを開きます。そのあとホームで準備中の状態を確認し、連絡先Aと連絡先Bを登録します。本人確認が完了すると、連絡先2人の同意前でもOKは記録できます。ただし、連絡先A・Bの2人が同意済みになるまで連絡先への通知は始まりません。"
+                                description="ホームに「まず本人確認をします」と表示されたら、電話番号を確認してSMSのリンクを開きます。そのあとホームで準備中の状態を確認し、連絡先Aと連絡先Bを登録します。本人確認が完了すると、連絡先2人のURL同意前でもOKは記録できます。ただし、連絡先A・Bの2人がURLから同意済みになるまで連絡先への通知は始まりません。"
                             />
                             <div className={styles.split}>
                                 <StepList title="準備の流れ" steps={setupSteps} />
@@ -353,147 +365,147 @@ export function ManualPage() {
                                 id="contacts-title"
                                 eyebrow="連絡先の登録"
                                 title="連絡先A・Bを登録する"
-                                description="本人確認が終わったら、連絡先A（1人目）と連絡先B（2人目）を登録します。連絡先A/Bには名前と電話番号が必要で、メールは任意です。登録は同意のお願いの準備で、登録しただけでは同意済みになりません。連絡先本人がSMSのリンクを開いて同意します。本人確認が完了していれば、連絡先2人の同意前でもOKは記録できます。ただし、2人とも同意済みになるまで連絡先への通知は始まりません。"
+                                description="本人確認が終わったら、連絡先A（1人目）と連絡先B（2人目）を登録します。連絡先A/Bには名前と電話番号が必要で、メールは任意です。登録は同意のお願いの準備で、登録しただけでは同意済みになりません。連絡先本人がSMSのリンクを開いて同意します。本人確認が完了していれば、連絡先2人のURL同意前でもOKは記録できます。ただし、2人ともURLから同意済みになるまで連絡先への通知は始まりません。"
                             />
 
                             <div className={styles.rowList}>
-                            <div className={styles.split}>
-                                <article className={styles.card}>
-                                    <StatusBadge tone="info" label="AとBの違い" />
-                                    <h3>先にA、次にBへ知らせます</h3>
-                                    <ul className={styles.list}>
-                                        {contactBasics.map((item) => (
-                                            <li key={item}>{item}</li>
-                                        ))}
-                                    </ul>
-                                </article>
+                                <div className={styles.split}>
+                                    <article className={styles.card}>
+                                        <StatusBadge tone="info" label="AとBの違い" />
+                                        <h3>先にA、次にBへ知らせます</h3>
+                                        <ul className={styles.list}>
+                                            {contactBasics.map((item) => (
+                                                <li key={item}>{item}</li>
+                                            ))}
+                                        </ul>
+                                    </article>
 
-                                <article className={`${styles.card} ${styles.toneWarning}`}>
-                                    <StatusBadge tone="warning" label="登録前に確認" />
-                                    <h3>登録する前に確認すること</h3>
-                                    <ul className={styles.list}>
-                                        {contactBeforeChecks.map((item) => (
-                                            <li key={item}>{item}</li>
-                                        ))}
-                                    </ul>
-                                    <div className={styles.rowList}>
-                                        <div className={styles.row}>
-                                            <strong>先に一言伝える例</strong>
-                                            <ul className={styles.list}>
-                                                {contactMessageExample.map((item) => (
-                                                    <li key={item}>{item}</li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-
-                            <div className={styles.split}>
-                                <StepList
-                                    title="連絡先A（1人目）を登録する"
-                                    steps={contactASteps}
-                                />
-                                <StepList
-                                    title="連絡先B（2人目）を登録する"
-                                    steps={contactBSteps}
-                                />
-                            </div>
-
-                            <div className={styles.split}>
-                                <article className={styles.card}>
-                                    <StatusBadge tone="info" label="入力方法" />
-                                    <h3>電話帳から選ぶか、手で入力します</h3>
-                                    <ul className={styles.list}>
-                                        {contactInputNotes.map((item) => (
-                                            <li key={item}>{item}</li>
-                                        ))}
-                                    </ul>
-                                </article>
-
-                                <article className={styles.card}>
-                                    <StatusBadge tone="warning" label="同意のお願いSMS" />
-                                    <h3>登録後に相手の同意が必要です</h3>
-                                    <ul className={styles.list}>
-                                        {contactConsentNotes.map((item) => (
-                                            <li key={item}>{item}</li>
-                                        ))}
-                                    </ul>
-                                </article>
-                            </div>
-
-                            <div className={styles.split}>
-                                <article className={styles.card}>
-                                    <h3>画面に出る状態の意味</h3>
-                                    <div className={styles.statusGrid}>
-                                        {contactStatusStates.map((state) => (
-                                            <div
-                                                key={state.label}
-                                                className={`${styles.card} ${toneClass(state.tone)}`}
-                                            >
-                                                <StatusBadge
-                                                    tone={state.tone}
-                                                    label={state.label}
-                                                />
-                                                <h3>{state.summary}</h3>
-                                                <p>{state.detail}</p>
+                                    <article className={`${styles.card} ${styles.toneWarning}`}>
+                                        <StatusBadge tone="warning" label="登録前に確認" />
+                                        <h3>登録する前に確認すること</h3>
+                                        <ul className={styles.list}>
+                                            {contactBeforeChecks.map((item) => (
+                                                <li key={item}>{item}</li>
+                                            ))}
+                                        </ul>
+                                        <div className={styles.rowList}>
+                                            <div className={styles.row}>
+                                                <strong>先に一言伝える例</strong>
+                                                <ul className={styles.list}>
+                                                    {contactMessageExample.map((item) => (
+                                                        <li key={item}>{item}</li>
+                                                    ))}
+                                                </ul>
                                             </div>
+                                        </div>
+                                    </article>
+                                </div>
+
+                                <div className={styles.split}>
+                                    <StepList
+                                        title="連絡先A（1人目）を登録する"
+                                        steps={contactASteps}
+                                    />
+                                    <StepList
+                                        title="連絡先B（2人目）を登録する"
+                                        steps={contactBSteps}
+                                    />
+                                </div>
+
+                                <div className={styles.split}>
+                                    <article className={styles.card}>
+                                        <StatusBadge tone="info" label="入力方法" />
+                                        <h3>電話帳から選ぶか、手で入力します</h3>
+                                        <ul className={styles.list}>
+                                            {contactInputNotes.map((item) => (
+                                                <li key={item}>{item}</li>
+                                            ))}
+                                        </ul>
+                                    </article>
+
+                                    <article className={styles.card}>
+                                        <StatusBadge tone="warning" label="同意のお願いSMS" />
+                                        <h3>登録後に相手の同意が必要です</h3>
+                                        <ul className={styles.list}>
+                                            {contactConsentNotes.map((item) => (
+                                                <li key={item}>{item}</li>
+                                            ))}
+                                        </ul>
+                                    </article>
+                                </div>
+
+                                <div className={styles.split}>
+                                    <article className={styles.card}>
+                                        <h3>画面に出る状態の意味</h3>
+                                        <div className={styles.statusGrid}>
+                                            {contactStatusStates.map((state) => (
+                                                <div
+                                                    key={state.label}
+                                                    className={`${styles.card} ${toneClass(state.tone)}`}
+                                                >
+                                                    <StatusBadge
+                                                        tone={state.tone}
+                                                        label={state.label}
+                                                    />
+                                                    <h3>{state.summary}</h3>
+                                                    <p>{state.detail}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </article>
+
+                                    <article className={`${styles.card} ${styles.toneCritical}`}>
+                                        <StatusBadge tone="critical" label="STOP" />
+                                        <h3>受け取りを止めた連絡先には送りません</h3>
+                                        <ul className={styles.list}>
+                                            {contactStopNotes.map((item) => (
+                                                <li key={item}>{item}</li>
+                                            ))}
+                                        </ul>
+                                    </article>
+                                </div>
+
+                                <article className={styles.card}>
+                                    <h3>よくあるつまずき</h3>
+                                    <div className={styles.faqList}>
+                                        {contactTroubles.map((item) => (
+                                            <article key={item.question} className={styles.faqCard}>
+                                                <h3>Q. {item.question}</h3>
+                                                <ol className={styles.faqAnswers}>
+                                                    {item.answers.map((answer) => (
+                                                        <li key={answer}>{answer}</li>
+                                                    ))}
+                                                </ol>
+                                            </article>
                                         ))}
                                     </div>
                                 </article>
 
-                                <article className={`${styles.card} ${styles.toneCritical}`}>
-                                    <StatusBadge tone="critical" label="STOP" />
-                                    <h3>受け取りを止めた連絡先には送りません</h3>
-                                    <ul className={styles.list}>
-                                        {contactStopNotes.map((item) => (
-                                            <li key={item}>{item}</li>
-                                        ))}
-                                    </ul>
-                                </article>
-                            </div>
+                                <div className={styles.split}>
+                                    <article className={`${styles.card} ${styles.toneSuccess}`}>
+                                        <StatusBadge tone="success" label="登録と同意の目安" />
+                                        <h3>4つそろったら通知の準備を確認できます</h3>
+                                        <ul className={styles.list}>
+                                            {contactCompletionChecks.map((item) => (
+                                                <li key={item}>{item}</li>
+                                            ))}
+                                        </ul>
+                                        <p>
+                                            まだ「同意待ち」が残っている場合は、相手にSMSのリンクを確認してもらいます。
+                                        </p>
+                                        <p>
+                                            「停止中」がある場合は、その連絡先にはSMSを送れません。必要に応じて、別の連絡先を登録してください。
+                                        </p>
+                                    </article>
 
-                            <article className={styles.card}>
-                                <h3>よくあるつまずき</h3>
-                                <div className={styles.faqList}>
-                                    {contactTroubles.map((item) => (
-                                        <article key={item.question} className={styles.faqCard}>
-                                            <h3>Q. {item.question}</h3>
-                                            <ol className={styles.faqAnswers}>
-                                                {item.answers.map((answer) => (
-                                                    <li key={answer}>{answer}</li>
-                                                ))}
-                                            </ol>
-                                        </article>
-                                    ))}
+                                    <article className={`${styles.card} ${styles.toneWarning}`}>
+                                        <StatusBadge tone="warning" label="最後に確認" />
+                                        <h3>登録しただけでは準備完了ではありません</h3>
+                                        <p>
+                                            連絡先登録では、2人を登録することと、2人がURLから同意済みになることを分けて確認します。電話番号を入力しただけでは同意済みではありません。本人確認が完了していれば同意前でもOKは記録できますが、連絡先への通知は連絡先Aと連絡先Bの両方が同意済みになるまで始まりません。
+                                        </p>
+                                    </article>
                                 </div>
-                            </article>
-
-                            <div className={styles.split}>
-                                <article className={`${styles.card} ${styles.toneSuccess}`}>
-                                    <StatusBadge tone="success" label="登録と同意の目安" />
-                                    <h3>4つそろったら通知の準備を確認できます</h3>
-                                    <ul className={styles.list}>
-                                        {contactCompletionChecks.map((item) => (
-                                            <li key={item}>{item}</li>
-                                        ))}
-                                    </ul>
-                                    <p>
-                                        まだ「同意待ち」が残っている場合は、相手にSMSのリンクを確認してもらいます。
-                                    </p>
-                                    <p>
-                                        「停止中」がある場合は、その連絡先にはSMSを送れません。必要に応じて、別の連絡先を登録してください。
-                                    </p>
-                                </article>
-
-                                <article className={`${styles.card} ${styles.toneWarning}`}>
-                                    <StatusBadge tone="warning" label="最後に確認" />
-                                    <h3>登録しただけでは準備完了ではありません</h3>
-                                    <p>
-                                        連絡先登録では、2人を登録することと、2人が同意済みになることを分けて確認します。電話番号を入力しただけでは同意済みではありません。本人確認が完了していれば同意前でもOKは記録できますが、連絡先への通知は連絡先Aと連絡先Bの両方が同意済みになるまで始まりません。
-                                    </p>
-                                </article>
-                            </div>
                             </div>
                         </section>
 

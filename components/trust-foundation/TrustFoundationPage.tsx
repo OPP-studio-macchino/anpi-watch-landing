@@ -64,7 +64,7 @@ export const trustFoundationCoreLinks: TrustLink[] = [
   {
     href: "/pricing",
     title: "月額300円の料金",
-    description: "料金と解約・返金の説明を確認します。",
+    description: "月額300円の料金と、解約・返金の説明を確認します。",
   },
   {
     href: "/trust",
@@ -113,7 +113,7 @@ export const trustFoundationBeforeLinks: TrustLink[] = [
   {
     href: "/before-you-start",
     title: "始める前のチェックリスト",
-    description: "連絡先2人の同意、毎日のOK、通知が届かない場合があることを確認します。",
+    description: "連絡先2名のURL同意、毎日のOK、通知が届かない場合があることを確認します。",
   },
 ];
 
@@ -135,7 +135,7 @@ export const trustFoundationLinkGroups: TrustLinkGroup[] = [
   },
   {
     title: "始める前に確認する",
-    description: "連絡先2人の同意、毎日のOK、通知が届かない場合があることを確認してから始められます。",
+    description: "連絡先2名のURL同意、毎日のOK、通知が届かない場合があることを確認してから始められます。",
     links: trustFoundationBeforeLinks,
   },
 ];

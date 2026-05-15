@@ -26,7 +26,7 @@ export function FAQPage() {
               あんぴッチで迷いやすい所を、答えから先に読めるようにまとめました。
             </p>
             <p className={styles.lead}>
-              毎日のOK、2人の同意、通知の順番、月額料金、記録、できないことを確認できます。
+              毎日のOK、2名のURL同意、通知の順番、月額300円、記録、できないことを確認できます。
             </p>
             <Link className={styles.jumpLink} href="/manual/tutorial">
               3分体験コースを見る
