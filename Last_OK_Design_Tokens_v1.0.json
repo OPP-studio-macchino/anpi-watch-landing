@@ -725,17 +725,6 @@
         "value": 16
       }
     },
-    "otpField": {
-      "cellWidth": {
-        "value": 44
-      },
-      "cellHeight": {
-        "value": 52
-      },
-      "gap": {
-        "value": 8
-      }
-    },
     "timeline": {
       "marker": {
         "value": 20

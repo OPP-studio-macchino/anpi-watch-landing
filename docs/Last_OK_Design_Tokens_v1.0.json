@@ -7,8 +7,7 @@
     "baseUnit": 8,
     "platforms": [
       "iOS",
-      "Web",
-      "Email"
+      "Web"
     ],
     "notes": "Semantic-first tokens for a calm, explicit, auditable safety check-in product."
   },
@@ -724,17 +723,6 @@
       },
       "radius": {
         "value": 16
-      }
-    },
-    "otpField": {
-      "cellWidth": {
-        "value": 44
-      },
-      "cellHeight": {
-        "value": 52
-      },
-      "gap": {
-        "value": 8
       }
     },
     "timeline": {
