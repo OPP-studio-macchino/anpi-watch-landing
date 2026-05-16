@@ -6,8 +6,7 @@
     "baseUnit": 8,
     "platforms": [
       "iOS",
-      "Web",
-      "Email"
+      "Web"
     ],
     "notes": "Semantic-first tokens for a calm, explicit, auditable safety check-in product."
   },
