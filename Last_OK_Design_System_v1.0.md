@@ -2,7 +2,7 @@
 
 **Last OK Design System**
 
-iOS MVP / SMS・Push・Email 通知 / 公開仕様 v1.0
+iOS MVP / SMS・Push 通知 / 公開仕様 v1.0
 
 | **Calm. Explicit. Auditable.** |
 |--------------------------------|
@@ -45,7 +45,7 @@ iOS MVP / SMS・Push・Email 通知 / 公開仕様 v1.0
 
 | **項目**       | **定義**                                                           |
 |----------------|--------------------------------------------------------------------|
-| **対象面**     | iOSアプリ、補助Web/管理UI、SMS・Push・Emailテンプレ、通知履歴/監査ログ表示 |
+| **対象面**     | iOSアプリ、補助Web/管理UI、SMS・Pushテンプレ、通知履歴/監査ログ表示 |
 | **主要画面**   | Home / Contacts / Settings                                         |
 | **公開単位**   | Foundation, Component, Pattern, Token, Governance                  |
 | **主な成果物** | 公開仕様書（本書） + machine-readable token JSON                   |
@@ -187,7 +187,7 @@ dark: action.primary (#2563EB)</td>
 <td>Success</td>
 <td>light: status.success (#047857)<br />
 dark: status.success (#10B981)</td>
-<td>OK完了、正常、同意完了、配信成功</td>
+<td>OK完了、正常、同意完了、送信できた可能性</td>
 </tr>
 <tr class="odd">
 <td>Info</td>
@@ -355,7 +355,7 @@ Minimum rules: 通常テキスト 4.5:1 以上、ラージテキスト/主要境
 | L2        | 30–36h   | Action required | Warning  | warning / explicit         | 本人SMS。36hで連絡先AへSMSを送る予定を明記。運用通知では追加料金がないことを添えてよい。 |
 | L3        | 36–42h   | Escalated       | Critical | critical / measured        | 連絡先Aへ通知。通知エピソード監査ログを記録。        |
 | L4        | 42–48h   | Escalated+      | Critical | critical / higher emphasis | 連絡先Bへ通知。                                      |
-| L5        | 48h+     | Final alert     | Critical | critical / maximum         | A+B最終SMS＋Email補助。保証表現は禁止。              |
+| L5        | 48h+     | Final alert     | Critical | critical / maximum         | A+B最終SMS。保証表現は禁止。現行MVPでは追加チャネルを増やさない。 |
 
 <table>
 <colgroup>
@@ -406,7 +406,7 @@ Minimum rules: 通常テキスト 4.5:1 以上、ラージテキスト/主要境
 |--------------------|------------------------------------------------|---------------------------------------------|-------------------------------------------------------------------------|----------------------------------------------------------|-----------------------------------------------------------------|
 | Text Field         | rest / focused / filled / error / disabled     | label, field, helper/error, trailing icon   | 名前、目安時刻ラベルなど短文入力。                                      | ラベル常時表示。placeholderを主ラベルにしない。          | h 52 / radius 16 / border 1 / padX 14 / type body               |
 | Phone Number Field | rest / focused / valid / error / disabled      | country code, value, validation message     | 連絡先登録と本人認証で利用。日本番号表記を崩さない。                    | 数字グルーピングを読み上げ考慮。ペースト許可。           | uses Text Field base / keyboard phonePad / mono helper optional |
-| OTP Field          | empty / active / filled / error / expired      | digit cells, timer/helper, resend action    | 本人電話番号確認。自動入力に対応。                                      | 1桁ずつではなくコード全体としても読み上げ可能に。        | 6 cells / cell 44×52 / gap 8 / radius 12                        |
+| SMS Link Confirmation | pending / sent / opened / expired / error   | phone number, link sent message, resend action | 本人電話番号確認。SMSリンクを開いて完了する現行MVPの確認。               | コード入力欄として見せず、リンク確認であることを読み上げ。 | uses Text Field base / helper + resend action                    |
 | Search Field       | rest / focused / filled / disabled             | search icon, input, clear button            | ログ、テンプレ一覧、連絡先検索で利用。                                  | clear buttonにラベル付与。                               | h 44 / radius 14 / leading icon 16                              |
 | Text Area          | rest / focused / filled / error / disabled     | label, multiline field, count/helper        | 補足メモ、サポート問い合わせなど任意長文。MVPの主導線では使いすぎない。 | 固定高で切らず可変。                                     | minH 112 / radius 16 / pad 14 / helper caption                  |
 | Toggle             | off / on / focused / disabled                  | label block, switch, helper                 | 通知設定など即時反映設定。                                              | 行全体で押せる。状態読み上げ必須。                       | row minH 52 / switch native / gap 12                            |
@@ -438,7 +438,7 @@ Minimum rules: 通常テキスト 4.5:1 以上、ラージテキスト/主要境
 | Loading Spinner           | indeterminate / paused                        | spinner glyph, optional label            | 3秒未満の待機。長時間はSkeletonか進行文言に置換。              | 単独表示を避け、文言を添える。                          | size 20–24 / stroke 2                         |
 | Skeleton Loader           | base / shimmer / reduced-motion               | shape blocks                             | リストやカードの先読み。構造だけ先に見せる。                   | Reduce Motion時は静止面へ。                             | radius follows target / animation 1.2s linear |
 | Empty State               | neutral / blocked / error                     | icon/illustration, title, body, CTA      | ログなし、連絡先未設定、同意不足など。次アクションを必ず置く。 | イラスト依存にしない。                                  | maxW 320 / gap 8 / title type h2              |
-| Stat Tile                 | default / emphasized                          | label, value, helper                     | 今月のエピソード数や配信成功率など数値要約。                   | 数値と単位を分けて読みやすく。                          | card base / value type h2 / minH 88           |
+| Stat Tile                 | default / emphasized                          | label, value, helper                     | 今月のエピソード数やSMS送信結果など数値要約。                 | 数値と単位を分けて読みやすく。                          | card base / value type h2 / minH 88           |
 
 ## **5.6 Data display**
 
@@ -449,7 +449,7 @@ Minimum rules: 通常テキスト 4.5:1 以上、ラージテキスト/主要境
 | Audit Log Group Header | default / sticky                    | date label, count, divider              | ログを日付単位で区切る。                                   | 見出しレベルを一貫。                | type label / top+bottom spacing 12      |
 | Notification Summary Card | current / monthly                | title, count, explanation, link         | 通知履歴の要約。Historyへの入口を持つ。                    | 件数だけでなく条件と限界も記載。    | card + stat tile pattern / gap 12       |
 | Recipient Tag          | self / contactA / contactB / all    | pill, label                             | 通知先を即読できるよう統一表記。                           | A/B表記だけでなく名前解決も併記可。 | h 24 / radius pill / tone semantic      |
-| Channel Badge          | push / sms / email                  | icon, label                             | ログで送信チャネルを即読する。                             | 頭文字だけにしない。                | h 24 / icon 14 / padX 8                 |
+| Channel Badge          | push / sms                          | icon, label                             | ログで送信チャネルを即読する。                             | 頭文字だけにしない。                | h 24 / icon 14 / padX 8                 |
 | Progress Ring          | normal / warning / critical         | track, progress arc, center value       | 日次達成や経過時間の補助表現。主判断は必ずテキストで併記。 | 円だけに頼らず数値を中央表示。      | size 64–96 / stroke 8                   |
 | Metadata Row           | default                             | label, value                            | 詳細画面の監査情報表示。単位と時刻フォーマットを一定化。   | ラベルと値の対応関係を保持。        | 2-col row / label width 96 / value flex |
 
@@ -459,7 +459,7 @@ Minimum rules: 通常テキスト 4.5:1 以上、ラージテキスト/主要境
 |----------------------|------------------------------|----------------------------------------|--------------------------------------------------------|-----------------------------------|----------------------------------------------------------------|
 | Bottom Sheet         | collapsed / expanded / full  | grabber, header, content, actions      | 短い補足設定や選択に使う。長文の規約表示には使わない。 | スワイプ以外に閉じる手段を置く。  | radius top24 / pad 16 / detents 3 optional                     |
 | Confirmation Dialog  | presented / confirm / cancel | title, body, safe action, risky action | STOPや連絡先削除など、判断が必要な瞬間。              | ボタン文言は動詞で具体化。        | alert base / 2 actions max / destructive secondary if possible |
-| Full-screen Modal    | presented / nested nav       | top bar, content, dismissal            | OTPフローや長い履歴など独立タスクに使う。              | 閉じる導線を常に固定。            | safe-area aware / top bar 56                                   |
+| Full-screen Modal    | presented / nested nav       | top bar, content, dismissal            | SMSリンク確認や長い履歴など独立タスクに使う。          | 閉じる導線を常に固定。            | safe-area aware / top bar 56                                   |
 | Tooltip / Coach Mark | visible / dismissed          | anchor, bubble, arrow, short text      | 初回オンボーディングのみに限定。永続説明には使わない。 | VoiceOver時は通常テキストで代替。 | maxW 240 / radius 12 / shadow 2                                |
 
 ## **5.8 Critical component notes**

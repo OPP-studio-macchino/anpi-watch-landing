@@ -88,7 +88,7 @@ export default function PricingPage() {
                         {
                             href: "/delivery-status",
                             title: "配信結果・通知ログの読み方",
-                            description: "送信済みや配信成功が何を意味するかを確認します。",
+                            description: "送信した記録や届いた可能性が何を意味するかを確認します。",
                         },
                     ]}
                 />

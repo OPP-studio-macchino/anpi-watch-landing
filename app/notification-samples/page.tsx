@@ -110,7 +110,7 @@ export default function NotificationSamplesPage() {
                         purpose="最後の段階として、本人への連絡を試してもらうため"
                         sample="【あんぴッチ】田中さんのOKが48時間ありません。できる範囲で、田中さんへ電話やメッセージで確認してください。"
                         notes={[
-                            "メールにも送る場合があります。",
+                            "48hの最後のSMSです。",
                             "この通知だけで、本人の状況が分かるとは限りません。",
                         ]}
                     />
@@ -119,7 +119,7 @@ export default function NotificationSamplesPage() {
                         target="HELPを送った人"
                         timing="HELP受信時"
                         purpose="通知の目的と停止方法を説明する"
-                        sample="【あんぴッチ】これは、田中さんのOKが長くない時のお知らせです。止めるにはSTOPと返信してください。"
+                        sample="【あんぴッチ】これは、田中さんのOKが長い時間ない時のお知らせです。止めるにはSTOPと返信してください。"
                         notes={[
                             "HELPと返信すると、あんぴッチから届いたSMSの説明が届きます。",
                             "HELPは、本人の状況を確認するものではありません。",

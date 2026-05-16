@@ -246,7 +246,7 @@ export default function HomePage() {
           <div className="cta-card">
             <div>
               <p className="eyebrow">最後に確認</p>
-              <h2>毎日OK。長くない時だけ、順番にお知らせします。</h2>
+              <h2>毎日OK。長い時間OKがない時だけ、順番にお知らせします。</h2>
               <p>
                 毎日OKを1回押します。
                 2人の同意がそろうまで自動通知は始まりません。
