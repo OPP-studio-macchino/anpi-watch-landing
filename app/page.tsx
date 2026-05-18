@@ -130,17 +130,19 @@ export default function HomePage() {
                 <h2>使い方に迷った時</h2>
                 <p>まず3分体験コースを見ます。次に、くわしいマニュアルとFAQを見ます。</p>
                 <div className="actions">
-                    <a href="/manual/tutorial" className="primary">
+                    <Link href="/manual/tutorial" className="primary">
                         3分体験コース
-                    </a>
-                    <a href="/manual" className="secondary">
+                    </Link>
+                    <Link href="/manual" className="secondary">
                         マニュアル
-                    </a>
-                    <a href="/manual/faq" className="secondary">
+                    </Link>
+                    <Link href="/manual/faq" className="secondary">
                         FAQ
-                    </a>
+                    </Link>
+                    <Link href="/support" className="secondary">
+                        サポート
+                    </Link>
                 </div>
-                <a href="mailto:support@anpi-watch.app">support@anpi-watch.app</a>
             </section>
         </main>
     );
