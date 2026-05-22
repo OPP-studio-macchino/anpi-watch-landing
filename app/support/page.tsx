@@ -27,10 +27,10 @@ const supportScopeItems = [
 ];
 
 const relatedLinkRows = [
-  ["利用規約", "未確定"],
-  ["プライバシーポリシー", "未確定"],
-  ["Privacy Choices", "作成方針あり / URL未確定"],
-  ["特商法表記", "未確定"],
+  ["プライバシーポリシー", "/privacy"],
+  ["利用規約", "/terms"],
+  ["特定商取引法に基づく表記", "/tokushoho"],
+  ["Privacy Choices", "/privacy-choices"],
 ];
 
 export default function SupportPage() {
@@ -161,7 +161,7 @@ export default function SupportPage() {
       <TrustSection title="緊急時について">
         <TrustList
           items={[
-            "あんぴッチは救急・警察・消防・医療機関への自動通報サービスではない。",
+            "あんぴッチは救急・警察・消防・医療機関へ連絡するサービスではない。",
             "危険、事故、死亡、病状、所在などを検知するサービスではない。",
             "緊急の危険がある場合は、公的な緊急通報手段や適切な連絡手段を使う。",
           ]}
@@ -176,8 +176,8 @@ export default function SupportPage() {
 
       <TrustSection title="関連リンク">
         <TrustTable
-          caption="正式公開前のため未確定の関連リンク"
-          headers={["項目", "状態"]}
+          caption="公開Legal URL"
+          headers={["項目", "URL"]}
           rows={relatedLinkRows}
         />
       </TrustSection>

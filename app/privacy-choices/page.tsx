@@ -40,18 +40,14 @@ const auditRetentionItems = [
 ];
 
 const relatedLinkRows = [
-  ["利用規約", "未確定"],
-  ["プライバシーポリシー", "未確定"],
-  ["Privacy Choices", "https://anpi-watch.app/privacy-choices 候補 / URL未公開・未確定"],
+  ["プライバシーポリシー", "/privacy"],
+  ["利用規約", "/terms"],
+  ["特定商取引法に基づく表記", "/tokushoho"],
+  ["Privacy Choices", "/privacy-choices"],
   ["Support", "https://anpi-watch.app/support / public verification PASS / App Store Connect入力済み"],
-  ["特商法表記", "未確定"],
 ];
 
 const unresolvedItems = [
-  "Privacy Choices URL",
-  "Privacy Policy URL",
-  "利用規約URL",
-  "特商法URL",
   "問い合わせ時の本人確認方法",
   "アカウント削除手続き",
   "アプリ内Account Deletion導線",
@@ -120,7 +116,7 @@ export default function PrivacyChoicesPage() {
           </TrustCard>
         </TrustGrid>
         <p>
-          誤送信防止、同意証跡、STOP抑止、不正防止、課金状態確認、問い合わせ対応、法的対応、監査のため、必要最小限の情報を一定期間保持する可能性があります。保持する情報の範囲、保持期間、削除または匿名化の方法は、final legal review pendingです。
+          誤送信防止、同意証跡、STOP抑止、不正防止、課金状態確認、問い合わせ対応、法的対応、監査のため、必要最小限の情報を一定期間保持する可能性があります。保持する情報の範囲、保持期間、削除または匿名化の方法は、正式公開前の最終確認中です。
         </p>
       </TrustSection>
 
@@ -235,7 +231,7 @@ export default function PrivacyChoicesPage() {
       <TrustSection title="緊急時について">
         <TrustList
           items={[
-            "あんぴッチは救急・警察・消防・医療機関への自動通報サービスではない。",
+            "あんぴッチは救急・警察・消防・医療機関へ連絡するサービスではない。",
             "危険、事故、死亡、病状、所在などを検知するサービスではない。",
             "緊急の危険がある場合は、公的な緊急通報手段や適切な連絡手段を使う。",
           ]}
@@ -243,7 +239,7 @@ export default function PrivacyChoicesPage() {
       </TrustSection>
 
       <TrustSection title="関連リンク">
-        <TrustTable caption="正式公開前のため未確定の関連リンク" headers={["項目", "状態"]} rows={relatedLinkRows} />
+        <TrustTable caption="公開Legal URL" headers={["項目", "URL"]} rows={relatedLinkRows} />
       </TrustSection>
 
       <TrustSection title="未確定事項">
