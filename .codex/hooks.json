@@ -1,0 +1,69 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$(git rev-parse --show-toplevel)/.codex/hooks/session_context.py\"",
+            "commandWindows": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"$root = git rev-parse --show-toplevel; python \\\"$root/.codex/hooks/session_context.py\\\"\"",
+            "timeout": 10,
+            "statusMessage": "Loading anpitch landing rules"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$(git rev-parse --show-toplevel)/.codex/hooks/user_prompt_guard.py\"",
+            "commandWindows": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"$root = git rev-parse --show-toplevel; python \\\"$root/.codex/hooks/user_prompt_guard.py\\\"\"",
+            "timeout": 10,
+            "statusMessage": "Checking prompt against anpitch policy"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$(git rev-parse --show-toplevel)/.codex/hooks/pre_tool_guard.py\"",
+            "commandWindows": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"$root = git rev-parse --show-toplevel; python \\\"$root/.codex/hooks/pre_tool_guard.py\\\"\"",
+            "timeout": 10,
+            "statusMessage": "Checking tool use against anpitch policy"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$(git rev-parse --show-toplevel)/.codex/hooks/permission_guard.py\"",
+            "commandWindows": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"$root = git rev-parse --show-toplevel; python \\\"$root/.codex/hooks/permission_guard.py\\\"\"",
+            "timeout": 10,
+            "statusMessage": "Checking permission request against anpitch policy"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$(git rev-parse --show-toplevel)/.codex/hooks/stop_policy_check.py\"",
+            "commandWindows": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"$root = git rev-parse --show-toplevel; python \\\"$root/.codex/hooks/stop_policy_check.py\\\"\"",
+            "timeout": 20,
+            "statusMessage": "Running final anpitch policy check"
+          }
+        ]
+      }
+    ]
+  }
+}

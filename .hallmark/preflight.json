@@ -1,0 +1,20 @@
+{
+  "project": "anpi-watch-landing",
+  "framework": "Next.js App Router",
+  "fontStack": "SF Pro Display, SF Pro Text, -apple-system, BlinkMacSystemFont, Noto Sans JP, sans-serif",
+  "palette": "existing anpitch design tokens in app/globals.css",
+  "motion": "motion-cut; no motion dependency detected",
+  "spacing": "existing CSS custom properties, mostly 8px rhythm",
+  "hallmarkSkill": ".agents/skills/hallmark",
+  "genre": "modern-minimal",
+  "macrostructure": "split-studio with rule-line sections",
+  "theme": "custom anpitch quiet trust tokens",
+  "preserve": [
+    "confirmed homepage copy",
+    "pricing copy",
+    "2-person consent copy",
+    "limitation copy",
+    "CTA ids",
+    "legal routes and legal copy"
+  ]
+}

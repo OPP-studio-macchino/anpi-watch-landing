@@ -1,0 +1,499 @@
+{
+  "schema_version": 1,
+  "project": {
+    "name": "anpi-watch-landing",
+    "product_names": ["あんぴッチ", "anpitch", "anpi-watch"],
+    "role_confirmed_from_repo": "Next.js 14 のランディングページ、料金、FAQ、マニュアル、通知説明、Legal / Product / CX レビュー用ドラフトを扱う公開Webプロジェクト。",
+    "framework": {
+      "kind": "Next.js App Router",
+      "sources": ["README.md", "package.json", "next.config.mjs", "app/layout.tsx"],
+      "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+      }
+    },
+    "env_files_found": [],
+    "deploy_scripts_found": [],
+    "forms_and_external_send_found": [
+      {
+        "path": "app/page.tsx",
+        "type": "mailto",
+        "note": "support@anpi-watch.app への mailto リンクのみ確認。フォーム送信、決済リンク、本番送信処理は本リポジトリ内では未確認。"
+      }
+    ],
+    "source_notes": [
+      "README.md: ランディングページ用 Next.js プロジェクト。",
+      "app/layout.tsx: SEO metadata / OGP / Twitter card を定義。",
+      "app/page.tsx, app/pricing/page.tsx, app/how-it-works/page.tsx, app/trust/page.tsx: LP本文、料金、通知説明、免責の主要表示。",
+      "components/faq/faqData.ts, docs/UserManual/*.md: FAQ / マニュアルの主要文言。",
+      "components/legal/legalDraftContent.ts, docs/legal_pages/Legal_Pages_Draft_Implementation_Notes.md: Legalレビュー用ドラフトと未確認事項。",
+      "docs/phase2_wedge_launch/*.md: Launch前レビュー、広告・チャネルテスト、KPIガードレール。"
+    ]
+  },
+  "source_priority": [
+    {
+      "rank": 1,
+      "source": "../anpi-watch/docs/DECISIONS.md",
+      "reason": "2026-05-14更新の現行決定事項。料金、URL同意、BillingEventの扱いを上書き済み。"
+    },
+    {
+      "rank": 2,
+      "source": "../anpi-watch/docs/legal/App_Store_Legal_Checklist.md",
+      "reason": "2026-05-13更新のApp Store / Web法務チェックリスト。Landing Pageにも適用。"
+    },
+    {
+      "rank": 3,
+      "source": "../anpi-watch/docs/legal/Terms_of_Service.md",
+      "reason": "launch_draft の利用規約正本候補。"
+    },
+    {
+      "rank": 4,
+      "source": "components/legal/legalDraftContent.ts",
+      "reason": "landing側のLegalレビュー用ドラフト実装。"
+    },
+    {
+      "rank": 5,
+      "source": "docs/phase2_wedge_launch/Launch_Readiness_Audit.md",
+      "reason": "landing側のLaunch前チェック結果。"
+    },
+    {
+      "rank": 6,
+      "source": "../anpi-watch/CLAUDE.md",
+      "reason": "一部に旧課金仕様が残るため、最新決定と矛盾する場合は要確認扱い。"
+    }
+  ],
+  "confirmed_common_rules": [
+    {
+      "id": "price_monthly_300",
+      "status": "confirmed",
+      "rule": "料金は月額300円を基本表示とする。",
+      "sources": [
+        "app/pricing/page.tsx",
+        "components/faq/faqData.ts",
+        "docs/legal_pages/Legal_Pages_Draft_Implementation_Notes.md",
+        "../anpi-watch/docs/DECISIONS.md",
+        "../anpi-watch/docs/legal/Terms_of_Service.md"
+      ]
+    },
+    {
+      "id": "no_usage_or_episode_charge",
+      "status": "confirmed",
+      "rule": "MVP文言は月額サブスクリプションのみ。36h / 42h / 48h通知は月額300円に含まれ、通知ごとの追加請求はない。",
+      "sources": [
+        "components/legal/legalDraftContent.ts",
+        "docs/legal_pages/Legal_Pages_Draft_Implementation_Notes.md",
+        "../anpi-watch/docs/DECISIONS.md",
+        "../anpi-watch/docs/legal/App_Store_Legal_Checklist.md",
+        "../anpi-watch/docs/legal/Terms_of_Service.md"
+      ]
+    },
+    {
+      "id": "two_url_consents_required",
+      "status": "confirmed",
+      "rule": "連絡先A/Bの2名URL同意が揃うまで連絡先通知は開始されない。",
+      "sources": [
+        "app/page.tsx",
+        "app/how-it-works/page.tsx",
+        "app/for-contacts/page.tsx",
+        "components/faq/faqData.ts",
+        "../anpi-watch/docs/DECISIONS.md",
+        "../anpi-watch/docs/legal/Terms_of_Service.md"
+      ]
+    },
+    {
+      "id": "fixed_timeline",
+      "status": "confirmed",
+      "rule": "通知タイムラインは 24h 本人Push、30h 本人SMS、36h 連絡先A SMS、42h 連絡先B SMS、48h A/B最終SMS を基本とする。",
+      "sources": [
+        "app/how-it-works/page.tsx",
+        "components/faq/faqData.ts",
+        "docs/UserManual/User_Manual.md",
+        "../anpi-watch/docs/legal/Terms_of_Service.md",
+        "../anpi-watch/docs/beta0_contact_guide.md"
+      ]
+    },
+    {
+      "id": "no_public_agency_auto_report",
+      "status": "confirmed",
+      "rule": "警察、消防、救急、自治体、病院、警備会社への自動通報または代行通報サービスではない。",
+      "sources": [
+        "app/how-it-works/page.tsx",
+        "app/for-contacts/page.tsx",
+        "app/trust/page.tsx",
+        "components/legal/legalDraftContent.ts",
+        "../anpi-watch/docs/legal/Terms_of_Service.md"
+      ]
+    },
+    {
+      "id": "no_lifesaving_or_detection_guarantee",
+      "status": "confirmed",
+      "rule": "危険、事故、死亡、病状、所在を検知せず、救命、救助、発見、所在確認、通知到達、連絡先の行動を保証しない。",
+      "sources": [
+        "app/pricing/page.tsx",
+        "app/trust/page.tsx",
+        "components/faq/faqData.ts",
+        "docs/phase2_wedge_launch/Launch_Readiness_Audit.md",
+        "../anpi-watch/docs/legal/Terms_of_Service.md"
+      ]
+    },
+    {
+      "id": "not_medical_security_care_service",
+      "status": "confirmed",
+      "rule": "医療、救命、警備、介護、公的緊急通報の代替に見える表現を使わない。",
+      "sources": [
+        "../anpi-watch/docs/legal/App_Store_Legal_Checklist.md",
+        "../anpi-watch/docs/legal/Terms_of_Service.md",
+        "app/trust/page.tsx"
+      ]
+    },
+    {
+      "id": "do_not_generate_critical_copy",
+      "status": "confirmed_from_agents_and_docs",
+      "rule": "Codexは実装担当。重要なLPコピー、料金文言、FAQ、利用規約、免責、法務文言は勝手に新規作成・改変しない。人間またはChatGPTで確定した文言を反映する。",
+      "sources": ["AGENTS.md", "docs/legal_pages/Legal_Pages_Draft_Implementation_Notes.md"]
+    },
+    {
+      "id": "no_prod_deploy_or_real_sending",
+      "status": "confirmed",
+      "rule": "Vercel CLI、本番deploy、本番SSH、本番DB、本番SMS/Push/Email、課金開始、返金、外部通知、広告配信、App Store Connect商品作成はCodexが実行しない。",
+      "sources": [
+        "AGENTS.md",
+        "docs/legal_pages/Legal_Pages_Draft_Implementation_Notes.md",
+        "docs/phase2_wedge_launch/Channel_Test_Plan.md",
+        "../anpi-watch/AGENTS.md",
+        "../anpi-watch-web/AGENTS.md"
+      ]
+    }
+  ],
+  "landing_specific_rules": [
+    {
+      "id": "scan_hidden_copy",
+      "status": "confirmed",
+      "rule": "SEO title/description、OGP、Twitter card、manifest description、画像alt、aria-label、JSON-LD、FAQデータ、マニュアルMarkdownもLP文言として検査対象にする。",
+      "sources": ["app/layout.tsx", "app/app/layout.tsx", "public/site.webmanifest", "components/faq/faqData.ts", "docs/UserManual/*.md"]
+    },
+    {
+      "id": "legal_review_routes_are_drafts",
+      "status": "confirmed",
+      "rule": "/legal-review/* はLegal / Product / CXレビュー用Draft。正式Legal URL、本番公開、App Store提出には使わない。",
+      "sources": ["components/legal/legalDraftContent.ts", "docs/legal_pages/Legal_Pages_Draft_Implementation_Notes.md"]
+    },
+    {
+      "id": "launch_go_conditions",
+      "status": "confirmed",
+      "rule": "Launch Goは最新build通過、Legal / CX / Productレビュー完了、App Store提出文言との整合確認が条件。広告開始、商品作成、本番課金開始は対象外。",
+      "sources": ["docs/phase2_wedge_launch/Launch_Readiness_Audit.md", "docs/phase2_wedge_launch/Channel_Test_Plan.md"]
+    },
+    {
+      "id": "free_or_campaign_claims_need_confirmation",
+      "status": "inferred_from_no_free_trial_decision",
+      "rule": "無料、完全無料、一生無料、無料トライアル、初期費用なし、割引、キャンペーンは、根拠資料がない限り要確認。初回提出ではFree Trial none。",
+      "sources": ["../anpi-watch/docs/DECISIONS.md"]
+    }
+  ],
+  "cross_project_consistency": [
+    {
+      "item": "料金",
+      "expected": "月額300円。",
+      "status": "confirmed",
+      "sources": ["../anpi-watch/docs/DECISIONS.md", "app/pricing/page.tsx"]
+    },
+    {
+      "item": "追加請求の有無",
+      "expected": "通知ごとの追加請求なし。36h / 42h / 48h通知は月額300円に含まれる。",
+      "status": "confirmed_with_conflict",
+      "sources": ["../anpi-watch/docs/DECISIONS.md", "../anpi-watch/docs/legal/Terms_of_Service.md"],
+      "conflict": "../anpi-watch/CLAUDE.md には旧仕様の月額 + エピソード課金が残る。最新DECISIONSでは上書き済みだが、他プロジェクトの古い文書が残っていないか要確認。"
+    },
+    {
+      "item": "通知開始条件",
+      "expected": "本人確認後にOK記録は可能。連絡先通知は連絡先A/Bの2名URL同意後のみ。",
+      "status": "confirmed",
+      "sources": ["docs/UserManual/User_Manual.md", "../anpi-watch/docs/legal/Terms_of_Service.md"]
+    },
+    {
+      "item": "2名同意ルール",
+      "expected": "連絡先A/Bの2名が必要。代理同意ではなくURL同意。",
+      "status": "confirmed",
+      "sources": ["../anpi-watch/docs/DECISIONS.md", "app/for-contacts/page.tsx"]
+    },
+    {
+      "item": "公的機関への自動通報の有無",
+      "expected": "自動通報なし、代行通報なし。",
+      "status": "confirmed",
+      "sources": ["../anpi-watch/docs/legal/Terms_of_Service.md", "app/trust/page.tsx"]
+    },
+    {
+      "item": "救命保証しないこと",
+      "expected": "救命、救助、発見、所在確認、通知到達、連絡先行動を保証しない。",
+      "status": "confirmed",
+      "sources": ["../anpi-watch/docs/legal/Terms_of_Service.md", "docs/phase2_wedge_launch/Launch_Readiness_Audit.md"]
+    },
+    {
+      "item": "医療/警備/介護サービスではないこと",
+      "expected": "医療、救命、緊急通報、警備、介護の代替と見せない。",
+      "status": "confirmed_for_medical_security_in_main_docs",
+      "sources": ["../anpi-watch/docs/legal/App_Store_Legal_Checklist.md", "../anpi-watch/docs/legal/Terms_of_Service.md"],
+      "note": "介護サービス表現は明示資料が少ないため、LP上では要確認扱いで警告する。"
+    },
+    {
+      "item": "免責文言",
+      "expected": "正本は anpi-watch/docs/legal/。landing側の/legal-review/*はDraftで本番用ではない。",
+      "status": "partial_confirmation",
+      "sources": ["../anpi-watch/docs/legal/Terms_of_Service.md", "docs/legal_pages/Legal_Pages_Draft_Implementation_Notes.md"],
+      "note": "正式公開URLとLegal最終レビューは未確定。"
+    },
+    {
+      "item": "利用者向け説明",
+      "expected": "毎日OK、2名URL同意、通知の限界、月額300円を一貫させる。",
+      "status": "confirmed",
+      "sources": ["docs/UserManual/User_Manual.md", "../anpi-watch/docs/beta0_contact_guide.md", "../anpi-watch-web/app/contact-restart/page.tsx"]
+    },
+    {
+      "item": "FAQ",
+      "expected": "料金、2名URL同意、できないこと、通知到達保証なしを一貫させる。",
+      "status": "confirmed_for_landing",
+      "sources": ["components/faq/faqData.ts", "docs/UserManual/FAQ.md"],
+      "note": "anpi-watch-web側にFAQ正本は見つけていないため、Web側追加時は整合確認が必要。"
+    },
+    {
+      "item": "通知文面",
+      "expected": "24/30/36/42/48h、STOP/HELP/START、URL同意、通知到達保証なしを揃える。",
+      "status": "cross_project_check_required",
+      "sources": ["app/notification-samples/page.tsx", "../anpi-watch/docs/beta0_contact_guide.md", "../anpi-watch-web/app/contact-restart/page.tsx"],
+      "note": "SMS実装テンプレート本体との最終照合が必要。"
+    },
+    {
+      "item": "課金状態",
+      "expected": "BillingEventは課金ではなく通知エピソード監査ログ。追加請求に見せない。",
+      "status": "confirmed_with_legacy_name_risk",
+      "sources": ["../anpi-watch/docs/DECISIONS.md", "components/legal/legalDraftContent.ts"]
+    },
+    {
+      "item": "ユーザー状態",
+      "expected": "OK記録、同意状態、STOP状態、通知稼働可能状態を混同しない。",
+      "status": "cross_project_check_required",
+      "sources": ["../anpi-watch/docs/DECISIONS.md", "../anpi-watch-web/README.md"]
+    },
+    {
+      "item": "管理者権限",
+      "expected": "LP上で管理者操作や本番運用権限を訴求しない。",
+      "status": "other_projects_check_required",
+      "sources": ["AGENTS.md"]
+    },
+    {
+      "item": "個人情報の扱い",
+      "expected": "電話番号、連絡先名、通知ログ、同意ログ、STOP/HELP、IP/UA等の扱いはLegal正本と一致させる。",
+      "status": "partial_confirmation",
+      "sources": ["components/legal/legalDraftContent.ts", "../anpi-watch/docs/legal/Terms_of_Service.md"],
+      "note": "Privacy Policy URL、削除方針、App Privacy回答は未確定。"
+    },
+    {
+      "item": "外部送信",
+      "expected": "Twilio、APNs、App Store / StoreKit、hosting、analytics等は実装とLegal文書で一致させる。",
+      "status": "cross_project_check_required",
+      "sources": ["components/legal/legalDraftContent.ts", "../anpi-watch/docs/legal/App_Store_Legal_Checklist.md"]
+    },
+    {
+      "item": "本番deploy",
+      "expected": "Codexは本番deploy、Vercel CLI、production SSH、production DB、SMS/Push/Email実送信、課金開始をしない。",
+      "status": "confirmed",
+      "sources": ["AGENTS.md", "../anpi-watch/AGENTS.md", "../anpi-watch-web/AGENTS.md"]
+    }
+  ],
+  "protected_paths": {
+    "secret_or_auth_paths_block": [
+      ".env",
+      ".env.*",
+      "*.env",
+      "*.pem",
+      "*.key",
+      "*.p12",
+      "*.p8",
+      ".vercel/**",
+      "id_rsa",
+      "id_ed25519"
+    ],
+    "marketing_copy_paths": [
+      "app/**/*.tsx",
+      "components/**/*.tsx",
+      "components/**/*.ts",
+      "docs/UserManual/**/*.md",
+      "docs/phase2_wedge_launch/**/*.md",
+      "docs/legal_pages/**/*.md",
+      "public/site.webmanifest"
+    ],
+    "critical_copy_paths": [
+      "app/layout.tsx",
+      "app/app/layout.tsx",
+      "app/page.tsx",
+      "app/pricing/page.tsx",
+      "app/how-it-works/page.tsx",
+      "app/trust/page.tsx",
+      "app/before-you-start/page.tsx",
+      "app/for-family/page.tsx",
+      "app/for-contacts/page.tsx",
+      "app/share-message/page.tsx",
+      "app/notification-samples/page.tsx",
+      "app/delivery-status/page.tsx",
+      "app/legal-review/**/*.tsx",
+      "components/faq/faqData.ts",
+      "components/legal/legalDraftContent.ts",
+      "docs/UserManual/**/*.md",
+      "public/site.webmanifest"
+    ],
+    "ignore_for_policy_scan": [
+      ".codex/**",
+      "node_modules/**",
+      ".next/**",
+      "dist/**",
+      "build/**",
+      "package-lock.json",
+      "*.png",
+      "*.jpg",
+      "*.jpeg",
+      "*.webp",
+      "*.gif",
+      "*.ico",
+      "*.docx"
+    ]
+  },
+  "dangerous_commands": {
+    "block": [
+      {"id": "vercel_cli", "pattern": "\\bvercel\\b", "message": "Vercel CLIは認証・deploy・環境変数・project linkに触れる可能性があるため、このプロジェクトでは明示指示なしに実行しません。"},
+      {"id": "netlify_deploy", "pattern": "\\bnetlify\\s+deploy\\b", "message": "Netlify deployは公開サイト更新に直結するためブロックします。"},
+      {"id": "firebase_deploy", "pattern": "\\bfirebase\\s+deploy\\b", "message": "Firebase Hosting deployは公開サイト更新に直結するためブロックします。"},
+      {"id": "production_ssh_root", "pattern": "\\bssh\\s+[^\\n]*root@", "message": "production SSHは禁止です。必要なら手動手順だけを提示してください。"},
+      {"id": "prod_opt_path", "pattern": "/opt/anpi-watch", "message": "production配下の変更は禁止です。"},
+      {"id": "prod_docker_compose", "pattern": "docker-compose\\s+-f\\s+docker-compose\\.prod\\.yml", "message": "production Docker操作は禁止です。"},
+      {"id": "run_escalation", "pattern": "\\brun_escalation\\b", "message": "run_escalationは通知送信や本番データ変更につながるためブロックします。"},
+      {"id": "twilio_send", "pattern": "\\b(twilio|send_sms|send-sms)\\b.*\\b(send|messages|api)\\b", "message": "SMS実送信につながるコマンドはブロックします。"},
+      {"id": "stripe_or_billing", "pattern": "\\b(stripe|storekit|refund|課金開始|返金)\\b", "message": "課金開始、返金、決済操作に見えるコマンドはブロックします。"},
+      {"id": "bulk_email", "pattern": "\\b(mailchimp|sendgrid|aws\\s+ses|sesv2|bulk email|一斉送信)\\b", "message": "メール一斉送信や外部通知はブロックします。"},
+      {"id": "destructive_git", "pattern": "\\bgit\\s+(reset\\s+--hard|clean\\s+-fd|checkout\\s+--)\\b", "message": "作業ツリー破壊につながるgit操作はブロックします。"},
+      {"id": "dangerous_rm", "pattern": "\\brm\\s+-rf\\s+(/|\\$HOME|~|\\.\\.)", "message": "広範囲削除はブロックします。"},
+      {"id": "env_dump", "pattern": "\\b(printenv|env)\\b\\s*(\\||>|$)|\\b(cat|sed|less|more)\\b\\s+\\.env", "message": ".envや環境変数の読み出しは秘密情報漏えいにつながるためブロックします。"}
+    ],
+    "warn": [
+      {"id": "curl_post_external", "pattern": "\\bcurl\\b[^\\n]*(--request\\s+POST|-X\\s*POST)\\b", "message": "外部POST送信は、フォーム送信・通知・課金・公開更新につながらないか確認が必要です。"},
+      {"id": "npm_run_deploy", "pattern": "\\bnpm\\s+run\\s+deploy\\b", "message": "deploy scriptは公開更新の可能性があるため確認が必要です。"},
+      {"id": "git_push_main_prod", "pattern": "\\bgit\\s+push\\b[^\\n]*(main|production|prod)", "message": "main/prodへのpushは公開・CI連動の可能性があるため確認が必要です。"}
+    ]
+  },
+  "secret_patterns": [
+    {"id": "openai_key", "pattern": "\\bsk-(?:proj-)?[A-Za-z0-9_-]{20,}\\b", "message": "OpenAI APIキーらしき値を検出しました。"},
+    {"id": "github_token", "pattern": "\\b(?:ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9_]{20,}\\b|\\bgithub_pat_[A-Za-z0-9_]{20,}\\b", "message": "GitHub tokenらしき値を検出しました。"},
+    {"id": "aws_key", "pattern": "\\b(?:AKIA|ASIA)[A-Z0-9]{16}\\b", "message": "AWS access keyらしき値を検出しました。"},
+    {"id": "stripe_secret", "pattern": "\\b(?:sk|rk)_(?:live|test)_[A-Za-z0-9]{16,}\\b", "message": "Stripe secret keyらしき値を検出しました。"},
+    {"id": "twilio_token_assignment", "pattern": "(?i)\\bTWILIO_[A-Z0-9_]*(?:TOKEN|SECRET|KEY)\\b\\s*[:=]\\s*['\\\"]?[^\\s'\\\"]{12,}", "message": "Twilio秘密値らしき代入を検出しました。"},
+    {"id": "firebase_google_api", "pattern": "\\bAIza[0-9A-Za-z_-]{25,}\\b", "message": "Google/Firebase APIキーらしき値を検出しました。"},
+    {"id": "private_key", "pattern": "-----BEGIN [A-Z0-9 ]*PRIVATE KEY-----", "message": "秘密鍵らしき値を検出しました。"},
+    {"id": "generic_secret_assignment", "pattern": "(?i)\\b(?:API_KEY|SECRET|TOKEN|PASSWORD|PRIVATE_KEY|AUTH_TOKEN)\\b\\s*[:=]\\s*['\\\"]?[A-Za-z0-9_./+=-]{16,}", "message": "秘密情報らしき代入を検出しました。"}
+  ],
+  "copy_patterns": {
+    "allowed_price_yen": 300,
+    "price_context_words": ["月額", "毎月", "料金", "価格", "サブスクリプション", "税込", "円/月"],
+    "block_phrases": [
+      {"id": "lifesaving_guarantee", "patterns": ["救命保証", "必ず助ける", "必ず助けます", "必ず助かる", "必ず助かります", "助けが来ます", "すぐ助けが来る", "命を守る", "100%安心", "100％安心", "絶対安全", "24時間監視", "これで安心", "このアプリがあれば安心"], "message": "救命・安全・安心を保証する表現に見えます。"},
+      {"id": "detection_overclaim", "patterns": ["危険を検知", "死亡を検知", "病気を検知", "事故を検知", "異常を検知", "孤独死を防ぐ", "孤独死防止", "必ず気づける", "確実に届く"], "message": "危険検知・死亡検知・通知到達保証に見える表現です。"},
+      {"id": "public_agency_auto_report", "patterns": ["自動で119", "119番通報", "自動で救急", "自動で消防", "自動で警察", "救急車を自動", "消防へ自動", "警察へ自動", "公的機関へ自動", "自動通報サービス"], "message": "公的機関への自動通報に見える表現です。"},
+      {"id": "single_consent_start", "patterns": ["1人登録すれば通知開始", "1名だけで見守り開始", "1人だけで通知開始", "連絡先1人で開始", "1名の同意で開始", "1人の同意で開始"], "message": "2名URL同意ルールと矛盾する表現です。"},
+      {"id": "wrong_service_category", "patterns": ["医療サービス", "救命サービス", "警備サービス", "介護サービス", "緊急通報サービス"], "message": "医療・救命・警備・介護・緊急通報サービスと誤認される表現です。"}
+    ],
+    "billing_block_patterns": [
+      "追加請求あり",
+      "追加料金がかか",
+      "追加料金あり",
+      "従量課金",
+      "エピソード課金",
+      "通知ごとに課金",
+      "通知ごとの課金",
+      "通知ごとに請求",
+      "1回分の追加料金",
+      "1回分のエピソード課金",
+      "36h.*課金",
+      "36時間.*課金"
+    ],
+    "free_or_campaign_warning_patterns": [
+      "無料",
+      "完全無料",
+      "一生無料",
+      "初期費用なし",
+      "無料トライアル",
+      "割引",
+      "キャンペーン",
+      "追加費用なし"
+    ],
+    "negative_or_audit_context_words": [
+      "ではない",
+      "ではありません",
+      "しません",
+      "しない",
+      "保証しません",
+      "保証しない",
+      "保証するものではありません",
+      "ありません",
+      "なし",
+      "発生しません",
+      "含まれ",
+      "作成しません",
+      "未実装",
+      "未確認",
+      "要確認",
+      "禁止",
+      "No-Go",
+      "Launch No-Go",
+      "誤認",
+      "検出",
+      "ブロック",
+      "使わない",
+      "除外",
+      "期待している",
+      "合わない",
+      "旧仕様",
+      "修正対象",
+      "サンプルとして禁止",
+      "not used",
+      "none"
+    ],
+    "critical_copy_keywords": [
+      "料金",
+      "月額",
+      "無料",
+      "FAQ",
+      "免責",
+      "利用規約",
+      "プライバシ",
+      "特商法",
+      "Legal",
+      "救命",
+      "救助",
+      "発見",
+      "所在",
+      "自動通報",
+      "救急",
+      "消防",
+      "警察",
+      "医療",
+      "警備",
+      "介護",
+      "同意",
+      "通知",
+      "title",
+      "description",
+      "openGraph",
+      "twitter",
+      "alt",
+      "aria-label"
+    ]
+  },
+  "prompt_guard": {
+    "block_generation_patterns": [
+      "(LP|ランディング|料金|FAQ|利用規約|免責|法務|プライバシ|特商法|OGP|SEO|広告|CTA).{0,40}(書いて|作って|生成して|考えて|盛って|強くして|訴求して)",
+      "(救命保証|自動通報|100%安心|完全無料|追加請求あり).{0,40}(入れて|書いて|訴求)"
+    ],
+    "allowed_when_prompt_mentions": ["確定文言", "ChatGPTが作成", "人間が確定", "この文言をそのまま反映", "レビュー用に検出", "禁止表現として"]
+  }
+}

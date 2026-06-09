@@ -8,6 +8,9 @@ import {
     TrustSection,
 } from "../../components/trust-foundation/TrustFoundationPage";
 
+const appStoreUrl =
+    "https://apps.apple.com/jp/app/%E3%81%82%E3%82%93%E3%81%B4%E3%83%83%E3%83%81/id6763868893";
+
 export const metadata: Metadata = {
     title: "料金・課金方針 | あんぴッチ",
     description:
@@ -64,7 +67,7 @@ export default function PricingPage() {
                 <TrustGrid>
                     <TrustCard title="月額300円">
                         <p>
-                            1ユーザーごとの月額サブスクリプションです。料金は月額300円です。
+                            ダウンロードは無料です。利用には月額300円のサブスクリプションが必要です。連絡先へのお知らせに追加料金はかかりません。
                         </p>
                     </TrustCard>
                     <TrustCard title="月額料金に含まれるもの">
@@ -73,6 +76,15 @@ export default function PricingPage() {
                         </p>
                     </TrustCard>
                 </TrustGrid>
+                <div className="actions">
+                    <a
+                        href={appStoreUrl}
+                        className="primary"
+                        data-cta-id="pricing_appstore"
+                    >
+                        App Storeで見る
+                    </a>
+                </div>
             </TrustSection>
 
             <TrustSection title="月額300円に含まれるもの">

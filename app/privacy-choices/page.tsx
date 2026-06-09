@@ -24,8 +24,6 @@ const plannedItems = [
   "削除される可能性があるデータ",
   "保持される可能性がある最小限の監査情報",
   "本人確認方法",
-  "処理期間",
-  "未確定事項",
 ];
 
 const auditRetentionItems = [
@@ -44,22 +42,7 @@ const relatedLinkRows = [
   ["利用規約", "/terms"],
   ["特定商取引法に基づく表記", "/tokushoho"],
   ["Privacy Choices", "/privacy-choices"],
-  ["Support", "https://anpi-watch.app/support / public verification PASS / App Store Connect入力済み"],
-];
-
-const unresolvedItems = [
-  "問い合わせ時の本人確認方法",
-  "アカウント削除手続き",
-  "アプリ内Account Deletion導線",
-  "連絡先本人からの削除請求フロー",
-  "STOP、同意撤回、再同意の案内",
-  "データ保持期間",
-  "削除または匿名化の方法",
-  "support provider、hosting、Twilio、Apple、Resend、Forward Email等の外部サービスにおける保持・削除の扱い",
-  "App Privacy final answer",
-  "tracking final判断",
-  "linked-to-user final判断",
-  "final legal review",
+  ["Support", "/support"],
 ];
 
 export default function PrivacyChoicesPage() {
@@ -76,7 +59,7 @@ export default function PrivacyChoicesPage() {
               データに関する問い合わせは、support@anpi-watch.app までご連絡ください。
             </p>
           </TrustCard>
-          <TrustCard title="このページで扱う予定の内容">
+          <TrustCard title="このページで扱う内容">
             <TrustList items={plannedItems} />
           </TrustCard>
         </TrustGrid>
@@ -89,9 +72,9 @@ export default function PrivacyChoicesPage() {
               アカウント削除を希望する場合は、support@anpi-watch.app までご連絡ください。
             </p>
           </TrustCard>
-          <TrustCard title="アプリ内導線について">
+          <TrustCard title="削除と個人情報の取り扱い">
             <p>
-              正式公開時には、アプリ内からアカウント削除手続きを開始できる導線を用意する必要があります。現時点では、アプリ内導線の実装は未完です。
+              アカウント削除や個人情報の取り扱いについては、サポート窓口からご連絡ください。本人確認のうえ、法令・利用規約・プライバシーポリシーに基づいて対応します。
             </p>
           </TrustCard>
           <TrustCard title="Appleサブスクリプションとの関係">
@@ -109,14 +92,14 @@ export default function PrivacyChoicesPage() {
               データ削除を希望する場合は、support@anpi-watch.app までご連絡ください。
             </p>
           </TrustCard>
-          <TrustCard title="最終確認中の項目">
+          <TrustCard title="削除と個人情報の取り扱い">
             <p>
-              削除できるデータ、削除または匿名化する方法、保持する可能性がある最小限の監査情報、処理期間は、正式公開前の最終確認中です。
+              アカウント削除や個人情報の取り扱いについては、サポート窓口からご連絡ください。本人確認のうえ、法令・利用規約・プライバシーポリシーに基づいて対応します。
             </p>
           </TrustCard>
         </TrustGrid>
         <p>
-          誤送信防止、同意証跡、STOP抑止、不正防止、課金状態確認、問い合わせ対応、法的対応、監査のため、必要最小限の情報を一定期間保持する可能性があります。保持する情報の範囲、保持期間、削除または匿名化の方法は、正式公開前の最終確認中です。
+          アカウント削除や個人情報の取り扱いについては、サポート窓口からご連絡ください。本人確認のうえ、法令・利用規約・プライバシーポリシーに基づいて対応します。
         </p>
       </TrustSection>
 
@@ -134,7 +117,7 @@ export default function PrivacyChoicesPage() {
           </TrustCard>
           <TrustCard title="別の本人確認・受付フロー">
             <p>
-              連絡先本人からの請求では、ユーザー本人のアカウント削除とは別の本人確認・受付フローが必要です。正式な受付方法、本人確認方法、処理期間は未確定です。
+              アカウント削除や個人情報の取り扱いについては、サポート窓口からご連絡ください。本人確認のうえ、法令・利用規約・プライバシーポリシーに基づいて対応します。
             </p>
           </TrustCard>
         </TrustGrid>
@@ -154,7 +137,7 @@ export default function PrivacyChoicesPage() {
           </TrustCard>
         </TrustGrid>
         <p>
-          再同意、STOP抑止情報、同意証跡の保持範囲と保持期間は、正式公開前の最終確認中です。
+          アカウント削除や個人情報の取り扱いについては、サポート窓口からご連絡ください。本人確認のうえ、法令・利用規約・プライバシーポリシーに基づいて対応します。
         </p>
       </TrustSection>
 
@@ -167,7 +150,7 @@ export default function PrivacyChoicesPage() {
           </TrustCard>
           <TrustCard title="扱う場合がある情報">
             <p>
-              問い合わせ対応のために、メールアドレス、問い合わせ内容、対応履歴などを扱う場合があります。問い合わせ対応完了後の保持期間、削除または匿名化の方法は未確定です。
+              問い合わせ対応のために、メールアドレス、問い合わせ内容、対応履歴などを扱う場合があります。アカウント削除や個人情報の取り扱いについては、サポート窓口からご連絡ください。本人確認のうえ、法令・利用規約・プライバシーポリシーに基づいて対応します。
             </p>
           </TrustCard>
         </TrustGrid>
@@ -211,20 +194,17 @@ export default function PrivacyChoicesPage() {
           アカウント削除、連絡先削除、STOP、同意撤回、サブスクリプション解約、問い合わせ削除等があった場合でも、以下の目的のために、必要最小限の情報を保持する可能性があります。
         </p>
         <TrustList items={auditRetentionItems} />
-        <p>保持する情報の範囲、保持期間、削除または匿名化の方法は未確定です。</p>
+        <p>
+          アカウント削除や個人情報の取り扱いについては、サポート窓口からご連絡ください。本人確認のうえ、法令・利用規約・プライバシーポリシーに基づいて対応します。
+        </p>
       </TrustSection>
 
       <TrustSection title="本人確認">
         <p>
           アカウント削除、データ削除、連絡先本人からの削除請求、問い合わせ情報の削除などでは、誤削除や第三者による不正な請求を防ぐため、本人確認が必要になる場合があります。
         </p>
-        <p>本人確認方法は未確定です。</p>
-      </TrustSection>
-
-      <TrustSection title="処理期間">
-        <p>削除請求や確認請求への対応期間は未確定です。</p>
         <p>
-          正式公開前に、処理期間、対応時間、休日対応、本人確認方法を確定する必要があります。
+          本人確認のうえ、法令・利用規約・プライバシーポリシーに基づいて対応します。
         </p>
       </TrustSection>
 
@@ -242,9 +222,6 @@ export default function PrivacyChoicesPage() {
         <TrustTable caption="公開Legal URL" headers={["項目", "URL"]} rows={relatedLinkRows} />
       </TrustSection>
 
-      <TrustSection title="未確定事項">
-        <TrustList items={unresolvedItems} />
-      </TrustSection>
     </TrustPage>
   );
 }

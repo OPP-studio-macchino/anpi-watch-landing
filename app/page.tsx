@@ -1,148 +1,252 @@
 import Link from "next/link";
 
+const appStoreUrl =
+    "https://apps.apple.com/jp/app/%E3%81%82%E3%82%93%E3%81%B4%E3%83%83%E3%83%81/id6763868893";
+
+const facts = [
+    {
+        title: "毎日1回OK",
+        body: "毎日1回、OKを押す。押せなかった時は、決めた人へ知らせる。",
+    },
+    {
+        title: "2人が同意してから開始",
+        body: "お知らせ先の2人が同意してから始まります。勝手に誰かへ通知されることはありません。",
+    },
+    {
+        title: "月額300円・通知追加料金なし",
+        body: "ダウンロードは無料です。利用には月額300円のサブスクリプションが必要です。連絡先へのお知らせに追加料金はかかりません。",
+    },
+];
+
+const ruleSteps = [
+    { time: "24h", target: "本人", method: "Push" },
+    { time: "30h", target: "本人", method: "SMS" },
+    { time: "36h", target: "連絡先A", method: "SMS" },
+    { time: "42h", target: "連絡先B", method: "SMS" },
+    { time: "48h", target: "連絡先A/B", method: "最終SMS" },
+];
+
+const lowerLinks = [
+    {
+        href: "/notification-samples",
+        title: "通知サンプル",
+        description: "連絡先に届く文面を見る",
+        ctaId: "home_hero_notification_samples",
+    },
+    {
+        href: "/before-you-start",
+        title: "登録前チェックリスト",
+        description: "登録前チェックリストを見る",
+        ctaId: "home_before_start",
+    },
+    {
+        href: "/for-contacts",
+        title: "連絡先向け説明",
+        description: "連絡先としてSMSを受け取る方へ",
+        ctaId: "home_contact_samples",
+    },
+    {
+        href: "/manual/faq",
+        title: "FAQ",
+        description: "よくある質問を見る",
+        ctaId: "home_faq",
+    },
+];
+
 export default function HomePage() {
     return (
-        <main className="wrapper">
-            <section className="hero">
-                <p className="badge">あんぴッチ</p>
-                <h1>反応が途切れた時の連絡ルールを、先に決めておく。</h1>
-                <p className="lead">
-                    あんぴッチは、毎日のOKが一定時間途切れた場合に、登録・同意済みの連絡先へ段階通知を試行するアプリです。
-                </p>
-                <p className="lead">
-                    本人が24時間以上OKを押していない場合は本人へ、36時間以上続くと登録・同意済みの連絡先へ通知します。
-                </p>
-                <div className="actions">
-                    <Link href="/how-it-works" className="primary">
-                        48時間の通知ルールを見る
-                    </Link>
-                    <Link href="/notification-samples" className="secondary">
-                        連絡先に届く文面を見る
-                    </Link>
-                    <Link href="/before-you-start" className="secondary">
-                        登録前チェックリストを見る
-                    </Link>
-                </div>
-            </section>
-
-            <section id="features" className="features">
-                <article>
-                    <h2>毎日すること</h2>
-                    <p>
-                        アプリのホームでOKを1回押します。押した時だけ、今の時刻で安否OKを記録します。
+        <main className="hm-home">
+            <section className="hm-hero" aria-labelledby="home-title">
+                <picture className="hm-hero__background">
+                    <source
+                        media="(max-width: 41.9375rem)"
+                        srcSet="/anpittchi-hero-night-apartment-mobile.webp"
+                    />
+                    <img
+                        src="/anpittchi-hero-night-apartment-desktop.webp"
+                        alt="月明かりの少ない夜に窓のあかりが見える南仏のアパートメントの外観"
+                        width={1916}
+                        height={821}
+                        loading="eager"
+                        decoding="async"
+                    />
+                </picture>
+                <div className="hm-hero__copy">
+                    <div className="hm-brand" aria-label="あんぴッチ iPhoneアプリ">
+                        <span className="hm-brand__mark" aria-hidden="true">
+                            <span />
+                        </span>
+                        <p className="hm-brand__name">あんぴッチ</p>
+                        <span className="hm-brand__chip">iPhoneアプリ</span>
+                    </div>
+                    <h1 id="home-title" className="hm-hero__title">
+                        <span>毎日1回、OKを押す。</span>
+                        <span>押せなかった時は、</span>
+                        <span>決めた人へ知らせる。</span>
+                    </h1>
+                    <p className="hm-hero__lead">
+                        あんぴッチは、ひとり暮らしの方が、もし何日も連絡できなかった時に、前もって決めた人へお知らせするiPhoneアプリです。
                     </p>
-                </article>
-                <article>
-                    <h2>連絡の順番</h2>
-                    <p>
-                        24時間で本人へ通知、30時間で本人SMS、36時間で連絡先A、42時間で連絡先B、48時間でA/BへSMS送信を試行します。
+                    <div className="hm-hero__actions" aria-label="あんぴッチの主要な導線">
+                        <a
+                            href={appStoreUrl}
+                            className="primary"
+                            data-cta-id="home_hero_appstore"
+                        >
+                            App Storeで見る
+                        </a>
+                        <Link
+                            href="/for-family"
+                            className="secondary"
+                            data-cta-id="home_hero_referrer_guide"
+                        >
+                            家族・知人に紹介する前に確認する
+                        </Link>
+                    </div>
+                    <p className="hm-hero__price-note">
+                        ダウンロードは無料です。利用には月額300円のサブスクリプションが必要です。連絡先へのお知らせに追加料金はかかりません。
                     </p>
-                </article>
-                <article>
-                    <h2>月額300円</h2>
-                    <p>料金は月額300円です。</p>
-                </article>
-                <article>
-                    <h2>このアプリがしないこと</h2>
+                </div>
+            </section>
+
+            <section className="hm-ledger" aria-labelledby="facts-title">
+                <div className="hm-section-heading">
+                    <h2 id="facts-title">3つの事実</h2>
+                </div>
+                <dl className="hm-trust-ledger">
+                    {facts.map((fact) => (
+                        <div className="hm-trust-ledger__item" key={fact.title}>
+                            <dt>{fact.title}</dt>
+                            <dd>{fact.body}</dd>
+                        </div>
+                    ))}
+                </dl>
+            </section>
+
+            <figure className="hm-visual-frame hm-visual-frame--daily-ok">
+                <img
+                    src="/anpittchi-daily-ok-checkin-lifestyle.webp"
+                    alt="テーブルの上のiPhoneでOKボタンを押す日常の利用イメージ"
+                    width={1672}
+                    height={941}
+                    loading="lazy"
+                    decoding="async"
+                />
+            </figure>
+
+            <section className="hm-rule-section" aria-labelledby="timeline-title">
+                <div className="hm-section-heading hm-section-heading--wide">
+                    <h2 id="timeline-title">48hルールの見える化</h2>
                     <p>
-                        危険、死亡、病気、今いる場所を判断しません。救命・発見・所在確認は保証しません。
+                        24h 本人Push、30h 本人SMS、36h 連絡先A SMS、42h 連絡先B SMS、48h A/B最終SMS を基本とします。
                     </p>
-                </article>
-                <article>
-                    <h2>2名の同意</h2>
+                </div>
+                <figure className="hm-visual-frame hm-visual-frame--rule">
+                    <img
+                        src="/anpittchi-48h-notification-rule-infographic.webp"
+                        alt="24時間から48時間までの段階通知ルールを示す図"
+                        width={1672}
+                        height={941}
+                        loading="lazy"
+                        decoding="async"
+                    />
+                </figure>
+                <ol className="hm-mobile-rule-ladder">
+                    {ruleSteps.map((step) => (
+                        <li key={step.time}>
+                            <span>{step.time}</span>
+                            <strong>{step.target}</strong>
+                            <small>{step.method}</small>
+                        </li>
+                    ))}
+                </ol>
+            </section>
+
+            <section className="hm-referrer" aria-labelledby="referrer-title">
+                <div className="hm-referrer__copy">
+                    <h2 id="referrer-title">離れて暮らす家族や、身近な人に紹介したい方へ</h2>
                     <p>
-                        連絡先Aと連絡先Bの2名が必要です。2名同意が揃うまで通知は開始されません。
+                        本人に直接すすめる前に、何ができて、何ができないアプリなのかを確認できます。
                     </p>
-                </article>
-                <article>
-                    <h2>記録を見返す</h2>
+                    <Link
+                        href="/for-family"
+                        className="primary"
+                        data-cta-id="home_referrer_guide"
+                    >
+                        紹介する前に確認する
+                    </Link>
+                </div>
+                <figure className="hm-visual-frame hm-visual-frame--referrer">
+                    <img
+                        src="/anpittchi-referrer-check-before-introduction.webp"
+                        alt="家族や知人に紹介する前にアプリ内容を確認する人のイメージ"
+                        width={1672}
+                        height={941}
+                        loading="lazy"
+                        decoding="async"
+                    />
+                </figure>
+            </section>
+
+            <section className="hm-scope" aria-labelledby="can-cannot-title">
+                <div className="hm-section-heading">
+                    <h2 id="can-cannot-title">できること / できないこと</h2>
+                </div>
+                <div className="hm-scope__dossier">
+                    <article>
+                        <h3>できること</h3>
+                        <p>毎日1回、OKを押す。押せなかった時は、決めた人へ知らせる。</p>
+                    </article>
+                    <article>
+                        <h3>できないこと</h3>
+                        <p>
+                            病気や事故を見つけるアプリではありません。必ず助けが来ることや、必ず通知が届くことも約束できません。
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section className="hm-pricing" aria-labelledby="pricing-title">
+                <div className="hm-pricing__amount">
+                    <h2 id="pricing-title">料金</h2>
+                    <strong>月額300円</strong>
+                </div>
+                <div className="hm-pricing__details">
                     <p>
-                        設定から、誰に、いつ送ったかを見られます。送信の結果と通知履歴も残ります。
+                        ダウンロードは無料です。
+                        <br />
+                        利用には月額300円のサブスクリプションが必要です。
+                        <br />
+                        連絡先へのお知らせに追加料金はかかりません。
                     </p>
-                </article>
-            </section>
-
-            <section id="trust-foundation" className="contact">
-                <h2>はじめに知っておきたいこと</h2>
-                <p>
-                    通知の流れ、月額300円の料金、このアプリでできること・できないことを確認できます。
-                </p>
-                <div className="actions">
-                    <Link href="/how-it-works" className="secondary">
-                        48時間の通知ルールを見る
-                    </Link>
-                    <Link href="/notification-samples" className="secondary">
-                        連絡先に届く文面を見る
-                    </Link>
-                    <Link href="/before-you-start" className="secondary">
-                        登録前チェックリストを見る
+                    <Link
+                        href="/pricing"
+                        className="secondary"
+                        data-cta-id="home_pricing_detail"
+                    >
+                        料金を確認する
                     </Link>
                 </div>
             </section>
 
-            <section id="trust-audience" className="contact">
-                <h2>立場に合わせて読む</h2>
-                <p>
-                    本人に提案したい方、連絡先としてSMSを受け取る方、説明文を準備したい方はこちら。
-                </p>
-                <div className="actions">
-                    <Link href="/for-family" className="secondary">
-                        本人に提案したい方へ
-                    </Link>
-                    <Link href="/for-contacts" className="secondary">
-                        連絡先としてSMSを受け取る方へ
-                    </Link>
-                    <Link href="/share-message" className="secondary">
-                        提案・依頼の文面テンプレ
-                    </Link>
+            <section className="hm-index" aria-labelledby="links-title">
+                <div className="hm-section-heading">
+                    <h2 id="links-title">はじめに知っておきたいこと</h2>
                 </div>
-            </section>
-
-            <section id="trust-operation" className="contact">
-                <h2>通知を受け取った時・送った後</h2>
-                <p>実際の通知文、受信停止、配信結果の見方を確認できます。</p>
-                <div className="actions">
-                    <Link href="/notification-samples" className="secondary">
-                        通知サンプル
-                    </Link>
-                    <Link href="/help/stop" className="secondary">
-                        受信停止・HELP
-                    </Link>
-                    <Link href="/delivery-status" className="secondary">
-                        通知履歴・配信結果の見方
-                    </Link>
-                </div>
-            </section>
-
-            <section id="trust-before" className="contact">
-                <h2>登録前にチェックする</h2>
-                <p>
-                    連絡先2名のURL同意、毎日のOK、通知が届かない場合があることを確認してから始められます。
-                </p>
-                <div className="actions">
-                    <Link href="/before-you-start" className="secondary">
-                        登録前チェックリスト
-                    </Link>
-                </div>
-            </section>
-
-            <section id="contact" className="contact">
-                <h2>使い方に迷った時</h2>
-                <p>まず3分体験コースを見ます。次に、くわしいマニュアルとFAQを見ます。</p>
-                <div className="actions">
-                    <Link href="/manual/tutorial" className="primary">
-                        3分体験コース
-                    </Link>
-                    <Link href="/manual" className="secondary">
-                        マニュアル
-                    </Link>
-                    <Link href="/manual/faq" className="secondary">
-                        FAQ
-                    </Link>
-                    <Link href="/support" className="secondary">
-                        サポート
-                    </Link>
-                </div>
+                <nav className="hm-document-shelf" aria-label="はじめに知っておきたいこと">
+                    {lowerLinks.map((link, index) => (
+                        <Link
+                            href={link.href}
+                            className="hm-document-shelf__item"
+                            data-cta-id={link.ctaId}
+                            key={link.href}
+                        >
+                            <span>{String(index + 1).padStart(2, "0")}</span>
+                            <strong>{link.title}</strong>
+                            <small>{link.description}</small>
+                        </Link>
+                    ))}
+                </nav>
             </section>
         </main>
     );

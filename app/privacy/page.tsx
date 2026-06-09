@@ -8,7 +8,6 @@ import {
   privacyNotHandledItems,
   privacyPurposeItems,
   privacyRetentionItems,
-  publicLegalStatus,
   serviceScopeItems,
   supportEmail,
 } from "../../components/legal/legalPublicContent";
@@ -30,7 +29,6 @@ export default function PrivacyPage() {
         <p className="lead">
           このプライバシーポリシーは、あんぴッチにおける利用者情報の取り扱いについて説明するものです。
         </p>
-        <p className="lead">{publicLegalStatus}</p>
         <div className="actions">
           <Link className="secondary" href="/privacy-choices">
             Privacy Choices
