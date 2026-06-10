@@ -50,6 +50,10 @@ export default function NotificationHistoryPage() {
             eyebrow="通知履歴"
             title="通知履歴の見方"
             lead="通知履歴では、誰に・いつ・どの通知を送ったかを確認できます。ただし、通知が送られたことと、相手が読んだことは同じではありません。ここでは、表示の見方をやさしく説明します。"
+            heroImage={{
+                src: "/page-heroes/anpittchi-privacy-choices-hero-settings-control.webp",
+                alt: "設定画面と記録を確認するイメージ",
+            }}
             actions={[
                 { href: "/how-it-works", label: "48時間の通知ルールを見る" },
                 { href: "/notification-samples", label: "通知サンプルを見る" },

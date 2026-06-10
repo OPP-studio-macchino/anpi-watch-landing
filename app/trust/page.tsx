@@ -37,6 +37,10 @@ export default function TrustPageRoute() {
             eyebrow="Trust"
             title="できること・できないこと"
             lead="あんぴッチでできること、できないことを先に説明します。本人も、家族も、連絡先の方も、同じ理解で使えるようにするためです。"
+            heroImage={{
+                src: "/page-heroes/anpittchi-privacy-hero-private-desk.webp",
+                alt: "書類とスマートフォンを置いて内容を確認するイメージ",
+            }}
             actions={[
                 { href: "/how-it-works", label: "通知ルールを見る" },
                 { href: "/notification-samples", label: "通知サンプルを見る" },

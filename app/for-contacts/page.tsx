@@ -37,6 +37,10 @@ export default function ForContactsPage() {
       eyebrow="For Contacts"
       title="連絡先としてSMSを受け取る方へ"
       lead="あなたは、本人の未反応時に通知を受ける連絡先候補です。同意すると、本人のOKが一定時間途切れた場合にSMS通知を受け取ることがあります。登録された時点では、まだ通知稼働状態ではありません。"
+      heroImage={{
+        src: "/page-heroes/anpittchi-notification-samples-hero-message-cards.webp",
+        alt: "通知文のカードが並ぶ画面のイメージ",
+      }}
       actions={[
         { href: "/how-it-works", label: "同意の流れを確認する" },
         { href: "/notification-samples", label: "通知サンプルを見る" },

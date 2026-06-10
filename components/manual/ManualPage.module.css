@@ -1,6 +1,8 @@
 .page {
   min-height: 100vh;
-  background: var(--manual-bg-app);
+  background:
+    radial-gradient(circle at 86% 0%, color-mix(in srgb, var(--manual-status-info-subtle) 82%, transparent), transparent 34rem),
+    linear-gradient(180deg, color-mix(in srgb, var(--manual-bg-surface-2) 78%, var(--manual-bg-app)) 0%, var(--manual-bg-app) 28rem, var(--manual-bg-app) 100%);
   color: var(--manual-text-primary);
   font-family: var(--manual-font-sans);
   font-size: 16px;
@@ -20,11 +22,31 @@
 }
 
 .hero {
-  background: var(--manual-bg-surface-1);
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--manual-bg-surface-1) 92%, transparent), color-mix(in srgb, var(--manual-bg-surface-2) 76%, transparent)),
+    var(--manual-bg-surface-1);
   border: 1px solid var(--manual-border-subtle);
   border-radius: var(--manual-radius-xl);
   box-shadow: var(--manual-shadow-2);
   padding: var(--manual-space-5);
+}
+
+.hero::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, transparent calc(50% - 1px), color-mix(in srgb, var(--manual-border-subtle) 48%, transparent) calc(50% - 1px), color-mix(in srgb, var(--manual-border-subtle) 48%, transparent) calc(50% + 1px), transparent calc(50% + 1px)),
+    linear-gradient(180deg, color-mix(in srgb, var(--manual-border-subtle) 36%, transparent) 1px, transparent 1px);
+  background-size:
+    auto,
+    100% 86px;
+  mask-image: linear-gradient(to bottom, #000, transparent 86%);
+  -webkit-mask-image: linear-gradient(to bottom, #000, transparent 86%);
+  content: "";
 }
 
 .eyebrow {
@@ -95,6 +117,8 @@
 
 .factCard {
   padding: var(--manual-space-3);
+  background: color-mix(in srgb, var(--manual-bg-surface-1) 84%, transparent);
+  backdrop-filter: blur(8px);
 }
 
 .factTitle {
