@@ -58,6 +58,10 @@ export default function PricingPage() {
             eyebrow="Pricing"
             title="料金・課金方針"
             lead="あんぴッチの利用料金は月額300円です。"
+            heroImage={{
+                src: "/page-heroes/anpittchi-pricing-hero-subscription-desk.webp",
+                alt: "ノートとカードが置かれた机で月額料金を確認する画面のイメージ",
+            }}
             actions={[
                 { href: "/before-you-start", label: "登録前チェックリストを見る" },
                 { href: "/trust", label: "できること・できないことを見る" },

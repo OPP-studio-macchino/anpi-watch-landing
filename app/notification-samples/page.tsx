@@ -36,6 +36,10 @@ export default function NotificationSamplesPage() {
             eyebrow="Notification Samples"
             title="通知サンプル"
             lead="実際に届く通知の例です。本人から届く同意のお願いSMSと、あんぴッチから届く通知SMSは別のものです。ここにある文面はサンプルです。"
+            heroImage={{
+                src: "/page-heroes/anpittchi-notification-samples-hero-message-cards.webp",
+                alt: "通知文のカードが並ぶ画面のイメージ",
+            }}
             actions={[
                 { href: "/how-it-works", label: "48時間の流れを見る" },
                 { href: "/for-contacts", label: "連絡先向け説明を見る" },

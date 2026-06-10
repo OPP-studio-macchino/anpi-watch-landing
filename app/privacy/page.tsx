@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { LegalList, LegalSection, LegalTable } from "../../components/legal/LegalSection";
+import {
+  TrustList,
+  TrustPage,
+  TrustSection,
+  TrustTable,
+} from "../../components/trust-foundation/TrustFoundationPage";
 import {
   pricingAndConsentItems,
   privacyExternalServiceItems,
@@ -22,44 +27,40 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="wrapper">
-      <section className="hero">
-        <p className="badge">Privacy Policy</p>
-        <h1>プライバシーポリシー</h1>
-        <p className="lead">
-          このプライバシーポリシーは、あんぴッチにおける利用者情報の取り扱いについて説明するものです。
-        </p>
-        <div className="actions">
-          <Link className="secondary" href="/privacy-choices">
-            Privacy Choices
-          </Link>
-          <Link className="secondary" href="/support">
-            サポート
-          </Link>
-        </div>
-      </section>
+    <TrustPage
+      eyebrow="Privacy Policy"
+      title="プライバシーポリシー"
+      lead="このプライバシーポリシーは、あんぴッチにおける利用者情報の取り扱いについて説明するものです。"
+      heroImage={{
+        src: "/page-heroes/anpittchi-privacy-hero-private-desk.webp",
+        alt: "書類とスマートフォンを置いたプライバシー説明のイメージ",
+      }}
+      actions={[
+        { href: "/privacy-choices", label: "Privacy Choices" },
+        { href: "/support", label: "サポート" },
+      ]}
+    >
+      <TrustSection title="サービスの性質">
+        <TrustList items={serviceScopeItems} />
+      </TrustSection>
 
-      <LegalSection title="サービスの性質">
-        <LegalList items={serviceScopeItems} />
-      </LegalSection>
+      <TrustSection title="料金と連絡先同意">
+        <TrustList items={pricingAndConsentItems} />
+      </TrustSection>
 
-      <LegalSection title="料金と連絡先同意">
-        <LegalList items={pricingAndConsentItems} />
-      </LegalSection>
-
-      <LegalSection title="1. 取り扱う情報">
+      <TrustSection title="1. 取り扱う情報">
         <p>
           本サービスでは、サービス提供、本人確認、連絡先同意、段階通知、通知履歴、購読状態確認、問い合わせ対応、誤送信防止、不正防止、法的対応および監査のため、以下の情報を取り扱う場合があります。
         </p>
-        <LegalList items={privacyHandledInfoItems} />
-        <LegalList items={privacyNotHandledItems} />
-      </LegalSection>
+        <TrustList items={privacyHandledInfoItems} />
+        <TrustList items={privacyNotHandledItems} />
+      </TrustSection>
 
-      <LegalSection title="2. 利用目的">
-        <LegalList items={privacyPurposeItems} />
-      </LegalSection>
+      <TrustSection title="2. 利用目的">
+        <TrustList items={privacyPurposeItems} />
+      </TrustSection>
 
-      <LegalSection title="3. 連絡先情報と同意">
+      <TrustSection title="3. 連絡先情報と同意">
         <p>
           ユーザーが第三者の電話番号を入力しただけでは、その第三者の同意が成立したものとは扱いません。
         </p>
@@ -69,26 +70,26 @@ export default function PrivacyPage() {
         <p>
           連絡先本人は、STOP等によりSMS受信停止または同意撤回を行える場合があります。STOP後は、再同意が成立するまで連絡先への運用SMS送信を行わない方針です。
         </p>
-      </LegalSection>
+      </TrustSection>
 
-      <LegalSection title="4. 外部サービスの利用">
+      <TrustSection title="4. 外部サービスの利用">
         <p>本サービスは、サービス提供に必要な範囲で、以下の外部サービスを利用する場合があります。</p>
-        <LegalList items={privacyExternalServiceItems} />
+        <TrustList items={privacyExternalServiceItems} />
         <p>
           これらの外部サービスでは、各サービスの仕様、契約、法令、運用上の制約に従って情報が取り扱われる場合があります。
         </p>
-      </LegalSection>
+      </TrustSection>
 
-      <LegalSection title="5. 通知と通信に関する情報">
+      <TrustSection title="5. 通知と通信に関する情報">
         <p>
           本サービスでは、SMSやPush通知の送信、配信結果の確認、STOP/START/HELPの受付、配信失敗や停止状態の確認のため、通信に関する記録を取り扱う場合があります。
         </p>
         <p>
           外部プロバイダが送信要求を受理したことは、受信者端末への到達、閲覧、理解、対応を保証するものではありません。
         </p>
-      </LegalSection>
+      </TrustSection>
 
-      <LegalSection title="6. サブスクリプションに関する情報">
+      <TrustSection title="6. サブスクリプションに関する情報">
         <p>あんぴッチの月額プランは、Appleのサブスクリプションとして管理されます。</p>
         <p>
           アプリ内アカウント削除とAppleサブスクリプションの解約は別の手続きです。アカウント削除を行っても、Apple側のサブスクリプションが自動的に解約されない場合があります。
@@ -96,9 +97,9 @@ export default function PrivacyPage() {
         <p>
           Apple subscription、StoreKit transaction、original_transaction_id、entitlement状態など購読確認に必要な情報は、課金状態確認、購入に関する問い合わせ対応、不正防止、法的対応のため、必要な範囲で取り扱う場合があります。
         </p>
-      </LegalSection>
+      </TrustSection>
 
-      <LegalSection title="7. データ削除、アカウント削除、Privacy Choices">
+      <TrustSection title="7. データ削除、アカウント削除、Privacy Choices">
         <p>
           ユーザーは、アカウント削除、データ削除、問い合わせ情報の削除、または自身に関する情報の確認を求められる場合があります。
         </p>
@@ -111,36 +112,36 @@ export default function PrivacyPage() {
           で案内します。
         </p>
         <p>お問い合わせは {supportEmail} までご連絡ください。</p>
-      </LegalSection>
+      </TrustSection>
 
-      <LegalSection title="8. 情報の保持と削除">
-        <LegalList items={privacyRetentionItems} />
-      </LegalSection>
+      <TrustSection title="8. 情報の保持と削除">
+        <TrustList items={privacyRetentionItems} />
+      </TrustSection>
 
-      <LegalSection title="9. 安全管理">
+      <TrustSection title="9. 安全管理">
         <p>
           本サービスでは、取り扱う情報について、漏えい、滅失、毀損、不正アクセス、誤送信などを防ぐため、必要な安全管理措置を講じます。
         </p>
         <p>
           通知、同意、停止、削除請求、問い合わせ、購読状態、監査ログに関する情報は、アクセス権限、記録、確認手順を設けて管理します。
         </p>
-      </LegalSection>
+      </TrustSection>
 
-      <LegalSection title="10. 緊急時について">
+      <TrustSection title="10. 緊急時について">
         <p>
           本サービスは、救急、警察、消防、自治体、医療機関その他第三者へ連絡するサービスではありません。
         </p>
         <p>緊急の危険がある場合は、地域の緊急通報手段その他適切な連絡手段を直ちに利用してください。</p>
-      </LegalSection>
+      </TrustSection>
 
-      <LegalSection title="11. お問い合わせ">
+      <TrustSection title="11. お問い合わせ">
         <p>
           本ポリシー、データの取り扱い、アカウント削除、データ削除、連絡先本人からの問い合わせ、STOP、同意撤回、サポートに関するお問い合わせは、{supportEmail} までご連絡ください。
         </p>
-      </LegalSection>
+      </TrustSection>
 
-      <LegalSection title="関連リンク">
-        <LegalTable
+      <TrustSection title="関連リンク">
+        <TrustTable
           caption="公開Legal URL"
           headers={["項目", "URL"]}
           rows={[
@@ -150,7 +151,7 @@ export default function PrivacyPage() {
             ["サポート", "/support"],
           ]}
         />
-      </LegalSection>
-    </main>
+      </TrustSection>
+    </TrustPage>
   );
 }

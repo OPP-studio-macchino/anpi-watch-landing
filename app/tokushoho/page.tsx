@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { LegalSection, LegalTable } from "../../components/legal/LegalSection";
 import { tokushohoRows } from "../../components/legal/legalPublicContent";
+import {
+  TrustPage,
+  TrustSection,
+  TrustTable,
+} from "../../components/trust-foundation/TrustFoundationPage";
 
 export const metadata: Metadata = {
   title: "特定商取引法に基づく表示 | あんぴッチ",
@@ -13,29 +16,25 @@ export const metadata: Metadata = {
 
 export default function TokushohoPage() {
   return (
-    <main className="wrapper">
-      <section className="hero">
-        <p className="badge">Legal</p>
-        <h1>特定商取引法に基づく表示</h1>
-        <p className="lead">
-          あんぴッチの有料プランは、App Storeのアプリ内課金による月額サブスクリプションとして提供されます。
-        </p>
-        <div className="actions">
-          <Link className="secondary" href="/terms">
-            利用規約
-          </Link>
-          <Link className="secondary" href="/support">
-            サポート
-          </Link>
-        </div>
-      </section>
+    <TrustPage
+      eyebrow="Legal"
+      title="特定商取引法に基づく表示"
+      lead="あんぴッチの有料プランは、App Storeのアプリ内課金による月額サブスクリプションとして提供されます。"
+      heroImage={{
+        src: "/page-heroes/anpittchi-tokushoho-hero-transaction-ledger.webp",
+        alt: "取引条件を確認する台帳と書類のイメージ",
+      }}
+      actions={[
+        { href: "/terms", label: "利用規約" },
+        { href: "/support", label: "サポート" },
+      ]}
+    >
+      <TrustSection title="表示">
+        <TrustTable caption="特定商取引法に基づく表示" headers={["項目", "表示内容"]} rows={tokushohoRows} />
+      </TrustSection>
 
-      <LegalSection title="表示">
-        <LegalTable caption="特定商取引法に基づく表示" headers={["項目", "表示内容"]} rows={tokushohoRows} />
-      </LegalSection>
-
-      <LegalSection title="関連リンク">
-        <LegalTable
+      <TrustSection title="関連リンク">
+        <TrustTable
           caption="公開Legal URL"
           headers={["項目", "URL"]}
           rows={[
@@ -45,7 +44,7 @@ export default function TokushohoPage() {
             ["サポート", "/support"],
           ]}
         />
-      </LegalSection>
-    </main>
+      </TrustSection>
+    </TrustPage>
   );
 }

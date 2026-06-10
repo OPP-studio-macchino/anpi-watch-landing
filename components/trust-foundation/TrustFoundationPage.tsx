@@ -6,6 +6,12 @@ type TrustPageProps = {
   eyebrow: string;
   title: string;
   lead: string;
+  heroImage?: {
+    src: string;
+    alt: string;
+    width?: number;
+    height?: number;
+  };
   actions?: Array<{ href: string; label: string }>;
   children: ReactNode;
 };
@@ -147,26 +153,40 @@ export const trustFoundationLinks: TrustLink[] = [
   ...trustFoundationBeforeLinks,
 ];
 
-export function TrustPage({ eyebrow, title, lead, actions, children }: TrustPageProps) {
+export function TrustPage({ eyebrow, title, lead, heroImage, actions, children }: TrustPageProps) {
   return (
     <main className={styles.page}>
       <div className={styles.shell}>
         <Link className={styles.backLink} href="/">
           トップへ戻る
         </Link>
-        <section className={styles.hero}>
-          <p className={styles.eyebrow}>{eyebrow}</p>
-          <h1 className={styles.title}>{title}</h1>
-          <p className={styles.lead}>{lead}</p>
-          {actions && actions.length > 0 ? (
-            <div className={styles.actions}>
-              {actions.map((action) => (
-                <Link className={styles.actionLink} href={action.href} key={action.href}>
-                  {action.label}
-                </Link>
-              ))}
-            </div>
+        <section className={`${styles.hero} ${heroImage ? styles.heroWithImage : ""}`}>
+          {heroImage ? (
+            <figure className={styles.heroFigure}>
+              <img
+                src={heroImage.src}
+                alt={heroImage.alt}
+                width={heroImage.width ?? 1672}
+                height={heroImage.height ?? 941}
+                loading="eager"
+                decoding="async"
+              />
+            </figure>
           ) : null}
+          <div className={styles.heroCopy}>
+            <p className={styles.eyebrow}>{eyebrow}</p>
+            <h1 className={styles.title}>{title}</h1>
+            <p className={styles.lead}>{lead}</p>
+            {actions && actions.length > 0 ? (
+              <div className={styles.actions}>
+                {actions.map((action) => (
+                  <Link className={styles.actionLink} href={action.href} key={action.href}>
+                    {action.label}
+                  </Link>
+                ))}
+              </div>
+            ) : null}
+          </div>
         </section>
         {children}
       </div>

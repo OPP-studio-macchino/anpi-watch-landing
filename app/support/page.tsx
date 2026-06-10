@@ -39,6 +39,10 @@ export default function SupportPage() {
       eyebrow="Support"
       title="あんぴッチ サポート"
       lead="あんぴッチに関する問い合わせ方法と、アカウント削除・データ削除・連絡先本人からの問い合わせ・SMS停止・サブスクリプション解約に関する案内です。"
+      heroImage={{
+        src: "/page-heroes/anpittchi-support-hero-guidance-desk.webp",
+        alt: "案内資料とスマートフォンを置いたサポートページのイメージ",
+      }}
     >
       <TrustSection title="問い合わせ先">
         <TrustGrid>

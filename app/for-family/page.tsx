@@ -42,6 +42,10 @@ export default function ForFamilyPage() {
       eyebrow="For Family"
       title="離れて暮らす本人に、あんぴッチを提案したい方へ"
       lead="毎日監視するのではなく、未反応時の連絡ルールを本人と決めるための説明ページです。あんぴッチは、本人を勝手に監視したり、本人の代わりに通知を始めたりするサービスではありません。本人の同意と、連絡先2名のURL同意が揃って初めて、通知ルールが有効になります。"
+      heroImage={{
+        src: "/page-heroes/anpittchi-referrer-guide-hero-reviewing-app.webp",
+        alt: "家族や知人に紹介する前にアプリ内容を確認する人のイメージ",
+      }}
       actions={[
         { href: "/share-message", label: "本人に送る説明文テンプレを見る" },
         { href: "/for-contacts", label: "連絡先向け説明を見る" },
