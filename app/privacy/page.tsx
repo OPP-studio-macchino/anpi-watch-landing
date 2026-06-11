@@ -33,7 +33,10 @@ export default function PrivacyPage() {
       lead="このプライバシーポリシーは、あんぴッチにおける利用者情報の取り扱いについて説明するものです。"
       heroImage={{
         src: "/page-heroes/anpittchi-privacy-hero-private-desk.webp",
+        mobileSrc: "/page-heroes/mobile/anpittchi-privacy-mobile-hero.webp",
         alt: "書類とスマートフォンを置いたプライバシー説明のイメージ",
+        mobileObjectPosition: "center 62%",
+        mobileTone: "light",
       }}
       actions={[
         { href: "/privacy-choices", label: "Privacy Choices" },

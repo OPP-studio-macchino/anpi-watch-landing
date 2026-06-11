@@ -39,7 +39,10 @@ export default function TrustPageRoute() {
             lead="あんぴッチでできること、できないことを先に説明します。本人も、家族も、連絡先の方も、同じ理解で使えるようにするためです。"
             heroImage={{
                 src: "/page-heroes/anpittchi-privacy-hero-private-desk.webp",
+                mobileSrc: "/page-heroes/mobile/anpittchi-trust-mobile-hero.webp",
                 alt: "書類とスマートフォンを置いて内容を確認するイメージ",
+                mobileObjectPosition: "center 62%",
+                mobileTone: "light",
             }}
             actions={[
                 { href: "/how-it-works", label: "通知ルールを見る" },
