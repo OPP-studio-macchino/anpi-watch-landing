@@ -39,7 +39,10 @@ export default function ForContactsPage() {
       lead="あなたは、本人の未反応時に通知を受ける連絡先候補です。同意すると、本人のOKが一定時間途切れた場合にSMS通知を受け取ることがあります。登録された時点では、まだ通知稼働状態ではありません。"
       heroImage={{
         src: "/page-heroes/anpittchi-notification-samples-hero-message-cards.webp",
+        mobileSrc: "/page-heroes/mobile/anpittchi-for-contacts-mobile-hero.webp",
         alt: "通知文のカードが並ぶ画面のイメージ",
+        mobileObjectPosition: "center 52%",
+        mobileTone: "light",
       }}
       actions={[
         { href: "/how-it-works", label: "同意の流れを確認する" },

@@ -31,14 +31,29 @@
 .backLink {
   display: inline-flex;
   align-items: center;
+  gap: 8px;
+  min-height: 40px;
   margin-bottom: 18px;
+  padding: 0 14px;
+  border: 1px solid rgba(201, 192, 178, 0.72);
+  border-radius: 999px;
+  background: rgba(255, 253, 248, 0.56);
   color: var(--tf-action-secondary-text);
   font-size: 1rem;
   font-weight: 700;
   text-decoration: none;
+  box-shadow: 0 10px 28px rgba(16, 24, 40, 0.06);
+  backdrop-filter: blur(10px);
+}
+
+.backLink::before {
+  color: currentColor;
+  content: "←";
 }
 
 .backLink:hover {
+  border-color: rgba(31, 95, 191, 0.34);
+  background: rgba(255, 253, 248, 0.74);
   color: var(--tf-action-primary);
 }
 
@@ -84,6 +99,7 @@
 .heroWithImage {
   background: #111827;
   box-shadow: 0 22px 64px rgba(16, 24, 40, 0.14);
+  color: #fffdf8;
 }
 
 .heroWithImage::before {
@@ -91,19 +107,19 @@
   background:
     linear-gradient(
       90deg,
-      rgba(255, 253, 248, 0.78) 0%,
-      rgba(255, 253, 248, 0.62) 38%,
-      rgba(255, 253, 248, 0.18) 72%,
-      rgba(16, 24, 40, 0.08) 100%
+      rgba(8, 15, 24, 0.78) 0%,
+      rgba(8, 15, 24, 0.62) 38%,
+      rgba(8, 15, 24, 0.24) 70%,
+      rgba(8, 15, 24, 0.06) 100%
     ),
     linear-gradient(
       180deg,
-      rgba(255, 253, 248, 0.14) 0%,
-      rgba(16, 24, 40, 0.02) 48%,
-      rgba(16, 24, 40, 0.16) 100%
+      rgba(255, 253, 248, 0.08) 0%,
+      rgba(8, 15, 24, 0.02) 44%,
+      rgba(8, 15, 24, 0.2) 100%
     ),
-    linear-gradient(90deg, transparent calc(50% - 1px), rgba(255, 253, 248, 0.16) calc(50% - 1px), rgba(255, 253, 248, 0.16) calc(50% + 1px), transparent calc(50% + 1px)),
-    linear-gradient(180deg, rgba(255, 253, 248, 0.12) 1px, transparent 1px);
+    linear-gradient(90deg, transparent calc(50% - 1px), rgba(255, 253, 248, 0.1) calc(50% - 1px), rgba(255, 253, 248, 0.1) calc(50% + 1px), transparent calc(50% + 1px)),
+    linear-gradient(180deg, rgba(255, 253, 248, 0.08) 1px, transparent 1px);
   background-size:
     auto,
     auto,
@@ -117,14 +133,13 @@
   position: relative;
   z-index: 1;
   min-width: 0;
-  max-width: min(44rem, 64vw);
-  padding: clamp(18px, 3vw, 28px);
-  border: 1px solid rgba(255, 253, 248, 0.46);
-  border-radius: 18px;
-  background:
-    radial-gradient(circle at 16% 14%, rgba(255, 253, 248, 0.9), rgba(255, 253, 248, 0.68) 54%, rgba(255, 253, 248, 0.42) 100%);
-  box-shadow: 0 18px 44px rgba(16, 24, 40, 0.1);
-  backdrop-filter: blur(10px);
+  max-width: min(45rem, 68vw);
+  padding: 0;
+}
+
+.heroWithImage .heroCopy {
+  color: #fffdf8;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.34);
 }
 
 .heroFigure {
@@ -140,9 +155,15 @@
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(255, 253, 248, 0.08), transparent 44%),
-    linear-gradient(0deg, rgba(16, 24, 40, 0.08), transparent 52%);
+    linear-gradient(180deg, rgba(255, 253, 248, 0.06), transparent 42%),
+    linear-gradient(0deg, rgba(8, 15, 24, 0.12), transparent 52%);
   content: "";
+}
+
+.heroFigure picture {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .heroFigure img {
@@ -150,7 +171,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
+  object-position: var(--tf-hero-object-position, center center);
   filter: saturate(0.98) contrast(1) brightness(1.04);
 }
 
@@ -161,6 +182,10 @@
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.heroWithImage .eyebrow {
+  color: rgba(255, 253, 248, 0.82);
 }
 
 .title {
@@ -181,6 +206,10 @@
   color: var(--tf-text-secondary);
   font-size: clamp(1rem, 2vw, 1.18rem);
   line-height: 1.8;
+}
+
+.heroWithImage .lead {
+  color: rgba(255, 253, 248, 0.88);
 }
 
 .actions {
@@ -210,10 +239,30 @@
   color: var(--tf-action-primary);
 }
 
+.heroWithImage .actionLink {
+  border-color: rgba(255, 253, 248, 0.58);
+  background: rgba(255, 253, 248, 0.12);
+  color: #fffdf8;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(10px);
+}
+
+.heroWithImage .actionLink:hover {
+  border-color: rgba(255, 253, 248, 0.82);
+  background: rgba(255, 253, 248, 0.18);
+  color: #fffdf8;
+}
+
 .actions .actionLink:first-child {
   border-color: var(--tf-action-primary);
   background: var(--tf-action-primary);
   color: var(--tf-bg-surface-1);
+}
+
+.heroWithImage .actions .actionLink:first-child {
+  border-color: rgba(255, 253, 248, 0.18);
+  background: #1f5fbf;
+  color: #fffdf8;
 }
 
 .actions .actionLink:first-child:hover {
@@ -465,26 +514,57 @@
   }
 
   .heroWithImage {
-    min-height: auto;
-    padding: 22px;
+    min-height: clamp(410px, 112vw, 560px);
+    padding: 26px 22px;
+    align-items: end;
+  }
+
+  .heroWithImage.heroMobileLight {
+    align-items: start;
+    background: #f8f2e8;
+    color: var(--tf-text-primary);
   }
 
   .heroWithImage::before {
     background:
       linear-gradient(
         180deg,
-        rgba(255, 253, 248, 0.72) 0%,
-        rgba(255, 253, 248, 0.46) 52%,
-        rgba(16, 24, 40, 0.08) 100%
+        rgba(8, 15, 24, 0.08) 0%,
+        rgba(8, 15, 24, 0.46) 38%,
+        rgba(8, 15, 24, 0.72) 100%
       ),
       linear-gradient(
         90deg,
-        rgba(255, 253, 248, 0.66) 0%,
-        rgba(255, 253, 248, 0.38) 58%,
-        rgba(16, 24, 40, 0.06) 100%
+        rgba(8, 15, 24, 0.56) 0%,
+        rgba(8, 15, 24, 0.32) 58%,
+        rgba(8, 15, 24, 0.08) 100%
       ),
-      linear-gradient(90deg, transparent calc(50% - 1px), rgba(255, 253, 248, 0.16) calc(50% - 1px), rgba(255, 253, 248, 0.16) calc(50% + 1px), transparent calc(50% + 1px)),
-      linear-gradient(180deg, rgba(255, 253, 248, 0.12) 1px, transparent 1px);
+      linear-gradient(90deg, transparent calc(50% - 1px), rgba(255, 253, 248, 0.08) calc(50% - 1px), rgba(255, 253, 248, 0.08) calc(50% + 1px), transparent calc(50% + 1px)),
+      linear-gradient(180deg, rgba(255, 253, 248, 0.06) 1px, transparent 1px);
+    background-size:
+      auto,
+      auto,
+      auto,
+      100% 82px;
+  }
+
+  .heroWithImage.heroMobileLight::before {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 251, 244, 0.88) 0%,
+        rgba(255, 251, 244, 0.7) 34%,
+        rgba(255, 251, 244, 0.24) 68%,
+        rgba(255, 251, 244, 0) 100%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(255, 251, 244, 0.46) 0%,
+        rgba(255, 251, 244, 0.22) 54%,
+        rgba(255, 251, 244, 0) 100%
+      ),
+      linear-gradient(90deg, transparent calc(50% - 1px), rgba(201, 192, 178, 0.12) calc(50% - 1px), rgba(201, 192, 178, 0.12) calc(50% + 1px), transparent calc(50% + 1px)),
+      linear-gradient(180deg, rgba(201, 192, 178, 0.1) 1px, transparent 1px);
     background-size:
       auto,
       auto,
@@ -493,21 +573,68 @@
   }
 
   .heroFigure img {
-    object-position: center center;
+    object-position: var(
+      --tf-hero-mobile-object-position,
+      var(--tf-hero-object-position, center center)
+    );
     filter: saturate(0.96) contrast(0.98) brightness(1.08);
   }
 
+  .heroWithImage.heroMobileLight .heroFigure::after {
+    background:
+      linear-gradient(180deg, rgba(255, 253, 248, 0.16), transparent 36%),
+      linear-gradient(0deg, rgba(255, 253, 248, 0.08), transparent 44%);
+  }
+
+  .heroWithImage.heroMobileLight .heroFigure img {
+    filter: saturate(1.02) contrast(1) brightness(1.08);
+  }
+
   .heroCopy {
+    width: 100%;
     max-width: none;
-    padding: 18px 16px;
-    border-radius: 16px;
+    padding: 0;
+  }
+
+  .heroWithImage.heroMobileLight .heroCopy {
+    color: var(--tf-text-primary);
+    text-shadow: 0 1px 12px rgba(255, 253, 248, 0.6);
+  }
+
+  .heroWithImage.heroMobileLight .eyebrow {
+    color: var(--tf-action-secondary-text);
+  }
+
+  .heroWithImage.heroMobileLight .lead {
+    color: rgba(16, 24, 40, 0.84);
+  }
+
+  .heroWithImage.heroMobileLight .actionLink {
+    border-color: rgba(16, 24, 40, 0.22);
+    background: rgba(255, 253, 248, 0.54);
+    color: var(--tf-action-secondary-text);
+    text-shadow: none;
+    box-shadow: 0 12px 30px rgba(16, 24, 40, 0.12);
+  }
+
+  .heroWithImage.heroMobileLight .actionLink:hover {
+    border-color: rgba(31, 95, 191, 0.36);
     background: rgba(255, 253, 248, 0.74);
-    box-shadow: 0 12px 28px rgba(16, 24, 40, 0.1);
+    color: var(--tf-action-primary);
+  }
+
+  .heroWithImage.heroMobileLight .actions .actionLink:first-child {
+    border-color: var(--tf-action-primary);
+    background: var(--tf-action-primary);
+    color: var(--tf-bg-surface-1);
   }
 
   .title {
-    font-size: clamp(1.6rem, 7.2vw, 2.25rem);
+    max-width: 100%;
+    font-size: 1.9rem;
     line-height: 1.24;
+    overflow-wrap: anywhere;
+    word-break: normal;
   }
 
   .grid,
@@ -521,5 +648,11 @@
 
   .actionLink {
     width: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  .title {
+    font-size: 1.72rem;
   }
 }

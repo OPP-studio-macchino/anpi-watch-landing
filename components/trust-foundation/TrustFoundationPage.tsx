@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import styles from "./TrustFoundationPage.module.css";
 
 type TrustPageProps = {
@@ -11,6 +11,10 @@ type TrustPageProps = {
     alt: string;
     width?: number;
     height?: number;
+    mobileSrc?: string;
+    objectPosition?: string;
+    mobileObjectPosition?: string;
+    mobileTone?: "light";
   };
   actions?: Array<{ href: string; label: string }>;
   children: ReactNode;
@@ -154,23 +158,47 @@ export const trustFoundationLinks: TrustLink[] = [
 ];
 
 export function TrustPage({ eyebrow, title, lead, heroImage, actions, children }: TrustPageProps) {
+  const heroClassName = [
+    styles.hero,
+    heroImage ? styles.heroWithImage : "",
+    heroImage?.mobileTone === "light" ? styles.heroMobileLight : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const heroFigureStyle = heroImage
+    ? ({
+        ...(heroImage.objectPosition
+          ? { "--tf-hero-object-position": heroImage.objectPosition }
+          : {}),
+        ...(heroImage.mobileObjectPosition
+          ? { "--tf-hero-mobile-object-position": heroImage.mobileObjectPosition }
+          : {}),
+      } as CSSProperties)
+    : undefined;
+
   return (
     <main className={styles.page}>
       <div className={styles.shell}>
         <Link className={styles.backLink} href="/">
           トップへ戻る
         </Link>
-        <section className={`${styles.hero} ${heroImage ? styles.heroWithImage : ""}`}>
+        <section className={heroClassName}>
           {heroImage ? (
-            <figure className={styles.heroFigure}>
-              <img
-                src={heroImage.src}
-                alt={heroImage.alt}
-                width={heroImage.width ?? 1672}
-                height={heroImage.height ?? 941}
-                loading="eager"
-                decoding="async"
-              />
+            <figure className={styles.heroFigure} style={heroFigureStyle}>
+              <picture>
+                {heroImage.mobileSrc ? (
+                  <source media="(max-width: 760px)" srcSet={heroImage.mobileSrc} />
+                ) : null}
+                <img
+                  src={heroImage.src}
+                  alt={heroImage.alt}
+                  width={heroImage.width ?? 1672}
+                  height={heroImage.height ?? 941}
+                  loading="eager"
+                  decoding="async"
+                />
+              </picture>
             </figure>
           ) : null}
           <div className={styles.heroCopy}>

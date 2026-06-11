@@ -53,7 +53,10 @@ export default function PrivacyChoicesPage() {
       lead="あんぴッチにおけるデータ確認、データ削除、アカウント削除、連絡先本人からの削除請求、SMSのSTOP・同意撤回、問い合わせ情報の削除などに関する案内です。"
       heroImage={{
         src: "/page-heroes/anpittchi-privacy-choices-hero-settings-control.webp",
+        mobileSrc: "/page-heroes/mobile/anpittchi-privacy-choices-mobile-hero.webp",
         alt: "設定画面と選択項目を確認するイメージ",
+        mobileObjectPosition: "center 58%",
+        mobileTone: "light",
       }}
     >
       <TrustSection title="問い合わせ先">

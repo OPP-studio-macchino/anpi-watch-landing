@@ -63,7 +63,10 @@ export default function BeforeYouStartPage() {
       lead="あんぴッチは、毎日OKを押して、長い時間反応がない時の連絡ルールを決めておくアプリです。始める前に、連絡先2名のURL同意や、通知について知っておきたいことを確認しておきましょう。"
       heroImage={{
         src: "/page-heroes/anpittchi-support-hero-guidance-desk.webp",
+        mobileSrc: "/page-heroes/mobile/anpittchi-before-you-start-mobile-hero.webp",
         alt: "登録前に案内資料を確認する机の上のイメージ",
+        mobileObjectPosition: "center 64%",
+        mobileTone: "light",
       }}
       actions={[
         { href: "/for-family", label: "本人に提案したい方へ" },

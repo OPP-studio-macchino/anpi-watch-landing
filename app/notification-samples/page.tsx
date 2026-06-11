@@ -35,10 +35,13 @@ export default function NotificationSamplesPage() {
         <TrustPage
             eyebrow="Notification Samples"
             title="通知サンプル"
-            lead="実際に届く通知の例です。本人から届く同意のお願いSMSと、あんぴッチから届く通知SMSは別のものです。ここにある文面はサンプルです。"
+            lead="どんなSMSが届くことがあるのか、先に見られます。本人に届くもの、連絡先に届くもの、連絡先へお願いするときのものがあります。ここにある文面は例です。実際には、名前や時間などが変わることがあります。"
             heroImage={{
                 src: "/page-heroes/anpittchi-notification-samples-hero-message-cards.webp",
+                mobileSrc: "/page-heroes/mobile/anpittchi-notification-samples-mobile-hero.webp",
                 alt: "通知文のカードが並ぶ画面のイメージ",
+                mobileObjectPosition: "center 58%",
+                mobileTone: "light",
             }}
             actions={[
                 { href: "/how-it-works", label: "48時間の流れを見る" },

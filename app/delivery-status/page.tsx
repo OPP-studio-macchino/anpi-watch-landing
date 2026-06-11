@@ -52,7 +52,10 @@ export default function NotificationHistoryPage() {
             lead="通知履歴では、誰に・いつ・どの通知を送ったかを確認できます。ただし、通知が送られたことと、相手が読んだことは同じではありません。ここでは、表示の見方をやさしく説明します。"
             heroImage={{
                 src: "/page-heroes/anpittchi-privacy-choices-hero-settings-control.webp",
+                mobileSrc: "/page-heroes/mobile/anpittchi-delivery-status-mobile-hero.webp",
                 alt: "設定画面と記録を確認するイメージ",
+                mobileObjectPosition: "center 62%",
+                mobileTone: "light",
             }}
             actions={[
                 { href: "/how-it-works", label: "48時間の通知ルールを見る" },

@@ -44,7 +44,10 @@ export default function ForFamilyPage() {
       lead="毎日監視するのではなく、未反応時の連絡ルールを本人と決めるための説明ページです。あんぴッチは、本人を勝手に監視したり、本人の代わりに通知を始めたりするサービスではありません。本人の同意と、連絡先2名のURL同意が揃って初めて、通知ルールが有効になります。"
       heroImage={{
         src: "/page-heroes/anpittchi-referrer-guide-hero-reviewing-app.webp",
+        mobileSrc: "/page-heroes/mobile/anpittchi-for-family-mobile-hero.webp",
         alt: "家族や知人に紹介する前にアプリ内容を確認する人のイメージ",
+        mobileObjectPosition: "center 58%",
+        mobileTone: "light",
       }}
       actions={[
         { href: "/share-message", label: "本人に送る説明文テンプレを見る" },

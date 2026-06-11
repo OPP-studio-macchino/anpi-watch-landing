@@ -60,7 +60,10 @@ export default function PricingPage() {
             lead="あんぴッチの利用料金は月額300円です。"
             heroImage={{
                 src: "/page-heroes/anpittchi-pricing-hero-subscription-desk.webp",
+                mobileSrc: "/page-heroes/mobile/anpittchi-pricing-mobile-hero.webp",
                 alt: "ノートとカードが置かれた机で月額料金を確認する画面のイメージ",
+                mobileObjectPosition: "center 66%",
+                mobileTone: "light",
             }}
             actions={[
                 { href: "/before-you-start", label: "登録前チェックリストを見る" },
