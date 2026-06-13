@@ -19,7 +19,19 @@ export function FAQPage() {
     <main className={styles.page}>
       <div className={styles.shell}>
         <div className={styles.headerGrid}>
-          <header className={styles.hero}>
+          <header className={`${styles.hero} ${styles.heroWithImage}`}>
+            <picture className={`${styles.heroImage} ${styles.heroImageFaq}`} aria-hidden="true">
+              <source
+                media="(max-width: 760px)"
+                srcSet="/page-heroes/mobile/anpittchi-manual-faq-mobile-hero.webp"
+              />
+              <img
+                src="/page-heroes/anpittchi-manual-faq-hero-question-index.webp"
+                alt=""
+                width={1731}
+                height={909}
+              />
+            </picture>
             <p className={styles.eyebrow}>FAQ</p>
             <h1 className={styles.title}>よくある質問</h1>
             <p className={styles.lead}>

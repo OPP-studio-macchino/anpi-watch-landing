@@ -43,7 +43,7 @@ export default function ShareMessagePage() {
       title="家族・パートナーから本人に提案する文面テンプレ"
       lead="このページは、離れて暮らす本人にあんぴッチを提案したい家族・パートナーのための文面テンプレ集です。あんぴッチは、本人を勝手に監視したり、本人の代わりに通知を始めたりするサービスではありません。まずは本人に内容を伝え、一緒に未反応時の連絡ルールを確認してください。"
       heroImage={{
-        src: "/page-heroes/anpittchi-referrer-guide-hero-reviewing-app.webp",
+        src: "/page-heroes/anpittchi-share-message-hero-message-preparation.webp",
         mobileSrc: "/page-heroes/mobile/anpittchi-share-message-mobile-hero.webp",
         alt: "家族や知人に紹介する前にアプリ内容を確認する人のイメージ",
         mobileObjectPosition: "center 62%",

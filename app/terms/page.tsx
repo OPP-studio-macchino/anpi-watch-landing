@@ -31,8 +31,11 @@ export default function TermsPage() {
       title="利用規約"
       lead="この利用規約は、あんぴッチの利用条件について説明するものです。"
       heroImage={{
-        src: "/page-heroes/anpittchi-terms-hero-documents-desk.webp",
+        src: "/page-heroes/anpittchi-terms-hero-clear-path-rules.webp",
+        mobileSrc: "/page-heroes/mobile/anpittchi-terms-mobile-hero.webp",
         alt: "整理された文書と机の上の書類のイメージ",
+        mobileObjectPosition: "center 62%",
+        mobileTone: "light",
       }}
       actions={[
         { href: "/privacy", label: "プライバシーポリシー" },

@@ -51,7 +51,7 @@ export default function NotificationHistoryPage() {
             title="通知履歴の見方"
             lead="通知履歴では、誰に・いつ・どの通知を送ったかを確認できます。ただし、通知が送られたことと、相手が読んだことは同じではありません。ここでは、表示の見方をやさしく説明します。"
             heroImage={{
-                src: "/page-heroes/anpittchi-privacy-choices-hero-settings-control.webp",
+                src: "/page-heroes/anpittchi-delivery-status-hero-record-review.webp",
                 mobileSrc: "/page-heroes/mobile/anpittchi-delivery-status-mobile-hero.webp",
                 alt: "設定画面と記録を確認するイメージ",
                 mobileObjectPosition: "center 62%",

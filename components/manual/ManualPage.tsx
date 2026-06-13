@@ -198,7 +198,19 @@ export function ManualPage() {
         <main className={styles.page}>
             <div className={styles.shell}>
                 <div className={styles.headerGrid}>
-                    <header className={styles.hero}>
+                    <header className={`${styles.hero} ${styles.heroWithImage}`}>
+                        <picture className={`${styles.heroImage} ${styles.heroImageManual}`} aria-hidden="true">
+                            <source
+                                media="(max-width: 760px)"
+                                srcSet="/page-heroes/mobile/anpittchi-manual-mobile-hero.webp"
+                            />
+                            <img
+                                src="/page-heroes/anpittchi-manual-hero-guide-entry.webp"
+                                alt=""
+                                width={1536}
+                                height={1024}
+                            />
+                        </picture>
                         <p className={styles.eyebrow}>ユーザーマニュアル</p>
                         <h1 className={styles.title}>使い方ガイド</h1>
                         <p className={styles.lead}>

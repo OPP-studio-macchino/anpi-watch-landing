@@ -37,6 +37,41 @@
   backdrop-filter: blur(14px);
 }
 
+.heroWithImage {
+  min-height: clamp(520px, 52vw, 680px);
+  background: color-mix(in srgb, var(--manual-bg-surface-1) 64%, transparent);
+}
+
+.heroWithImage > :not(.heroImage) {
+  position: relative;
+  z-index: 2;
+}
+
+.heroImage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  pointer-events: none;
+}
+
+.heroImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+}
+
+.heroWithImage::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(255, 253, 248, 0.97) 0%, rgba(255, 253, 248, 0.9) 42%, rgba(255, 253, 248, 0.48) 68%, rgba(255, 253, 248, 0.22) 100%),
+    linear-gradient(180deg, rgba(255, 253, 248, 0.48), rgba(255, 253, 248, 0.2));
+  content: "";
+}
+
 .hero::before {
   position: absolute;
   inset: 0;
@@ -52,6 +87,11 @@
   mask-image: linear-gradient(to bottom, #000, transparent 90%);
   -webkit-mask-image: linear-gradient(to bottom, #000, transparent 90%);
   content: "";
+}
+
+.heroWithImage::before {
+  z-index: 1;
+  opacity: 0.18;
 }
 
 .heroGrid {
@@ -677,6 +717,11 @@
     grid-template-columns: minmax(0, 1fr) minmax(320px, 360px);
     align-items: start;
   }
+
+  .heroWithImage .title,
+  .heroWithImage .lead {
+    max-width: min(38rem, 60%);
+  }
 }
 
 @media (max-width: 640px) {
@@ -687,6 +732,20 @@
 
   .title {
     max-width: 11ch;
+  }
+
+  .heroWithImage {
+    min-height: 560px;
+  }
+
+  .heroWithImage::after {
+    background:
+      linear-gradient(90deg, rgba(255, 253, 248, 0.96) 0%, rgba(255, 253, 248, 0.82) 54%, rgba(255, 253, 248, 0.34) 100%),
+      linear-gradient(180deg, rgba(255, 253, 248, 0.92) 0%, rgba(255, 253, 248, 0.4) 52%, rgba(255, 253, 248, 0.2) 100%);
+  }
+
+  .heroImage img {
+    object-position: center 58%;
   }
 
   .sectionHeader h2 {

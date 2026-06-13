@@ -40,7 +40,7 @@ export default function SupportPage() {
       title="あんぴッチ サポート"
       lead="あんぴッチに関する問い合わせ方法と、アカウント削除・データ削除・連絡先本人からの問い合わせ・SMS停止・サブスクリプション解約に関する案内です。"
       heroImage={{
-        src: "/page-heroes/anpittchi-support-hero-guidance-desk.webp",
+        src: "/page-heroes/anpittchi-support-hero-guidance-organizer.webp",
         mobileSrc: "/page-heroes/mobile/anpittchi-support-mobile-hero.webp",
         alt: "案内資料とスマートフォンを置いたサポートページのイメージ",
         mobileObjectPosition: "center 60%",

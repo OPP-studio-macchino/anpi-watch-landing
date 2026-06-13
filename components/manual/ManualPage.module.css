@@ -36,6 +36,48 @@
   backdrop-filter: blur(14px);
 }
 
+.heroWithImage {
+  min-height: clamp(520px, 52vw, 680px);
+  background: color-mix(in srgb, var(--manual-bg-surface-1) 64%, transparent);
+}
+
+.heroWithImage > :not(.heroImage) {
+  position: relative;
+  z-index: 2;
+}
+
+.heroImage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  pointer-events: none;
+}
+
+.heroImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroImageManual img {
+  object-position: center right;
+}
+
+.heroImageFaq img {
+  object-position: center right;
+}
+
+.heroWithImage::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(255, 253, 248, 0.97) 0%, rgba(255, 253, 248, 0.9) 42%, rgba(255, 253, 248, 0.48) 68%, rgba(255, 253, 248, 0.22) 100%),
+    linear-gradient(180deg, rgba(255, 253, 248, 0.48), rgba(255, 253, 248, 0.2));
+  content: "";
+}
+
 .hero::before {
   position: absolute;
   inset: 0;
@@ -51,6 +93,11 @@
   mask-image: linear-gradient(to bottom, #000, transparent 86%);
   -webkit-mask-image: linear-gradient(to bottom, #000, transparent 86%);
   content: "";
+}
+
+.heroWithImage::before {
+  z-index: 1;
+  opacity: 0.18;
 }
 
 .eyebrow {
@@ -648,6 +695,15 @@
     overflow: visible;
     padding-bottom: 0;
   }
+
+  .heroWithImage .title,
+  .heroWithImage .lead {
+    max-width: min(46rem, 58%);
+  }
+
+  .heroWithImage .factGrid {
+    max-width: 68%;
+  }
 }
 
 @media (max-width: 640px) {
@@ -669,6 +725,24 @@
   .title {
     font-size: 30px;
     line-height: 1.3;
+  }
+
+  .heroWithImage {
+    min-height: 560px;
+  }
+
+  .heroWithImage::after {
+    background:
+      linear-gradient(90deg, rgba(255, 253, 248, 0.96) 0%, rgba(255, 253, 248, 0.82) 54%, rgba(255, 253, 248, 0.34) 100%),
+      linear-gradient(180deg, rgba(255, 253, 248, 0.92) 0%, rgba(255, 253, 248, 0.4) 52%, rgba(255, 253, 248, 0.2) 100%);
+  }
+
+  .heroImageManual img {
+    object-position: center 58%;
+  }
+
+  .heroImageFaq img {
+    object-position: center 56%;
   }
 
   .lead,

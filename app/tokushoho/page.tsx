@@ -22,7 +22,10 @@ export default function TokushohoPage() {
       lead="あんぴッチの有料プランは、App Storeのアプリ内課金による月額サブスクリプションとして提供されます。"
       heroImage={{
         src: "/page-heroes/anpittchi-tokushoho-hero-transaction-ledger.webp",
+        mobileSrc: "/page-heroes/mobile/anpittchi-tokushoho-mobile-hero.webp",
         alt: "取引条件を確認する台帳と書類のイメージ",
+        mobileObjectPosition: "center 58%",
+        mobileTone: "light",
       }}
       actions={[
         { href: "/terms", label: "利用規約" },

@@ -38,7 +38,7 @@ export default function StopHelpPage() {
       title="SMSを止めたい時・内容を確認したい時"
       lead="このページは、あんぴッチから届くショートメッセージを止めたい時や、内容を確認したい時の説明です。SMSは、携帯電話に届く短いメッセージです。STOP / HELP / START は、あんぴッチから届いたSMSに返信する言葉です。本人から届いた説明SMSや同意のお願いSMSには効きません。"
       heroImage={{
-        src: "/page-heroes/anpittchi-support-hero-guidance-desk.webp",
+        src: "/page-heroes/anpittchi-help-stop-hero-sms-control-guidance.webp",
         mobileSrc: "/page-heroes/mobile/anpittchi-help-stop-mobile-hero.webp",
         alt: "案内資料とスマートフォンを置いた説明ページのイメージ",
         mobileObjectPosition: "center 60%",

@@ -52,7 +52,7 @@ export default function HowItWorksPage() {
       title="48時間の通知ルール"
       lead="最終OKからの時間経過に基づいて、本人向け通知から連絡先向け通知へ段階的に進みます。"
       heroImage={{
-        src: "/page-heroes/anpittchi-notification-samples-hero-message-cards.webp",
+        src: "/page-heroes/anpittchi-how-it-works-hero-staged-rule-flow.webp",
         mobileSrc: "/page-heroes/mobile/anpittchi-how-it-works-mobile-hero.webp",
         alt: "通知ルールの説明を確認する画面のイメージ",
         mobileObjectPosition: "center 66%",
