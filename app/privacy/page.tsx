@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import {
   TrustList,
@@ -16,14 +15,9 @@ import {
   serviceScopeItems,
   supportEmail,
 } from "../../components/legal/legalPublicContent";
+import { createPageMetadata } from "../../lib/seo";
 
-export const metadata: Metadata = {
-  title: "プライバシーポリシー | あんぴッチ",
-  description: "あんぴッチにおける利用者情報の取り扱いについて説明します。",
-  alternates: {
-    canonical: "/privacy",
-  },
-};
+export const metadata = createPageMetadata("/privacy");
 
 export default function PrivacyPage() {
   return (

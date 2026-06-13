@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import {
     NotificationSample,
     NotificationSampleGrid,
@@ -6,11 +5,9 @@ import {
     TrustPage,
     TrustSection,
 } from "../../components/trust-foundation/TrustFoundationPage";
+import { createPageMetadata } from "../../lib/seo";
 
-export const metadata: Metadata = {
-    title: "通知サンプル | あんぴッチ",
-    description: "本人から届く同意のお願いSMSと、あんぴッチから届く通知SMSのサンプルです。",
-};
+export const metadata = createPageMetadata("/notification-samples");
 
 const relatedLinks = [
     {

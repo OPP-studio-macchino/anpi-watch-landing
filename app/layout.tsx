@@ -2,27 +2,25 @@ import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import { SiteFooter } from "../components/site/SiteFooter";
 import { SiteHeader } from "../components/site/SiteHeader";
+import { APP_NAME, PAGE_SEO, SITE_URL, canonicalUrl } from "../lib/seo";
 
-const appName = "あんぴッチ";
-const appTitle = "あんぴッチ | 毎日OKを記録するアプリ";
-const appDescription =
-  "あんぴッチは、毎日OKを1回記録し、最後のOKから時間がたつと決まった順番でお知らせするアプリです。";
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://anpi-watch.app";
+const homeSeo = PAGE_SEO["/"];
+const homeCanonical = canonicalUrl("/");
 
 export const viewport: Viewport = {
   themeColor: "#0099A1"
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  applicationName: appName,
+  metadataBase: new URL(SITE_URL),
+  applicationName: APP_NAME,
   title: {
-    default: appTitle,
-    template: `%s | ${appName}`
+    default: `${homeSeo.title} | ${APP_NAME}`,
+    template: `%s | ${APP_NAME}`
   },
-  description: appDescription,
+  description: homeSeo.description,
   alternates: {
-    canonical: "/"
+    canonical: homeCanonical
   },
   manifest: "/site.webmanifest",
   icons: {
@@ -38,16 +36,16 @@ export const metadata: Metadata = {
   },
   appleWebApp: {
     capable: true,
-    title: appName,
+    title: APP_NAME,
     statusBarStyle: "default"
   },
   openGraph: {
     type: "website",
     locale: "ja_JP",
-    siteName: appName,
-    title: appTitle,
-    description: appDescription,
-    url: "/",
+    siteName: APP_NAME,
+    title: homeSeo.title,
+    description: homeSeo.description,
+    url: homeCanonical,
     images: [
       {
         url: "/og-image.png",
@@ -59,8 +57,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: appTitle,
-    description: appDescription,
+    title: homeSeo.title,
+    description: homeSeo.description,
     images: ["/twitter-card.png"]
   }
 };

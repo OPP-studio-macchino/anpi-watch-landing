@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import {
   TrustCard,
   TrustGrid,
@@ -7,11 +6,9 @@ import {
   TrustPage,
   TrustSection,
 } from "../../components/trust-foundation/TrustFoundationPage";
+import { createPageMetadata } from "../../lib/seo";
 
-export const metadata: Metadata = {
-  title: "離れて暮らす本人に、あんぴッチを提案したい方へ | あんぴッチ",
-  description: "本人にあんぴッチを紹介したい家族・パートナー向けに、できること、できないこと、説明の仕方をまとめています。",
-};
+export const metadata = createPageMetadata("/for-family");
 
 const relatedLinks = [
   {

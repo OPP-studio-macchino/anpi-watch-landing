@@ -2,18 +2,18 @@
 
 対象: `https://www.anpi-watch.app/` の公開主要19ページ
 
-作業範囲: 初回は監査レポート作成のみ。AIO追加方針を受けて `app/robots.txt/route.ts` と `app/sitemap.ts` を実装した。metadata変更、JSON-LD変更、画像変更、本文変更、deploy、Vercel CLI、production writeは行っていない。
+作業範囲: 初回は監査レポート作成のみ。AIO追加方針を受けて `app/robots.txt/route.ts` と `app/sitemap.ts` を実装し、production反映を確認した。2026-06-14に公開主要19ページのpage-level metadata / canonical / OGP / Twitter cardを実装した。JSON-LD変更、画像変更、本文変更、deploy、Vercel CLI、production writeは行っていない。
 
 ## Executive Summary
 
-現状の主要SEO課題は、ページ本文やH1よりも `<head>` とクロール入口に集中している。
+初回監査時点の主要SEO課題は、ページ本文やH1よりも `<head>` とクロール入口に集中していた。2026-06-14時点でP0のrobots/sitemap/AIO基礎とpage-level metadata/canonical/OGP/Twitterは実装済み。
 
-- P0: canonicalが多くのページでトップページ `https://anpi-watch.app` に向いており、監査基準の `https://www.anpi-watch.app/...` ともホストが一致していない。
-- P0: `/robots.txt` と `/sitemap.xml` はproduction監査時点では404。AIO P0対応としてlocalの `/robots.txt` と `/sitemap.xml` は実装済み。production反映は未実施。
+- Done P0: canonicalは19ページすべて `https://www.anpi-watch.app/...` の自己参照URLへ実装した。
+- Done P0: `/robots.txt` と `/sitemap.xml` はproductionで200反映確認済み。sitemapは対象19 canonical URLのみを含み、`/legal-review/**` を含めていない。
 - P0: AIOは通常SEOの技術基礎として扱う。AI検索向けの隠し本文、専用ページ、`llms.txt`、AI専用schemaは作らない。
-- P0: OGP/Twitterが全ページでトップページ共通のtitle/description/url/imageを継承している。SNS共有時も検索補助文脈もページ別にならない。
-- P0: title templateにより、多くのページで `| あんぴッチ | あんぴッチ` の二重ブランド表記が出ている。
-- P1: `support` と `privacy-choices` はmeta descriptionが未設定で、root descriptionを継承している。
+- Done P0: OGP/Twitterのtitle/description/urlは19ページでページ別に実装した。画像は既存の共通 `/og-image.png` と `/twitter-card.png` を継続利用し、専用OG画像は作成していない。
+- Done P0: title templateとpage titleを整理し、`| あんぴッチ | あんぴッチ` の二重ブランド表記を解消した。
+- Done P1: `support` と `privacy-choices` のmeta descriptionを指定文言で追加した。
 - P1: 構造化データは0件。FAQPage、WebSite、SoftwareApplication、WebPage、BreadcrumbListなどの候補はあるが、安全・法務・価格・App Store公開状況と矛盾しない範囲で段階導入する必要がある。
 - P1: フッターは19ページを広くカバーしているが、本文上の文脈リンクには不足がある。特に `/pricing` と `/tokushoho` の相互導線がない。
 
@@ -57,24 +57,24 @@ Source observation:
 
 - Framework: Next.js App Router。
 - Root layout: `app/layout.tsx`。
-- `metadataBase`: `process.env.NEXT_PUBLIC_SITE_URL ?? "https://anpi-watch.app"`。
-- productionのcanonical/OG URLは `https://anpi-watch.app` になっており、監査対象の `https://www.anpi-watch.app` と不一致。
-- Root `metadata.alternates.canonical` は `/`。ページ側でcanonicalを定義していないページではトップページcanonicalを継承している。
+- `metadataBase`: `https://www.anpi-watch.app`。
+- canonical/OG URLは `https://www.anpi-watch.app` を基準にした。
+- Root `metadata.alternates.canonical` は `https://www.anpi-watch.app/`。対象19ページは `lib/seo.ts` のhelperで自己参照canonicalを持つ。
 - Root title template: `%s | あんぴッチ`。
-- 多くのページ側titleが既に `| あんぴッチ` を含むため、productionでは `| あんぴッチ | あんぴッチ` になる。
-- Root Open Graph/Twitterは設定済み。ただし全ページでrootのOG/Twitter title/description/url/imageを継承している。
+- ページ側titleから `| あんぴッチ` を外し、root template `%s | あんぴッチ` に統一した。
+- Open Graph/Twitterは、title/description/urlをページ別に設定した。画像は既存の共通画像を継続利用している。
 - `viewport` は `themeColor: "#0099A1"` を含む。production headには `viewport` と `theme-color` が出ている。
 - `<html lang="ja">` はproductionで確認済み。
-- JSON-LD / structured dataはproduction 19ページすべてで0件。
+- JSON-LD / structured dataは実装していない。
 - `generateMetadata` は未使用。
 - `app/app/**` に別ルート用metadataがあるが、今回の19ページ対象外。
 
-Production shared head status:
+Current shared head image/status:
 
 - `twitter:card`: `summary_large_image` が全ページに存在。
-- `og:image`: `https://anpi-watch.app/og-image.png` が全ページ共通。
-- `twitter:image`: `https://anpi-watch.app/twitter-card.png` が全ページ共通。
-- `robots` meta: 19ページすべて未設定。通常はindex/follow相当だが、robots.txtも存在しない。
+- `og:image`: `https://www.anpi-watch.app/og-image.png` が全ページ共通。
+- `twitter:image`: `https://www.anpi-watch.app/twitter-card.png` が全ページ共通。
+- `robots` meta: 19ページすべて未設定。通常はindex/follow相当。robots.txtはproduction反映済み。
 
 ## Robots, Sitemap, Manifest
 
@@ -82,8 +82,8 @@ Production read-only results:
 
 | URL | Status | Result |
 |---|---:|---|
-| `/robots.txt` | 404 | robots.txtなし |
-| `/sitemap.xml` | 404 | sitemapなし |
+| `/robots.txt` | 200 | `User-agent: *` と `OAI-SearchBot` を許可し、sitemap URLを明示 |
+| `/sitemap.xml` | 200 | 対象19 canonical URLのみを掲載 |
 | `/site.webmanifest` | 200 | manifestあり。root metadataも `/site.webmanifest` を参照 |
 | `/manifest.webmanifest` | 404 | 未使用の一般名manifestはなし |
 | `/legal-review/privacy` | 404 | SEO対象外として公開されていない |
@@ -94,7 +94,7 @@ Production read-only results:
 
 `/legal-review/` は308で `/legal-review` に正規化され、その先は404。`/legal-review/**` をnoindexで処理する対象ではなく、現状どおり404で扱う方針でよい。
 
-Sitemapがないため、対象19ページがsitemapに含まれているかは現状では「含まれていない」。次タスクでsitemapを実装する場合は、19ページのみを `https://www.anpi-watch.app/...` のcanonical候補で列挙し、`/legal-review/**` を含めない。
+Sitemapは、19ページのみを `https://www.anpi-watch.app/...` のcanonical URLで列挙し、`/legal-review/**` を含めていない。
 
 AIO P0対応後のlocal sitemap実装:
 
@@ -140,14 +140,41 @@ Official reference checked: OpenAI crawler overview (`https://developers.openai.
 - 本文、見出し、FAQ、法務文言はAIO目的で勝手に変更しない。
 - AIO文言でも、救命保証、危険検知、通知到達保証、医療/警備/介護誤認、自動通報に見える表現は使わない。
 
-AIO観点の残P0:
+AIO観点のP0実装状況:
 
-- canonicalを `https://www.anpi-watch.app/...` 基準候補でページ別に正す。
-- sitemapは対象19ページでlocal実装済み。production反映後に公開確認する。
-- ページ別metadata/OGP/Twitterを正し、AI検索にもページの役割が誤読されにくい構造にする。
-- 内部リンクの文脈を整え、料金、同意、通知限界、法務ページの関係をクローラにも分かるようにする。
+- canonicalは `https://www.anpi-watch.app/...` 基準候補で19ページすべて自己参照にした。
+- sitemapは対象19ページで実装し、production反映を確認した。
+- ページ別metadata/OGP/Twitterを実装し、AI検索にもページの役割が誤読されにくい構造にした。
+- 内部リンクの文脈改善はP1として継続する。料金、同意、通知限界、法務ページの関係をより明確にする余地は残る。
 
-## Page-Level Metadata Audit
+## P0 Metadata Implementation Update - 2026-06-14
+
+実装方式:
+
+- 共通helper: `lib/seo.ts`
+- Root metadata: `app/layout.tsx`
+- 対象19ページ: 各 `page.tsx` から `createPageMetadata(path)` を呼び出す。
+- `metadataBase`: `https://www.anpi-watch.app`
+- document title: `{title} | あんぴッチ`
+- canonical: 19ページすべて `https://www.anpi-watch.app/...` の自己参照URL。source上のtop canonical候補は `https://www.anpi-watch.app/` だが、Next Metadata APIのHTML出力ではroot URLが `https://www.anpi-watch.app` に正規化される。下層URLの末尾slashなしを維持するため、`trailingSlash` は有効化していない。
+- OGP: `og:title`, `og:description`, `og:url`, `og:site_name`, `og:locale`, `og:type` をページ別に設定。
+- Twitter: `twitter:card`, `twitter:title`, `twitter:description` をページ別に設定。
+
+画像方針:
+
+- 新規画像は作成していない。
+- Hero画像、favicon、public配下の画像は変更していない。
+- OGP/Twitter画像は既存の共通 `/og-image.png` と `/twitter-card.png` を継続利用した。
+- 専用OGP画像やページ別OGP画像はP1以降の候補として残す。
+
+未実装・未追加:
+
+- JSON-LD / structured dataは追加していない。
+- `llms.txt` は作成していない。
+- AI検索向けの隠しテキスト、専用ページ、本文追加はしていない。
+- 本文、見出し、CTA、料金、2名同意条件、免責、法務本文、manual本文は変更していない。
+
+## Page-Level Metadata Audit (initial production snapshot)
 
 共通状態:
 
@@ -284,27 +311,28 @@ Specific risks:
 
 ### P0
 
-1. Canonical host/pathを確定して統一する。
+1. Done: Canonical host/pathを確定して統一した。
    - 監査基準候補: `https://www.anpi-watch.app/...`。
-   - rootの `metadataBase` とproduction env/defaultの不一致を解消する。
-   - 19ページすべてにページ別canonicalを持たせる、またはroot canonical継承でトップへ向かない構成にする。
+   - rootの `metadataBase` を `https://www.anpi-watch.app` にした。
+   - 19ページすべてにページ別canonicalを持たせ、root canonical継承でトップへ向かない構成にした。
 
-2. `/robots.txt` と `/sitemap.xml` を用意する。
-   - robots.txtはAIO追加対応でlocal実装済み。
-   - sitemapも対象19ページでlocal実装済み。
+2. Done: `/robots.txt` と `/sitemap.xml` を用意した。
+   - robots.txtはAIO追加対応で実装済み。
+   - sitemapも対象19ページで実装済み。
+   - production反映確認済み。
    - `/legal-review/**` は含めていない。
    - robots.txtの `Sitemap: https://www.anpi-watch.app/sitemap.xml` とsitemap URLを一致させた。
 
-3. Title templateとページtitleの二重ブランドを解消する。
+3. Done: Title templateとページtitleの二重ブランドを解消した。
    - page titleから `| あんぴッチ` を外してtemplateに任せる、またはtemplateを変える。
-   - どちらか一方に統一する。
+   - root template `%s | あんぴッチ` に統一した。
 
-4. ページ別OGP/Twitterを入れる。
+4. Done: ページ別OGP/Twitterを入れた。
    - `og:title`, `og:description`, `og:url`, `twitter:title`, `twitter:description` をページ別にする。
-   - まずは共通画像のままでもよいが、URLと文脈はページ別にする。
+   - 画像は既存の共通画像のまま、URLと文脈はページ別にした。
 
-5. `support` と `privacy-choices` のmeta descriptionを追加する。
-   - draft扱いで、問い合わせ・データ選択・削除・STOP/同意撤回を説明する。
+5. Done: `support` と `privacy-choices` のmeta descriptionを追加した。
+   - 指定文言で、問い合わせ・データ選択・削除・STOP/同意撤回を説明する。
    - 即時対応、返金保証、削除保証、救命/通報系表現は避ける。
 
 ### P1
@@ -324,81 +352,57 @@ Specific risks:
 
 ## Validation Performed
 
-Read-only source commands:
+Implementation validation for page-level metadata / canonical / OGP / Twitter:
 
 - `git status --short --branch`
   - before edit: `## main...origin/main`
-  - after edit: `## main...origin/main` plus `?? docs/seo/seo-audit-2026-06.md`
-- `rg -n "metadata|generateMetadata|openGraph|twitter|robots|sitemap|canonical|application/ld\\+json|jsonLd|schema.org|FAQPage|SoftwareApplication|BreadcrumbList" app components public`
-  - 34 lines.
-  - metadata found in root layout and page files.
-  - FAQ component names found.
+- `rg -n "metadataBase|generateMetadata|openGraph|twitter|alternates|canonical|application/ld\\+json|schema.org|FAQPage|SoftwareApplication|BreadcrumbList" app components lib`
+  - metadata implementation found in `app/layout.tsx` and `lib/seo.ts`.
   - no `application/ld+json`, `schema.org`, `SoftwareApplication`, or `BreadcrumbList` implementation found.
-  - initial audit found no robots/sitemap implementation; AIO P0 work later added `app/robots.txt/route.ts` and `app/sitemap.ts`.
-- `rg -n "apps.apple.com|App Storeで見る|id6763868893" app components`
-  - 8 lines.
-  - existing App Store href found in home, pricing, and shared site navigation.
-- `rg -n "孤独死を防ぐ|危険を検知|必ず届く|助けが来|自動通報|119|救急|警察|消防|従量|追加請求あり|完全無料|永久無料|100%安心|絶対安全|24時間監視|医療サービス|警備サービス|介護サービス|読んだことを保証|対応したことを保証|確実に届" app components docs`
-  - 40 lines after this audit report was added.
-  - app/components hits are negative boundary statements.
-  - docs hits include prohibited/negative keyword lists and this audit report.
-- Official OpenAI crawler reference checked: `https://developers.openai.com/api/docs/bots`
-  - OAI-SearchBot is the Search crawler.
-  - GPTBot is for foundation model training.
-  - ChatGPT-User is user-initiated and not the robots target for Search appearance.
-- `npm run build`
-  - pass. `/robots.txt` and `/sitemap.xml` appear in the Next route output.
-- `npx tsc --noEmit`
-  - pass.
-- local HTTP `curl http://localhost:3020/robots.txt`
-  - 200.
-  - contains `User-agent: *`, `Allow: /`, `User-agent: OAI-SearchBot`, and `Sitemap: https://www.anpi-watch.app/sitemap.xml`.
-  - does not contain `GPTBot` or `ChatGPT-User`.
-- local HTTP `curl http://localhost:3020/sitemap.xml`
-  - 200.
-  - exactly 19 `<url>` entries.
-  - contains only the 19 target `https://www.anpi-watch.app/...` canonical URLs.
-  - does not contain `/legal-review`, `apps.apple.com`, `/page-heroes`, image URLs, relative URLs, or non-www URLs.
-- `rg -n "llms\\.txt|GPTBot|OAI-SearchBot|ChatGPT-User" app public docs`
-  - expected hits are `app/robots.txt/route.ts` and this SEO audit report.
-  - `GPTBot` appears only in the audit/report explanation, not in robots output.
+  - `FAQPage` hits are component names only, not JSON-LD.
+- `git diff -- public`
+  - no output.
+- `git diff -- package.json package-lock.json pnpm-lock.yaml yarn.lock`
+  - no output.
 - `find public app -iname "llms.txt" -print`
   - no output.
-- `rg -n "AI検索|AIO|AI Overviews|AI Mode|OAI-SearchBot|GPTBot|llms.txt" docs/seo/seo-audit-2026-06.md`
-  - hits confirm this AIO section and validation notes.
-
-Production read-only HTTP:
-
-- 19 target pages: all 200.
-- `/robots.txt`: 404.
-- `/sitemap.xml`: 404.
-- `/site.webmanifest`: 200.
-- `/manifest.webmanifest`: 404.
-- `/legal-review/privacy`, `/legal-review/terms`, `/legal-review/tokushoho`, `/legal-review/privacy-choices`, `/legal-review/support`: all 404.
-
-Post-report validation:
-
-- `find public -name '._*' -print`
+- `rg -n "GPTBot|ChatGPT-User|llms\\.txt" app public`
   - no output.
-- `find docs -name '._*' -print`
-  - no output after removing ignored AppleDouble file `docs/._design`.
+- `npm run build`
+  - pass.
+- `npx tsc --noEmit`
+  - pass.
 - `git diff --check`
   - pass.
-- `git diff --stat`
-  - no output because the audit report is untracked and there are no tracked diffs.
-- `git status --short --branch --untracked-files=all`
-  - `## main...origin/main`
-  - `?? app/robots.txt/route.ts`
-  - `?? app/sitemap.ts`
-  - `?? docs/seo/seo-audit-2026-06.md`
+- prohibited expression scan:
+  - app/components hits are existing negative boundary statements.
+  - docs/seo hits are prohibited-expression audit notes and risk lists.
+  - no new metadata title/description uses prohibited SEO wording.
+- `anpi-public-copy-safety-review` scan:
+  - result: WARN.
+  - warnings are in the separate app repo's existing docs/legal checklist, not from this landing metadata change.
+
+Local HTTP/head audit on `http://localhost:3021`:
+
+- 19 public pages: 19/19 are 200.
+- 19 public pages: 19/19 pass document title, meta description, canonical, OGP, and Twitter metadata checks.
+- document title: no duplicate `あんぴッチ`.
+- canonical: 19/19 are self-referential on `https://www.anpi-watch.app`. Root is emitted by Next as `https://www.anpi-watch.app` instead of the slash form `https://www.anpi-watch.app/`.
+- OGP: `og:title`, `og:description`, `og:url`, `og:site_name`, `og:locale`, `og:type` are present and page-specific where required.
+- Twitter: `twitter:card`, `twitter:title`, `twitter:description` are present and page-specific where required.
+- `/robots.txt`: 200.
+- `/sitemap.xml`: 200.
+- sitemap URL count: 19.
+- `/legal-review`, `/legal-review/privacy`, `/legal-review/terms`, `/legal-review/specified-commercial-transactions`, `/legal-review/privacy-choices`: all 404.
 
 ## Remaining Risks
 
 - Search Console / indexing status is not checked.
 - Vercel deployment history, project env, and `NEXT_PUBLIC_SITE_URL` production value are not checked because Vercel CLI/account/env access is out of scope.
-- production `/robots.txt` is still not verified as deployed. Local `/robots.txt` is implemented and validated only.
-- production `/sitemap.xml` is still not verified as deployed. Local `/sitemap.xml` is implemented and validated only.
+- production `/robots.txt` and `/sitemap.xml` are verified as deployed.
+- production head再監査はこのmetadata実装のdeploy後に別タスクで行う。
+- Root canonicalはNext Metadata APIのHTML出力で `https://www.anpi-watch.app` に正規化される。`https://www.anpi-watch.app/` とURLとして同一だが、slash表記そのものの強制は `trailingSlash` 有効化を伴い、下層URL末尾slashなしの制約と衝突する。
 - App Store public page metadata is not audited; only existing source href was checked.
 - Core Web Vitals are not measured.
 - Structured data is candidate-only. No JSON-LD was implemented.
-- SEO title/description replacement copy is not finalized. Any future copy should be reviewed for product, legal, billing, consent, and public-copy safety before implementation.
+- SEO title/description replacement copy is implemented from the approved exact metadata map. Any future copy should be reviewed for product, legal, billing, consent, and public-copy safety before implementation.

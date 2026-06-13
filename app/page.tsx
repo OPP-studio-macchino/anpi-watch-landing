@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { createPageMetadata } from "../lib/seo";
+
+export const metadata = createPageMetadata("/");
 
 const appStoreUrl =
     "https://apps.apple.com/jp/app/%E3%81%82%E3%82%93%E3%81%B4%E3%83%83%E3%83%81/id6763868893";

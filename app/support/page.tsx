@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import {
   TrustCard,
   TrustGrid,
@@ -7,10 +6,9 @@ import {
   TrustSection,
   TrustTable,
 } from "../../components/trust-foundation/TrustFoundationPage";
+import { createPageMetadata } from "../../lib/seo";
 
-export const metadata: Metadata = {
-  title: "あんぴッチ サポート",
-};
+export const metadata = createPageMetadata("/support");
 
 const supportScopeItems = [
   "アプリの使い方",

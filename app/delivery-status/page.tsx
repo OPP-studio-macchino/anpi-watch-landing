@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import {
     TrustLinkGrid,
     TrustList,
@@ -6,12 +5,9 @@ import {
     TrustSection,
     TrustTable,
 } from "../../components/trust-foundation/TrustFoundationPage";
+import { createPageMetadata } from "../../lib/seo";
 
-export const metadata: Metadata = {
-    title: "通知履歴の見方 | あんぴッチ",
-    description:
-        "通知履歴の見方を説明します。通知が送られたか、届かなかった可能性があるかを確認できます。",
-};
+export const metadata = createPageMetadata("/delivery-status");
 
 const deliveryRows = [
     ["送信しました", "あんぴッチから通知を送った記録です。", "相手が読んだかどうかまでは分かりません。"],

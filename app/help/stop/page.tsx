@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import {
   TrustCard,
   TrustGrid,
@@ -7,11 +6,9 @@ import {
   TrustPage,
   TrustSection,
 } from "../../../components/trust-foundation/TrustFoundationPage";
+import { createPageMetadata } from "../../../lib/seo";
 
-export const metadata: Metadata = {
-  title: "SMSを止めたい時・内容を確認したい時 | あんぴッチ",
-  description: "あんぴッチから届くSMSを止めたい時、内容を確認したい時、また受け取りたい時の方法を説明します。",
-};
+export const metadata = createPageMetadata("/help/stop");
 
 const relatedLinks = [
   {

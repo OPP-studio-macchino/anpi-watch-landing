@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import {
   TrustList,
@@ -15,14 +14,9 @@ import {
   termsProhibitedItems,
   termsUseConditionRows,
 } from "../../components/legal/legalPublicContent";
+import { createPageMetadata } from "../../lib/seo";
 
-export const metadata: Metadata = {
-  title: "利用規約 | あんぴッチ",
-  description: "あんぴッチの利用条件を説明します。",
-  alternates: {
-    canonical: "/terms",
-  },
-};
+export const metadata = createPageMetadata("/terms");
 
 export default function TermsPage() {
   return (

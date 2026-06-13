@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import {
   TrustCard,
   TrustGrid,
@@ -8,11 +7,9 @@ import {
   TrustSection,
   TrustTable,
 } from "../../components/trust-foundation/TrustFoundationPage";
+import { createPageMetadata } from "../../lib/seo";
 
-export const metadata: Metadata = {
-  title: "48時間の通知ルール | あんぴッチ",
-  description: "最終OKから24h、30h、36h、42h、48hで起きる通知ルールを説明します。",
-};
+export const metadata = createPageMetadata("/how-it-works");
 
 const notificationRows = [
   ["24h", "本人", "スマホ通知", "連絡先には送らない"],

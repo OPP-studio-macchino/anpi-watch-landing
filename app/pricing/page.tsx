@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import {
     TrustCard,
     TrustGrid,
@@ -7,15 +6,12 @@ import {
     TrustPage,
     TrustSection,
 } from "../../components/trust-foundation/TrustFoundationPage";
+import { createPageMetadata } from "../../lib/seo";
 
 const appStoreUrl =
     "https://apps.apple.com/jp/app/%E3%81%82%E3%82%93%E3%81%B4%E3%83%83%E3%83%81/id6763868893";
 
-export const metadata: Metadata = {
-    title: "料金・課金方針 | あんぴッチ",
-    description:
-        "あんぴッチの月額300円、解約・返金の考え方を説明します。",
-};
+export const metadata = createPageMetadata("/pricing");
 
 const relatedLinks = [
     {

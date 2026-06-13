@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import {
   TrustCard,
   TrustGrid,
@@ -7,11 +6,9 @@ import {
   TrustPage,
   TrustSection,
 } from "../../components/trust-foundation/TrustFoundationPage";
+import { createPageMetadata } from "../../lib/seo";
 
-export const metadata: Metadata = {
-  title: "始める前のチェックリスト | あんぴッチ",
-  description: "あんぴッチを始める前に、必要な準備や知っておきたいことを確認できます。",
-};
+export const metadata = createPageMetadata("/before-you-start");
 
 const checklistItems = [
   "iPhoneで利用する。",

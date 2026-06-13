@@ -1,18 +1,12 @@
-import type { Metadata } from "next";
 import { tokushohoRows } from "../../components/legal/legalPublicContent";
 import {
   TrustPage,
   TrustSection,
   TrustTable,
 } from "../../components/trust-foundation/TrustFoundationPage";
+import { createPageMetadata } from "../../lib/seo";
 
-export const metadata: Metadata = {
-  title: "特定商取引法に基づく表示 | あんぴッチ",
-  description: "あんぴッチのApp Store内課金による月額サブスクリプションの表示です。",
-  alternates: {
-    canonical: "/tokushoho",
-  },
-};
+export const metadata = createPageMetadata("/tokushoho");
 
 export default function TokushohoPage() {
   return (

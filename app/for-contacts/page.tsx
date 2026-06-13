@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import {
   TrustCard,
   TrustGrid,
@@ -7,11 +6,9 @@ import {
   TrustPage,
   TrustSection,
 } from "../../components/trust-foundation/TrustFoundationPage";
+import { createPageMetadata } from "../../lib/seo";
 
-export const metadata: Metadata = {
-  title: "連絡先としてSMSを受け取る方へ | あんぴッチ",
-  description: "連絡先候補として登録された方に、本人から届く同意のお願いと、あんぴッチから届く通知SMSの違いを説明します。",
-};
+export const metadata = createPageMetadata("/for-contacts");
 
 const relatedLinks = [
   {

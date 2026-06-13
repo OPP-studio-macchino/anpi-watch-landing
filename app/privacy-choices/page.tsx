@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import {
   TrustCard,
   TrustGrid,
@@ -7,10 +6,9 @@ import {
   TrustSection,
   TrustTable,
 } from "../../components/trust-foundation/TrustFoundationPage";
+import { createPageMetadata } from "../../lib/seo";
 
-export const metadata: Metadata = {
-  title: "Privacy Choices / データに関する選択",
-};
+export const metadata = createPageMetadata("/privacy-choices");
 
 const plannedItems = [
   "アカウント削除",

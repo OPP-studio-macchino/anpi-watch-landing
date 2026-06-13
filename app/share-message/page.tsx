@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import {
   MessageTemplate,
   NotificationSampleGrid,
@@ -7,11 +6,9 @@ import {
   TrustPage,
   TrustSection,
 } from "../../components/trust-foundation/TrustFoundationPage";
+import { createPageMetadata } from "../../lib/seo";
 
-export const metadata: Metadata = {
-  title: "家族・パートナーから本人に提案する文面テンプレ | あんぴッチ",
-  description: "離れて暮らす本人にあんぴッチを提案したい家族・パートナー向けの文面テンプレ集です。",
-};
+export const metadata = createPageMetadata("/share-message");
 
 const relatedLinks = [
   {

@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import {
     TrustCard,
     TrustGrid,
@@ -7,11 +6,9 @@ import {
     TrustPage,
     TrustSection,
 } from "../../components/trust-foundation/TrustFoundationPage";
+import { createPageMetadata } from "../../lib/seo";
 
-export const metadata: Metadata = {
-    title: "できること・できないこと | あんぴッチ",
-    description: "あんぴッチでできること、できないこと、通知について知っておくことを説明します。",
-};
+export const metadata = createPageMetadata("/trust");
 
 const relatedLinks = [
     {
