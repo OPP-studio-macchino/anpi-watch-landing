@@ -1,5 +1,7 @@
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
+import { SiteFooter } from "../components/site/SiteFooter";
+import { SiteHeader } from "../components/site/SiteHeader";
 
 const appName = "あんぴッチ";
 const appTitle = "あんぴッチ | 毎日OKを記録するアプリ";
@@ -66,7 +68,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
-      <body>{children}</body>
+      <body>
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }
