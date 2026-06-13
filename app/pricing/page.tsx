@@ -61,7 +61,7 @@ export default function PricingPage() {
             heroImage={{
                 src: "/page-heroes/anpittchi-pricing-hero-subscription-desk.webp",
                 mobileSrc: "/page-heroes/mobile/anpittchi-pricing-mobile-hero.webp",
-                alt: "ノートとカードが置かれた机で月額料金を確認する画面のイメージ",
+                alt: "月額料金とサブスクリプション内容を確認するイメージ",
                 mobileObjectPosition: "center 66%",
                 mobileTone: "light",
             }}

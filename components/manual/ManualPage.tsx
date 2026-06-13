@@ -199,14 +199,14 @@ export function ManualPage() {
             <div className={styles.shell}>
                 <div className={styles.headerGrid}>
                     <header className={`${styles.hero} ${styles.heroWithImage}`}>
-                        <picture className={`${styles.heroImage} ${styles.heroImageManual}`} aria-hidden="true">
+                        <picture className={`${styles.heroImage} ${styles.heroImageManual}`}>
                             <source
                                 media="(max-width: 760px)"
                                 srcSet="/page-heroes/mobile/anpittchi-manual-mobile-hero.webp"
                             />
                             <img
                                 src="/page-heroes/anpittchi-manual-hero-guide-entry.webp"
-                                alt=""
+                                alt="操作ガイドの入口を示すイメージ"
                                 width={1536}
                                 height={1024}
                             />

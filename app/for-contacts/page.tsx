@@ -40,7 +40,7 @@ export default function ForContactsPage() {
       heroImage={{
         src: "/page-heroes/anpittchi-for-contacts-hero-contact-consent-review.webp",
         mobileSrc: "/page-heroes/mobile/anpittchi-for-contacts-mobile-hero.webp",
-        alt: "通知文のカードが並ぶ画面のイメージ",
+        alt: "連絡先候補がSMSを受け取る前に内容を確認しているイメージ",
         mobileObjectPosition: "center 52%",
         mobileTone: "light",
       }}

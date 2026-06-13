@@ -54,7 +54,7 @@ export default function HowItWorksPage() {
       heroImage={{
         src: "/page-heroes/anpittchi-how-it-works-hero-staged-rule-flow.webp",
         mobileSrc: "/page-heroes/mobile/anpittchi-how-it-works-mobile-hero.webp",
-        alt: "通知ルールの説明を確認する画面のイメージ",
+        alt: "段階的な通知ルールの流れを示すイメージ",
         mobileObjectPosition: "center 66%",
         mobileTone: "light",
       }}

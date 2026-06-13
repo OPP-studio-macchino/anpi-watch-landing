@@ -34,7 +34,7 @@ export default function PrivacyPage() {
       heroImage={{
         src: "/page-heroes/anpittchi-privacy-hero-private-desk.webp",
         mobileSrc: "/page-heroes/mobile/anpittchi-privacy-mobile-hero.webp",
-        alt: "書類とスマートフォンを置いたプライバシー説明のイメージ",
+        alt: "個人情報を丁寧に扱うことを表すイメージ",
         mobileObjectPosition: "center 62%",
         mobileTone: "light",
       }}

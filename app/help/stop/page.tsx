@@ -40,7 +40,7 @@ export default function StopHelpPage() {
       heroImage={{
         src: "/page-heroes/anpittchi-help-stop-hero-sms-control-guidance.webp",
         mobileSrc: "/page-heroes/mobile/anpittchi-help-stop-mobile-hero.webp",
-        alt: "案内資料とスマートフォンを置いた説明ページのイメージ",
+        alt: "SMSの受け取り停止や確認方法を落ち着いて確認するイメージ",
         mobileObjectPosition: "center 60%",
         mobileTone: "light",
       }}

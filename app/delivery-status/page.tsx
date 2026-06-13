@@ -53,7 +53,7 @@ export default function NotificationHistoryPage() {
             heroImage={{
                 src: "/page-heroes/anpittchi-delivery-status-hero-record-review.webp",
                 mobileSrc: "/page-heroes/mobile/anpittchi-delivery-status-mobile-hero.webp",
-                alt: "設定画面と記録を確認するイメージ",
+                alt: "通知履歴と配信結果を後から確認するイメージ",
                 mobileObjectPosition: "center 62%",
                 mobileTone: "light",
             }}

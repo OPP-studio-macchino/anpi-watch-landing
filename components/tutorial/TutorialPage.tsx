@@ -134,14 +134,14 @@ export function TutorialPage() {
     <main className={styles.page}>
       <div className={styles.shell}>
         <section className={`${styles.hero} ${styles.heroWithImage}`}>
-          <picture className={styles.heroImage} aria-hidden="true">
+          <picture className={styles.heroImage}>
             <source
               media="(max-width: 760px)"
               srcSet="/page-heroes/mobile/anpittchi-manual-tutorial-mobile-hero.webp"
             />
             <img
               src="/page-heroes/anpittchi-manual-tutorial-hero-step-guide.webp"
-              alt=""
+              alt="手順を順番に試すチュートリアルのイメージ"
               width={1754}
               height={896}
             />

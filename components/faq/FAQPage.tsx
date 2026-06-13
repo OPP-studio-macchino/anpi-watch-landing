@@ -20,14 +20,14 @@ export function FAQPage() {
       <div className={styles.shell}>
         <div className={styles.headerGrid}>
           <header className={`${styles.hero} ${styles.heroWithImage}`}>
-            <picture className={`${styles.heroImage} ${styles.heroImageFaq}`} aria-hidden="true">
+            <picture className={`${styles.heroImage} ${styles.heroImageFaq}`}>
               <source
                 media="(max-width: 760px)"
                 srcSet="/page-heroes/mobile/anpittchi-manual-faq-mobile-hero.webp"
               />
               <img
                 src="/page-heroes/anpittchi-manual-faq-hero-question-index.webp"
-                alt=""
+                alt="質問を探しやすく整理したFAQのイメージ"
                 width={1731}
                 height={909}
               />

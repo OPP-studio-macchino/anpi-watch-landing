@@ -45,7 +45,7 @@ export default function ShareMessagePage() {
       heroImage={{
         src: "/page-heroes/anpittchi-share-message-hero-message-preparation.webp",
         mobileSrc: "/page-heroes/mobile/anpittchi-share-message-mobile-hero.webp",
-        alt: "家族や知人に紹介する前にアプリ内容を確認する人のイメージ",
+        alt: "本人へ伝える説明文を準備しているイメージ",
         mobileObjectPosition: "center 62%",
         mobileTone: "light",
       }}

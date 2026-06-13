@@ -42,7 +42,7 @@ export default function SupportPage() {
       heroImage={{
         src: "/page-heroes/anpittchi-support-hero-guidance-organizer.webp",
         mobileSrc: "/page-heroes/mobile/anpittchi-support-mobile-hero.webp",
-        alt: "案内資料とスマートフォンを置いたサポートページのイメージ",
+        alt: "困った時に見るサポート案内のイメージ",
         mobileObjectPosition: "center 60%",
         mobileTone: "light",
       }}

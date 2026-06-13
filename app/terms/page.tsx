@@ -33,7 +33,7 @@ export default function TermsPage() {
       heroImage={{
         src: "/page-heroes/anpittchi-terms-hero-clear-path-rules.webp",
         mobileSrc: "/page-heroes/mobile/anpittchi-terms-mobile-hero.webp",
-        alt: "整理された文書と机の上の書類のイメージ",
+        alt: "利用条件と基本ルールを確認するイメージ",
         mobileObjectPosition: "center 62%",
         mobileTone: "light",
       }}

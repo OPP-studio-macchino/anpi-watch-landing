@@ -64,7 +64,7 @@ export default function BeforeYouStartPage() {
       heroImage={{
         src: "/page-heroes/anpittchi-before-you-start-hero-readiness-entryway.webp",
         mobileSrc: "/page-heroes/mobile/anpittchi-before-you-start-mobile-hero.webp",
-        alt: "登録前に案内資料を確認する机の上のイメージ",
+        alt: "利用を始める前に必要なことを確認するイメージ",
         mobileObjectPosition: "center 64%",
         mobileTone: "light",
       }}

@@ -40,7 +40,7 @@ export default function TrustPageRoute() {
             heroImage={{
                 src: "/page-heroes/anpittchi-trust-hero-service-boundaries.webp",
                 mobileSrc: "/page-heroes/mobile/anpittchi-trust-mobile-hero.webp",
-                alt: "書類とスマートフォンを置いて内容を確認するイメージ",
+                alt: "サービスでできることとできないことの境界を示すイメージ",
                 mobileObjectPosition: "center 62%",
                 mobileTone: "light",
             }}
