@@ -166,23 +166,13 @@ a {
 }
 
 .site-brand__mark {
-    display: grid;
+    display: block;
     flex: 0 0 auto;
-    place-items: center;
     width: 34px;
-    aspect-ratio: 1;
-    border: 1px solid color-mix(in srgb, var(--ds-border-strong) 82%, transparent);
-    border-radius: 999px;
-    background: color-mix(in srgb, var(--ds-surface-1) 84%, var(--ds-action-soft));
+    height: 34px;
+    border-radius: 9px;
     box-shadow: var(--manual-shadow-1);
-}
-
-.site-brand__mark span {
-    width: 10px;
-    aspect-ratio: 1;
-    border-radius: 999px;
-    background: var(--ds-action-primary);
-    box-shadow: 0 0 0 5px var(--ds-action-soft);
+    object-fit: cover;
 }
 
 .site-brand__name {

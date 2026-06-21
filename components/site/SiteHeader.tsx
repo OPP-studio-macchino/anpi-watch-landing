@@ -42,9 +42,14 @@ export function SiteHeader() {
             aria-label="あんぴッチ トップへ"
             onClick={closeMenu}
           >
-            <span className="site-brand__mark" aria-hidden="true">
-              <span />
-            </span>
+            <img
+              className="site-brand__mark"
+              src="/icon.png"
+              alt=""
+              width={34}
+              height={34}
+              aria-hidden="true"
+            />
           </Link>
 
           <nav className="site-header__nav" aria-label="主要ページ">
