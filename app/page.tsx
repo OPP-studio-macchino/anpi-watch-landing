@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AppStoreBadgeLink } from "../components/site/AppStoreBadgeLink";
 import { createPageMetadata } from "../lib/seo";
 
 export const metadata = createPageMetadata("/");
@@ -91,13 +92,11 @@ export default function HomePage() {
                         あんぴッチは、ひとり暮らしの方が、もし何日も連絡できなかった時に、前もって決めた人へお知らせするiPhoneアプリです。
                     </p>
                     <div className="hm-hero__actions" aria-label="あんぴッチの主要な導線">
-                        <a
+                        <AppStoreBadgeLink
                             href={appStoreUrl}
                             className="primary"
-                            data-cta-id="home_hero_appstore"
-                        >
-                            App Storeで見る
-                        </a>
+                            ctaId="home_hero_appstore"
+                        />
                         <Link
                             href="/for-family"
                             className="secondary"

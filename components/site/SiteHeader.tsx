@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useId, useState } from "react";
+import { AppStoreBadgeLink } from "./AppStoreBadgeLink";
 import { appStoreHref, desktopHeaderLinks, mobileMenuSections } from "./SiteNavigation";
 
 export function SiteHeader() {
@@ -60,9 +61,7 @@ export function SiteHeader() {
             ))}
           </nav>
 
-          <a className="site-header__cta" href={appStoreHref} data-nav-id="nav_appstore">
-            App Storeで見る
-          </a>
+          <AppStoreBadgeLink className="site-header__cta" href={appStoreHref} navId="nav_appstore" />
 
           <button
             type="button"
@@ -81,9 +80,12 @@ export function SiteHeader() {
 
       <div className={`site-mobile-menu ${isOpen ? "site-mobile-menu--open" : ""}`} id={menuId}>
         <div className="site-mobile-menu__panel">
-          <a className="site-mobile-menu__cta" href={appStoreHref} data-nav-id="nav_appstore" onClick={closeMenu}>
-            App Storeで見る
-          </a>
+          <AppStoreBadgeLink
+            className="site-mobile-menu__cta"
+            href={appStoreHref}
+            navId="nav_appstore"
+            onClick={closeMenu}
+          />
           <nav className="site-mobile-menu__nav" aria-label="モバイルメニュー">
             {mobileMenuSections.map((section) => (
               <section className="site-mobile-menu__section" key={section.title}>

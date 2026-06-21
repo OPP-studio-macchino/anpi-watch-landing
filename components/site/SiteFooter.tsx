@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AppStoreBadgeLink } from "./AppStoreBadgeLink";
 import { appStoreHref, footerSections } from "./SiteNavigation";
 
 export function SiteFooter() {
@@ -17,9 +18,7 @@ export function SiteFooter() {
             />
             <span className="site-brand__name">あんぴッチ</span>
           </Link>
-          <a className="site-footer__cta" href={appStoreHref} data-nav-id="nav_appstore">
-            App Storeで見る
-          </a>
+          <AppStoreBadgeLink className="site-footer__cta" href={appStoreHref} navId="nav_appstore" />
         </div>
 
         <nav className="site-footer__nav" aria-label="フッター">

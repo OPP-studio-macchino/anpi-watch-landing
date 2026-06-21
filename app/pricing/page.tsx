@@ -6,6 +6,7 @@ import {
     TrustPage,
     TrustSection,
 } from "../../components/trust-foundation/TrustFoundationPage";
+import { AppStoreBadgeLink } from "../../components/site/AppStoreBadgeLink";
 import { createPageMetadata } from "../../lib/seo";
 
 const appStoreUrl =
@@ -80,13 +81,11 @@ export default function PricingPage() {
                     </TrustCard>
                 </TrustGrid>
                 <div className="actions">
-                    <a
+                    <AppStoreBadgeLink
                         href={appStoreUrl}
                         className="primary"
-                        data-cta-id="pricing_appstore"
-                    >
-                        App Storeで見る
-                    </a>
+                        ctaId="pricing_appstore"
+                    />
                 </div>
             </TrustSection>
 
