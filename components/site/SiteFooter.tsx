@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AppStoreBadgeLink } from "./AppStoreBadgeLink";
+import { BrandLogo } from "./BrandLogo";
 import { appStoreHref, footerSections } from "./SiteNavigation";
 
 export function SiteFooter() {
@@ -7,18 +8,12 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="site-footer__inner">
         <div className="site-footer__brand">
-          <Link className="site-brand site-brand--footer" href="/" data-nav-id="footer_home">
-            <img
-              className="site-brand__mark"
-              src="/icon.png"
-              alt=""
-              width={34}
-              height={34}
-              aria-hidden="true"
-            />
-            <span className="site-brand__name">あんぴッチ</span>
-          </Link>
-          <AppStoreBadgeLink className="site-footer__cta" href={appStoreHref} navId="nav_appstore" />
+          <BrandLogo className="site-brand--footer" navId="footer_home" />
+          <p>
+            1日1回、OKを記録。OKが途切れた時は、あらかじめ同意した2名へ段階的に通知を試みます。
+          </p>
+          <AppStoreBadgeLink className="site-footer__cta" href={appStoreHref} navId="footer_appstore" />
+          <small>iPhone対応｜月額300円｜通知ごとの追加料金なし</small>
         </div>
 
         <nav className="site-footer__nav" aria-label="フッター">
@@ -37,6 +32,10 @@ export function SiteFooter() {
             </section>
           ))}
         </nav>
+      </div>
+      <div className="site-footer__legal-line">
+        <p>© {new Date().getFullYear()} O.P.P Studio</p>
+        <p>本サービスは救命・危険検知・位置追跡・公的機関への自動通報を行いません。</p>
       </div>
     </footer>
   );

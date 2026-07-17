@@ -1,22 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { AppStoreBadgeLink } from "./AppStoreBadgeLink";
+import { BrandLogo } from "./BrandLogo";
 import { appStoreHref, desktopHeaderLinks, mobileMenuSections } from "./SiteNavigation";
 
 export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
   const menuId = useId();
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    if (!isOpen) {
-      return;
-    }
+    if (!isOpen) return;
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setIsOpen(false);
+        menuButtonRef.current?.focus();
       }
     };
 
@@ -36,22 +37,7 @@ export function SiteHeader() {
     <>
       <header className="site-header">
         <div className="site-header__inner">
-          <Link
-            className="site-brand"
-            href="/"
-            data-nav-id="header_home"
-            aria-label="あんぴッチ トップへ"
-            onClick={closeMenu}
-          >
-            <img
-              className="site-brand__mark"
-              src="/icon.png"
-              alt=""
-              width={34}
-              height={34}
-              aria-hidden="true"
-            />
-          </Link>
+          <BrandLogo navId="header_home" onClick={closeMenu} />
 
           <nav className="site-header__nav" aria-label="主要ページ">
             {desktopHeaderLinks.map((link) => (
@@ -61,9 +47,14 @@ export function SiteHeader() {
             ))}
           </nav>
 
-          <AppStoreBadgeLink className="site-header__cta" href={appStoreHref} navId="nav_appstore" />
+          <AppStoreBadgeLink
+            className="site-header__cta"
+            href={appStoreHref}
+            navId="nav_appstore"
+          />
 
           <button
+            ref={menuButtonRef}
             type="button"
             className="site-menu-button"
             aria-expanded={isOpen}
@@ -78,12 +69,29 @@ export function SiteHeader() {
         </div>
       </header>
 
-      <div className={`site-mobile-menu ${isOpen ? "site-mobile-menu--open" : ""}`} id={menuId}>
+      <div
+        className={`site-mobile-menu ${isOpen ? "site-mobile-menu--open" : ""}`}
+        id={menuId}
+        aria-hidden={!isOpen}
+      >
+        <button
+          className="site-mobile-menu__backdrop"
+          type="button"
+          aria-label="メニューを閉じる"
+          onClick={closeMenu}
+          tabIndex={isOpen ? 0 : -1}
+        />
         <div className="site-mobile-menu__panel">
+          <div className="site-mobile-menu__brand-row">
+            <BrandLogo compact onClick={closeMenu} />
+            <button type="button" onClick={closeMenu} aria-label="メニューを閉じる">
+              ×
+            </button>
+          </div>
           <AppStoreBadgeLink
             className="site-mobile-menu__cta"
             href={appStoreHref}
-            navId="nav_appstore"
+            navId="nav_appstore_mobile"
             onClick={closeMenu}
           />
           <nav className="site-mobile-menu__nav" aria-label="モバイルメニュー">

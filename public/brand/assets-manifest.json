@@ -1,0 +1,44 @@
+{
+  "appIcon": {
+    "path": "/brand/app-icon.png",
+    "width": 1024,
+    "height": 1024
+  },
+  "homeOk": {
+    "path": "/brand/home-ok.webp",
+    "width": 944,
+    "height": 2048
+  },
+  "homeSuccess": {
+    "path": "/brand/home-success.webp",
+    "width": 944,
+    "height": 2048
+  },
+  "contactsDemo": {
+    "path": "/brand/contacts-demo.webp",
+    "width": 944,
+    "height": 2048,
+    "pii": "synthetic"
+  },
+  "records": {
+    "path": "/brand/records.webp",
+    "width": 944,
+    "height": 2048
+  },
+  "settings": {
+    "path": "/brand/settings.webp",
+    "width": 944,
+    "height": 2048,
+    "phone": "synthetic"
+  },
+  "ogImage": {
+    "path": "/og-image.png",
+    "width": 1200,
+    "height": 630
+  },
+  "twitterCard": {
+    "path": "/twitter-card.png",
+    "width": 1200,
+    "height": 630
+  }
+}

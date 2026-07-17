@@ -27,7 +27,6 @@ import {
     recordSteps,
     setupReminders,
     setupSteps,
-    snoozeSteps,
     successChecks,
     tocItems,
     type Tone,
@@ -109,87 +108,35 @@ function StatusBadge({ tone, label }: { tone: Tone; label: string }) {
     return <span className={`${styles.badge} ${badgeClass(tone)}`}>{label}</span>;
 }
 
-function ScreenPreview({ type }: { type: "home" | "contacts" | "settings" }) {
-    if (type === "home") {
-        return (
-            <div className={styles.screen} aria-hidden="true">
-                <div className={styles.statusBanner}>
-                    <strong>今の状態: 通知前</strong>
-                    <StatusBadge tone="success" label="通知前" />
-                </div>
-                <div className={styles.okButton}>
-                    <div>
-                        <span>今の時刻で記録</span>
-                        <strong>OK</strong>
-                    </div>
-                </div>
-                <div className={styles.rowList}>
-                    <div className={styles.row}>
-                        <strong>通知前</strong>
-                        <p className={styles.meta}>次の通知までの残り時間を見ます。</p>
-                    </div>
-                    <div className={styles.row}>
-                        <strong>最後のOK</strong>
-                        <p className={styles.meta}>今日 09:42</p>
-                    </div>
-                    <div className={styles.row}>
-                        <strong>OKから</strong>
-                        <p className={styles.meta}>12分</p>
-                    </div>
-                    <div className={styles.row}>
-                        <strong>次の予定</strong>
-                        <p className={styles.meta}>24時間で本人へスマホ通知</p>
-                    </div>
-                </div>
-                <div className={styles.chipRow}>
-                    <span className={styles.chip}>1時間</span>
-                    <span className={styles.chip}>3時間</span>
-                    <span className={styles.chip}>6時間</span>
-                </div>
-            </div>
-        );
-    }
+function ScreenPreview({ type }: { type: "home" | "contacts" | "records" }) {
+    const previews = {
+        home: {
+            src: "/brand/home-ok.webp",
+            alt: "現在のホーム画面。通知稼働中の状態、最終OK時刻、OKを記録ボタンを表示",
+        },
+        contacts: {
+            src: "/brand/contacts-demo.webp",
+            alt: "現在の連絡先画面。2名の連絡先と同意状況を表示",
+        },
+        records: {
+            src: "/brand/records.webp",
+            alt: "現在の記録画面。24時間から48時間までの段階通知を表示",
+        },
+    } as const;
 
-    if (type === "contacts") {
-        return (
-            <div className={styles.screen} aria-hidden="true">
-                <div className={styles.rowList}>
-                    <div className={styles.row}>
-                        <strong>連絡先A</strong>
-                        <p className={styles.meta}>名前 / 電話番号</p>
-                        <StatusBadge tone="warning" label="同意待ち" />
-                    </div>
-                    <div className={styles.row}>
-                        <strong>連絡先B</strong>
-                        <p className={styles.meta}>名前 / 電話番号</p>
-                        <StatusBadge tone="success" label="同意済み" />
-                    </div>
-                </div>
-            </div>
-        );
-    }
+    const preview = previews[type];
 
     return (
-        <div className={styles.screen} aria-hidden="true">
-            <div className={styles.recordList}>
-                <div className={styles.recordItem}>
-                    <StatusBadge tone="info" label="スマホ通知" />
-                    <strong className={styles.recordLabel}>本人への通知</strong>
-                    <div className={styles.recordMeta}>
-                        <span>本人</span>
-                        <span>24時間経過後 09:00</span>
-                        <span>送信済み</span>
-                    </div>
-                </div>
-                <div className={styles.billingRow}>
-                    <div className={styles.billingHead}>
-                        <StatusBadge tone="warning" label="通知予告" />
-                        <span className={styles.amount}>本人SMS</span>
-                    </div>
-                    <p>36時間で連絡先AへSMSを送ります。</p>
-                </div>
-            </div>
-        </div>
+        <figure className={styles.screenPreview}>
+            <img
+                className={styles.screenPreviewImage}
+                src={preview.src}
+                alt={preview.alt}
+                width={944}
+                height={2048}
+                loading="lazy"
+            />
+        </figure>
     );
 }
 
@@ -272,7 +219,7 @@ export function ManualPage() {
                                     <span className={styles.previewLabel}>毎日見る画面</span>
                                     <h3>ふだんはホームでOKを押します</h3>
                                     <p>
-                                        1日1回、ホームの大きなOKボタンを押します。アプリを開いただけではOKは記録されません。OKボタンを押した時刻が最後のOKとして記録されます。
+                                        1日1回、ホームで「OKを記録」を押します。アプリを開いただけでは記録されません。サーバーで受け付けられた時刻が、最終OKとして表示されます。
                                     </p>
                                     <ScreenPreview type="home" />
                                 </article>
@@ -280,7 +227,7 @@ export function ManualPage() {
                                     <span className={styles.previewLabel}>最初の大事な準備</span>
                                     <h3>連絡先は2人必要です</h3>
                                     <p>
-                                        本人確認のあとに連絡先A・Bを登録します。本人確認が完了すると、連絡先2人のURL同意前でもOKは記録できます。ただし、連絡先A・Bの2人がURLから同意済みになるまで連絡先への通知は始まりません。
+                                        本人確認のあとに、1人目と2人目の連絡先を登録します。本人確認が完了すると、2人のURL同意前でもOKは記録できます。ただし、2人とも同意済みになるまで連絡先への通知は始まりません。
                                     </p>
                                     <ScreenPreview type="contacts" />
                                 </article>
@@ -530,15 +477,14 @@ export function ManualPage() {
                                 id="daily-title"
                                 eyebrow="毎日すること"
                                 title="毎日することは、ホームでOKを1回押すだけです"
-                                description="1日1回、ホームの大きなOKボタンを押します。アプリを開いただけではOKは記録されません。OKボタンを押した時刻が最後のOKとして記録されます。ホームでは、通知前、今の状態、最後のOK、OKから、次の予定を見ます。"
+                                description="1日1回、ホームで「OKを記録」を押します。アプリを開いただけでは記録されません。サーバーで受け付けられた時刻が、最終OKとして表示されます。ホームでは、通知前、今の状態、最後のOK、OKから、次の予定を見ます。"
                             />
                             <div className={styles.split}>
                                 <article className={styles.previewCard}>
                                     <span className={styles.previewLabel}>ホームの見本</span>
                                     <h3>いちばん大事なのは OK です</h3>
                                     <p>
-                                        ホームでは OK
-                                        が中心です。ほかの操作より先に、まずOKを押します。
+                                        ホームでは、現在の状態と最終OKを確認し、「OKを記録」を押します。成功はサーバーで受け付けられた後に表示されます。
                                     </p>
                                     <ScreenPreview type="home" />
                                 </article>
@@ -555,16 +501,6 @@ export function ManualPage() {
                                 </div>
                             </div>
 
-                            <div className={styles.split}>
-                                <StepList title="通知だけ止めたい時" steps={snoozeSteps} />
-                                <article className={`${styles.card} ${styles.toneWarning}`}>
-                                    <StatusBadge tone="warning" label="通知の一時停止" />
-                                    <h3>一時停止は『通知だけ止める』機能です</h3>
-                                    <p>
-                                        時間のカウントは止まりません。OKを押さないままなら、24時間、30時間、36時間、42時間、48時間以上の順に進みます。
-                                    </p>
-                                </article>
-                            </div>
                         </section>
 
                         <section
@@ -608,16 +544,16 @@ export function ManualPage() {
                                 id="records-title"
                                 eyebrow="記録と通知履歴"
                                 title="『だれに、いつ、何を送ったか』をあとで見返せます"
-                                description="あとで確認できると、言った言わないを減らせます。送信の結果と通知履歴は、設定から見ます。"
+                                description="通知の流れと送信・配達状態は、下の「記録」タブから確認できます。送信、配達確認、閲覧、対応を同じ意味として扱いません。"
                             />
                             <div className={styles.split}>
                                 <article className={styles.previewCard}>
-                                    <span className={styles.previewLabel}>設定の見本</span>
-                                    <h3>記録は設定から見ます</h3>
+                                    <span className={styles.previewLabel}>記録タブの見本</span>
+                                    <h3>通知の流れをひと目で確認できます</h3>
                                     <p>
-                                        『通知の記録』と『通知履歴』を、あとで何度でも見返せます。
+                                        24時間から48時間までの通知予定と、実際の送信・配達状態を「記録」タブで確認できます。
                                     </p>
-                                    <ScreenPreview type="settings" />
+                                    <ScreenPreview type="records" />
                                 </article>
                                 <div className={styles.rowList}>
                                     <StepList title="通知の記録を見る" steps={recordSteps} />

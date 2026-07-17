@@ -244,16 +244,11 @@ export const dailySteps = [
 ] as const;
 
 export const successChecks = [
-    "「今の時刻でOKを記録しました」",
-    "最後のOKの時刻が新しくなる",
-    "OKからの時間が短くなる",
+    "「OKを受け付けました」と表示される",
+    "最終OKの時刻が新しくなる",
+    "成功はサーバーで受け付けられた後に表示される",
 ] as const;
 
-export const snoozeSteps = [
-    { title: "ホームを開きます。", outcome: "「1時間 / 3時間 / 6時間」が見えます。" },
-    { title: "時間を1つ押します。", outcome: "選んだ時間が濃くなります。" },
-    { title: "終わる時刻を見ます。", outcome: "いつまで通知だけ止めるかが出ます。" },
-] as const;
 
 export const escalationTimeline = [
     {
@@ -289,15 +284,15 @@ export const escalationTimeline = [
 ] as const;
 
 export const recordSteps = [
-    { title: "下の「設定」を押します。", outcome: "設定の一覧が出ます。" },
-    { title: "「通知の記録」を押します。", outcome: "日付ごとの一覧が出ます。" },
-    { title: "1行を見ます。", outcome: "誰に送ったか見えます。" },
+    { title: "下の「記録」を押します。", outcome: "通知の流れと履歴が出ます。" },
+    { title: "通知の流れを見ます。", outcome: "24・30・36・42・48時間の順番が分かります。" },
+    { title: "履歴の状態を見ます。", outcome: "送信処理中、送信、配達確認、失敗を区別できます。" },
 ] as const;
 
 export const billingSteps = [
-    { title: "「設定」を押します。", outcome: "設定の一覧が出ます。" },
-    { title: "「通知履歴」を押します。", outcome: "今月の連絡先通知回数が見えます。" },
-    { title: "1行を見ます。", outcome: "誰に・いつ・どの通知を送ったかが見えます。" },
+    { title: "「記録」タブを開きます。", outcome: "通知履歴を確認できます。" },
+    { title: "履歴の1行を見ます。", outcome: "誰に・いつ・どのチャネルで処理したか分かります。" },
+    { title: "状態の意味を確認します。", outcome: "配達確認は、閲覧や対応を意味しないと分かります。" },
 ] as const;
 
 export const recordChecks = [
@@ -351,7 +346,7 @@ export const billingRows = [
     },
     {
         state: "確認",
-        trigger: "設定 > 通知履歴",
+        trigger: "記録タブ",
         amount: "今月の連絡先通知回数",
         detail: "通知履歴は、誰に・いつ・どの通知を送ったかを確認するための履歴です。",
         tone: "info",
@@ -386,7 +381,7 @@ export const faqs = [
     },
     {
         question: "記録に何も出ません",
-        answers: ["「設定」を開きます。", "「通知の記録」を開きます。", "今日の行があるか見ます。"],
+        answers: ["下の「記録」を開きます。", "通知履歴を確認します。", "今日の行と状態を見ます。"],
     },
     {
         question: "料金が気になります",
