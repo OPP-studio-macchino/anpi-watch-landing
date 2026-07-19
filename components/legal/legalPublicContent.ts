@@ -74,9 +74,9 @@ export const privacyRetentionItems = [
 
 export const termsUseConditionRows = [
   ["本人電話番号", "本人が利用可能な電話番号が必要です。"],
-  ["iPhone利用", "iOSアプリ利用を前提とします。"],
+  ["対応アプリ", "iOSアプリまたはAndroidアプリを利用します。"],
   ["SMS受信可能性", "本人確認、同意、STOP / HELP等にSMSが関係する場合があります。"],
-  ["Push通知利用可能性", "APNs token登録とPush通知許可が必要になる場合があります。"],
+  ["Push通知利用可能性", "端末でPush通知を受け取れる設定が必要になる場合があります。"],
   ["連絡先2名の同意", "2名のURL同意がそろうまで通知は開始されません。"],
   ["正確な連絡先情報", "連絡先名、電話番号、同意状態を正確に保つ必要があります。"],
 ];
@@ -88,13 +88,14 @@ export const termsProhibitedItems = [
   "本サービスだけに安全確保を依存すること。",
   "公的緊急通報、医療判断、警備会社出動の代替として利用すること。",
   "不正アクセス、token改ざん、同意URLの濫用、過剰な再招待、迷惑行為を行うこと。",
-  "SMS、Push、App Store、backend、外部providerに過度な負荷を与えること。",
+  "SMS、Push、App Store、Google Play、backend、外部providerに過度な負荷を与えること。",
 ];
 
 export const termsCancelItems = [
-  "あんぴッチの月額プランは、Appleのサブスクリプションとして管理されます。",
-  "サブスクリプションは、Appleのサブスクリプション管理画面から解約してください。",
-  "アカウント削除やアプリ削除だけでは、Apple側のサブスクリプションが自動的に解約されない場合があります。",
+  "あんぴッチの月額プランは、iOSではApp Store、AndroidではGoogle Playの自動更新サブスクリプションとして管理されます。",
+  "購入、更新、解約は、購入に利用したストアの仕組みと表示に従います。",
+  "返金は、購入に利用したストアの規定および手続きに従います。",
+  "アカウント削除やアプリ削除だけでは、利用したストア側のサブスクリプションが自動的に解約されない場合があります。",
 ];
 
 export const termsContactConsentItems = [
